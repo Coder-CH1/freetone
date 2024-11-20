@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		046701332CEDDE310018029C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701322CEDDE310018029C /* AppDelegate.swift */; };
+		046701352CEDDE310018029C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701342CEDDE310018029C /* SceneDelegate.swift */; };
+		046701372CEDDE310018029C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701362CEDDE310018029C /* ViewController.swift */; };
+		0467013C2CEDDE330018029C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0467013B2CEDDE330018029C /* Assets.xcassets */; };
+		0467013F2CEDDE330018029C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0467013D2CEDDE330018029C /* LaunchScreen.storyboard */; };
+		0467014A2CEDDE330018029C /* freetoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701492CEDDE330018029C /* freetoneTests.swift */; };
+		046701542CEDDE330018029C /* freetoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701532CEDDE330018029C /* freetoneUITests.swift */; };
+		046701562CEDDE340018029C /* freetoneUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701552CEDDE340018029C /* freetoneUITestsLaunchTests.swift */; };
+		046701652CEDE5F90018029C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701642CEDE5F90018029C /* OnboardingViewController.swift */; };
+		046701672CEE0CE20018029C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701662CEE0CE20018029C /* Label.swift */; };
+		046701692CEE0D0B0018029C /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701682CEE0D0B0018029C /* ImageView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		046701462CEDDE330018029C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 046701272CEDDE310018029C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0467012E2CEDDE310018029C;
+			remoteInfo = freetone;
+		};
+		046701502CEDDE330018029C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 046701272CEDDE310018029C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0467012E2CEDDE310018029C;
+			remoteInfo = freetone;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0467012F2CEDDE310018029C /* freetone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = freetone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		046701322CEDDE310018029C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		046701342CEDDE310018029C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		046701362CEDDE310018029C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0467013B2CEDDE330018029C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0467013E2CEDDE330018029C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		046701402CEDDE330018029C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		046701452CEDDE330018029C /* freetoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = freetoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		046701492CEDDE330018029C /* freetoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = freetoneTests.swift; sourceTree = "<group>"; };
+		0467014F2CEDDE330018029C /* freetoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = freetoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		046701532CEDDE330018029C /* freetoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = freetoneUITests.swift; sourceTree = "<group>"; };
+		046701552CEDDE340018029C /* freetoneUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = freetoneUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		046701642CEDE5F90018029C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		046701662CEE0CE20018029C /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		046701682CEE0D0B0018029C /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0467012C2CEDDE310018029C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046701422CEDDE330018029C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0467014C2CEDDE330018029C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		046701262CEDDE310018029C = {
+			isa = PBXGroup;
+			children = (
+				046701312CEDDE310018029C /* freetone */,
+				046701482CEDDE330018029C /* freetoneTests */,
+				046701522CEDDE330018029C /* freetoneUITests */,
+				046701302CEDDE310018029C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		046701302CEDDE310018029C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0467012F2CEDDE310018029C /* freetone.app */,
+				046701452CEDDE330018029C /* freetoneTests.xctest */,
+				0467014F2CEDDE330018029C /* freetoneUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		046701312CEDDE310018029C /* freetone */ = {
+			isa = PBXGroup;
+			children = (
+				046701362CEDDE310018029C /* ViewController.swift */,
+				0467016A2CEE0D240018029C /* Delegates */,
+				0467016C2CEE0D430018029C /* ReusableViews */,
+				0467016B2CEE0D350018029C /* UI */,
+				0467013B2CEDDE330018029C /* Assets.xcassets */,
+				0467013D2CEDDE330018029C /* LaunchScreen.storyboard */,
+				046701402CEDDE330018029C /* Info.plist */,
+			);
+			path = freetone;
+			sourceTree = "<group>";
+		};
+		046701482CEDDE330018029C /* freetoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				046701492CEDDE330018029C /* freetoneTests.swift */,
+			);
+			path = freetoneTests;
+			sourceTree = "<group>";
+		};
+		046701522CEDDE330018029C /* freetoneUITests */ = {
+			isa = PBXGroup;
+			children = (
+				046701532CEDDE330018029C /* freetoneUITests.swift */,
+				046701552CEDDE340018029C /* freetoneUITestsLaunchTests.swift */,
+			);
+			path = freetoneUITests;
+			sourceTree = "<group>";
+		};
+		0467016A2CEE0D240018029C /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				046701322CEDDE310018029C /* AppDelegate.swift */,
+				046701342CEDDE310018029C /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		0467016B2CEE0D350018029C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				046701642CEDE5F90018029C /* OnboardingViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0467016C2CEE0D430018029C /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				046701662CEE0CE20018029C /* Label.swift */,
+				046701682CEE0D0B0018029C /* ImageView.swift */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0467012E2CEDDE310018029C /* freetone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 046701592CEDDE340018029C /* Build configuration list for PBXNativeTarget "freetone" */;
+			buildPhases = (
+				0467012B2CEDDE310018029C /* Sources */,
+				0467012C2CEDDE310018029C /* Frameworks */,
+				0467012D2CEDDE310018029C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = freetone;
+			productName = freetone;
+			productReference = 0467012F2CEDDE310018029C /* freetone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		046701442CEDDE330018029C /* freetoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0467015C2CEDDE340018029C /* Build configuration list for PBXNativeTarget "freetoneTests" */;
+			buildPhases = (
+				046701412CEDDE330018029C /* Sources */,
+				046701422CEDDE330018029C /* Frameworks */,
+				046701432CEDDE330018029C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				046701472CEDDE330018029C /* PBXTargetDependency */,
+			);
+			name = freetoneTests;
+			productName = freetoneTests;
+			productReference = 046701452CEDDE330018029C /* freetoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0467014E2CEDDE330018029C /* freetoneUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0467015F2CEDDE340018029C /* Build configuration list for PBXNativeTarget "freetoneUITests" */;
+			buildPhases = (
+				0467014B2CEDDE330018029C /* Sources */,
+				0467014C2CEDDE330018029C /* Frameworks */,
+				0467014D2CEDDE330018029C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				046701512CEDDE330018029C /* PBXTargetDependency */,
+			);
+			name = freetoneUITests;
+			productName = freetoneUITests;
+			productReference = 0467014F2CEDDE330018029C /* freetoneUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		046701272CEDDE310018029C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					0467012E2CEDDE310018029C = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					046701442CEDDE330018029C = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 0467012E2CEDDE310018029C;
+					};
+					0467014E2CEDDE330018029C = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 0467012E2CEDDE310018029C;
+					};
+				};
+			};
+			buildConfigurationList = 0467012A2CEDDE310018029C /* Build configuration list for PBXProject "freetone" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 046701262CEDDE310018029C;
+			productRefGroup = 046701302CEDDE310018029C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0467012E2CEDDE310018029C /* freetone */,
+				046701442CEDDE330018029C /* freetoneTests */,
+				0467014E2CEDDE330018029C /* freetoneUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0467012D2CEDDE310018029C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0467013F2CEDDE330018029C /* LaunchScreen.storyboard in Resources */,
+				0467013C2CEDDE330018029C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046701432CEDDE330018029C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0467014D2CEDDE330018029C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0467012B2CEDDE310018029C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				046701692CEE0D0B0018029C /* ImageView.swift in Sources */,
+				046701372CEDDE310018029C /* ViewController.swift in Sources */,
+				046701332CEDDE310018029C /* AppDelegate.swift in Sources */,
+				046701352CEDDE310018029C /* SceneDelegate.swift in Sources */,
+				046701672CEE0CE20018029C /* Label.swift in Sources */,
+				046701652CEDE5F90018029C /* OnboardingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		046701412CEDDE330018029C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0467014A2CEDDE330018029C /* freetoneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0467014B2CEDDE330018029C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				046701562CEDDE340018029C /* freetoneUITestsLaunchTests.swift in Sources */,
+				046701542CEDDE330018029C /* freetoneUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		046701472CEDDE330018029C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0467012E2CEDDE310018029C /* freetone */;
+			targetProxy = 046701462CEDDE330018029C /* PBXContainerItemProxy */;
+		};
+		046701512CEDDE330018029C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0467012E2CEDDE310018029C /* freetone */;
+			targetProxy = 046701502CEDDE330018029C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0467013D2CEDDE330018029C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0467013E2CEDDE330018029C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		046701572CEDDE340018029C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		046701582CEDDE340018029C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0467015A2CEDDE340018029C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SFJ8H3MDYC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = freetone/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chidiogo.freetone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0467015B2CEDDE340018029C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SFJ8H3MDYC;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = freetone/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chidiogo.freetone;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0467015D2CEDDE340018029C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SFJ8H3MDYC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chidiogo.freetoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/freetone.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/freetone";
+			};
+			name = Debug;
+		};
+		0467015E2CEDDE340018029C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SFJ8H3MDYC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chidiogo.freetoneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/freetone.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/freetone";
+			};
+			name = Release;
+		};
+		046701602CEDDE340018029C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SFJ8H3MDYC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chidiogo.freetoneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = freetone;
+			};
+			name = Debug;
+		};
+		046701612CEDDE340018029C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SFJ8H3MDYC;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chidiogo.freetoneUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = freetone;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0467012A2CEDDE310018029C /* Build configuration list for PBXProject "freetone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				046701572CEDDE340018029C /* Debug */,
+				046701582CEDDE340018029C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		046701592CEDDE340018029C /* Build configuration list for PBXNativeTarget "freetone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0467015A2CEDDE340018029C /* Debug */,
+				0467015B2CEDDE340018029C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0467015C2CEDDE340018029C /* Build configuration list for PBXNativeTarget "freetoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0467015D2CEDDE340018029C /* Debug */,
+				0467015E2CEDDE340018029C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0467015F2CEDDE340018029C /* Build configuration list for PBXNativeTarget "freetoneUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				046701602CEDDE340018029C /* Debug */,
+				046701612CEDDE340018029C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 046701272CEDDE310018029C /* Project object */;
+}
