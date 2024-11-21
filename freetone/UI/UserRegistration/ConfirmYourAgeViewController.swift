@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//MARK: - UI -
 class ConfirmYourAgeViewController: UIViewController {
     
     //MARK: - Objects -
@@ -24,7 +24,7 @@ class ConfirmYourAgeViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "FreeTone"
-        label.textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
+        label.textColor = .white
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -49,7 +49,7 @@ class ConfirmYourAgeViewController: UIViewController {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 22, weight: .black)
         return label
     }()
     
@@ -62,7 +62,7 @@ class ConfirmYourAgeViewController: UIViewController {
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return label
     }()
     
@@ -94,27 +94,37 @@ class ConfirmYourAgeViewController: UIViewController {
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             subTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
             subTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             
-            noButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 10),
+            noButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20),
             noButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 14),
             noButton.heightAnchor.constraint(equalToConstant: 65),
             noButton.widthAnchor.constraint(equalToConstant: 150),
             
-            yesButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 10),
-            yesButton.leadingAnchor.constraint(equalTo: noButton.trailingAnchor, constant: 50),
+            yesButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20),
+            yesButton.leadingAnchor.constraint(equalTo: noButton.trailingAnchor, constant: 60),
 
             yesButton.heightAnchor.constraint(equalToConstant: 65),
             yesButton.widthAnchor.constraint(equalToConstant: 150),
         ])
         noButton.addTarget(self, action: #selector(noButtonTapped), for: .touchUpInside)
+        yesButton.addTarget(self, action: #selector(yesButtonTapped), for: .touchUpInside)
     }
     
-    //MARK: - The method that shows the error message
+    //MARK: - The method that shows the error message -
     @objc func noButtonTapped() {
         subTitleLabel.textColor = .red
     }
     
+    //MARK: - The method that navigates to the registration screen -
+    @objc func yesButtonTapped() {
+        subTitleLabel.textColor = .lightGray
+        let vc = RegisterWithEmailViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
+        let backButton = UIBarButtonItem(title: "     Register with email", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backButton
+        backButton.tintColor = .white
+    }
 }
