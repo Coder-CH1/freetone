@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: -
+// MARK: - TabBar -
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate  {
     // MARK: - Wrap ViewControllers in Navigation Controllers -
     let storeVC = UINavigationController(rootViewController: StoreViewController())

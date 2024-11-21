@@ -28,6 +28,7 @@
 		047132A12CEF9609004BC266 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047132A02CEF9609004BC266 /* InboxViewController.swift */; };
 		047132A32CEF9617004BC266 /* NumbersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047132A22CEF9617004BC266 /* NumbersViewController.swift */; };
 		047132A52CEF962A004BC266 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047132A42CEF962A004BC266 /* ProfileViewController.swift */; };
+		047132A92CEFB31F004BC266 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047132A82CEFB31F004BC266 /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		047132A02CEF9609004BC266 /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		047132A22CEF9617004BC266 /* NumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersViewController.swift; sourceTree = "<group>"; };
 		047132A42CEF962A004BC266 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		047132A82CEFB31F004BC266 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			children = (
 				046701662CEE0CE20018029C /* Label.swift */,
 				046701682CEE0D0B0018029C /* ImageView.swift */,
+				047132A82CEFB31F004BC266 /* Button.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				047132902CEF948F004BC266 /* ConfirmYourAgeViewController.swift in Sources */,
 				0471329D2CEF95D6004BC266 /* StoreViewController.swift in Sources */,
 				047132922CEF94AE004BC266 /* RegisterWithEmailViewController.swift in Sources */,
+				047132A92CEFB31F004BC266 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
