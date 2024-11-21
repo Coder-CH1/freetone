@@ -1,3 +1,3 @@
 # freetone
 
-- Calling and Texting App.
+- Your Free Calling and Messaging App.
