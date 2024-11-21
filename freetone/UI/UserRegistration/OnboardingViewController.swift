@@ -20,7 +20,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     }()
     
     ////LABEL
-    fileprivate lazy var titleLabel: UILabel = {
+    fileprivate lazy var appLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "FreeTone"
@@ -68,7 +68,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     
     ////STACKVIEW
     fileprivate lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [appLogo, titleLabel])
+        let stack = UIStackView(arrangedSubviews: [appLogo, appLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.spacing = -80
