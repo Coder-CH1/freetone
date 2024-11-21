@@ -9,6 +9,8 @@ import UIKit
 //MARK: - UI -
 class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     
+    //MARK: - Objects -
+    ////UIImageView
     fileprivate lazy var appLogo: UIImageView = {
         let logo = UIImageView(image: UIImage(named: "logo"))
         logo.translatesAutoresizingMaskIntoConstraints = false
@@ -17,6 +19,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         return logo
     }()
     
+    ////LABEL
     fileprivate lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,10 +30,9 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         return label
     }()
     
-    let label = Label(label: "FreeTone", textColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), font: UIFont.systemFont(ofSize: 14, weight: .medium))
-    
+    ////STACKVIEW
     fileprivate lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [appLogo, label])
+        let stack = UIStackView(arrangedSubviews: [appLogo, titleLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.spacing = -20
@@ -38,7 +40,6 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         return stack
     }()
     
-    //MARK: - Objects -
     let scrollView = UIScrollView()
     
     let pageControl = UIPageControl()
