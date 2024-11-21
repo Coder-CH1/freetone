@@ -30,6 +30,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         return label
     }()
     
+    ////BUTTON
     fileprivate lazy var getPhoneNumberBtn: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -40,6 +41,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         return btn
     }()
     
+    ////BUTTON
     fileprivate lazy var loginBtn: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +51,19 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         btn.layer.borderWidth = 2
         btn.layer.borderColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0).cgColor
         return btn
+    }()
+    
+    ////LABEL
+    fileprivate lazy var privacyPolicyLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "By using Freetone, you agree with the Terms & \n Conditions, and the Privacy Policy."
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        return label
     }()
     
     ////STACKVIEW
@@ -150,6 +165,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(stackView)
         view.addSubview(getPhoneNumberBtn)
         view.addSubview(loginBtn)
+        view.addSubview(privacyPolicyLabel)
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
@@ -166,6 +182,10 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             loginBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             loginBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             loginBtn.heightAnchor.constraint(equalToConstant: 50),
+            
+            privacyPolicyLabel.topAnchor.constraint(equalTo: loginBtn.bottomAnchor, constant: 20),
+            privacyPolicyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            privacyPolicyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
