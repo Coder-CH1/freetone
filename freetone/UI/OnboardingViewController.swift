@@ -30,12 +30,33 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         return label
     }()
     
+    fileprivate lazy var getPhoneNumberBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Get a phone number", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
+        btn.layer.cornerRadius = 8
+        return btn
+    }()
+    
+    fileprivate lazy var loginBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("Log in", for: .normal)
+        btn.setTitleColor(.white, for: .normal)
+        btn.layer.cornerRadius = 8
+        btn.layer.borderWidth = 2
+        btn.layer.borderColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0).cgColor
+        return btn
+    }()
+    
     ////STACKVIEW
     fileprivate lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [appLogo, titleLabel])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.spacing = -20
+        stack.spacing = -80
         stack.alignment = .center
         return stack
     }()
@@ -67,6 +88,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             let imageView = UIImageView(frame: CGRect(x: view.bounds.width * CGFloat(index), y: 100, width: UIScreen.main.bounds.width, height: 200))
             imageView.image = UIImage(named: imageLogo)
             imageView.contentMode = .scaleAspectFit
+            imageView.heightAnchor.constraint(equalToConstant: 300).isActive = true
             scrollView.addSubview(imageView)
             
             
@@ -126,12 +148,24 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(stackView)
+        view.addSubview(getPhoneNumberBtn)
+        view.addSubview(loginBtn)
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             appLogo.widthAnchor.constraint(equalToConstant: 80),
             appLogo.heightAnchor.constraint(equalToConstant: 50),
+            
+            getPhoneNumberBtn.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 380),
+            getPhoneNumberBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            getPhoneNumberBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            getPhoneNumberBtn.heightAnchor.constraint(equalToConstant: 50),
+            
+            loginBtn.topAnchor.constraint(equalTo: getPhoneNumberBtn.bottomAnchor, constant: 20),
+            loginBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            loginBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            loginBtn.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 }
