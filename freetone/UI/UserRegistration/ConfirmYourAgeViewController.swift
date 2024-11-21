@@ -57,7 +57,7 @@ class ConfirmYourAgeViewController: UIViewController {
     fileprivate lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = ""
+        label.text = "You must be at least 13 years old\n to create a Freetone account"
         label.textColor = .lightGray
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -109,6 +109,12 @@ class ConfirmYourAgeViewController: UIViewController {
             yesButton.heightAnchor.constraint(equalToConstant: 65),
             yesButton.widthAnchor.constraint(equalToConstant: 150),
         ])
+        noButton.addTarget(self, action: #selector(noButtonTapped), for: .touchUpInside)
+    }
+    
+    //MARK: - The method that shows the error message
+    @objc func noButtonTapped() {
+        subTitleLabel.textColor = .red
     }
     
 }
