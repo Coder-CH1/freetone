@@ -9,14 +9,31 @@ import UIKit
 //MARK: - UI -
 class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     
-    let appLogo = ImageView(image: UIImage(named: "logo"))
+    fileprivate lazy var appLogo: UIImageView = {
+        let logo = UIImageView(image: UIImage(named: "logo"))
+        logo.translatesAutoresizingMaskIntoConstraints = false
+        logo.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
+        logo.contentMode = .scaleAspectFit
+        return logo
+    }()
+    
+    fileprivate lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "FreeTone"
+        label.textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
     let label = Label(label: "FreeTone", textColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), font: UIFont.systemFont(ofSize: 14, weight: .medium))
     
     fileprivate lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [appLogo, label])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.spacing = 1
+        stack.spacing = -20
         stack.alignment = .center
         return stack
     }()
@@ -98,10 +115,9 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = Int(pageIndex)
     }
     
+    //MARK: - Method to configure the app logo -
     func configureAppLogo() {
-        appLogo.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
-        appLogo.contentMode = .scaleAspectFit
-        appLogo.isUserInteractionEnabled = true
+        
     }
     
     // MARK: - Subviews and Layout -
@@ -111,7 +127,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
-            appLogo.widthAnchor.constraint(equalToConstant: 50),
+            appLogo.widthAnchor.constraint(equalToConstant: 80),
             appLogo.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
