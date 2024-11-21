@@ -40,8 +40,10 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         return stack
     }()
     
+    ////SCROLLVIEW
     let scrollView = UIScrollView()
     
+    ////PAGECONTROL
     let pageControl = UIPageControl()
     
     let imageLogos = ["logo2", "logo3", "logo4"]
