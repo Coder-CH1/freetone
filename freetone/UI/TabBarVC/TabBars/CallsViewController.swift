@@ -85,6 +85,8 @@ class CallsViewController: UIViewController {
             segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 1),
             segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
+            segmentedControl.widthAnchor.constraint(equalToConstant: 400),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 25),
             
             allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 1),
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -121,7 +123,7 @@ class CallsViewController: UIViewController {
     func setupSegmentedControlIndicator() {
         segmentedControlIndicatorView.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
-        segmentedControlIndicatorView.frame = CGRect(x: 40, y: 398, width: segmentedWidth * 2, height: 4)
+        segmentedControlIndicatorView.frame = CGRect(x: 40, y: 40, width: segmentedWidth * 2, height: 4)
         customView.addSubview(segmentedControlIndicatorView)
     }
     
@@ -134,7 +136,7 @@ class CallsViewController: UIViewController {
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
         let indicatorX = CGFloat(sender.selectedSegmentIndex) * segmentedWidth
         UIView.animate(withDuration: 0.2) {
-            self.segmentedControlIndicatorView.frame.origin.x = indicatorX + 30
+            self.segmentedControlIndicatorView.frame.origin.x = indicatorX 
         }
     }
 }
