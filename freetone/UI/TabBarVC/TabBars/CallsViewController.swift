@@ -34,7 +34,8 @@ class CallsViewController: UIViewController {
     }()
     
     fileprivate lazy var segmentedControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: ["ALL", "MISSED", "VOICEMAIL"])
+        let items = ["ALL", "MISSED", "VOICEMAIL"]
+        let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
@@ -105,6 +106,15 @@ class CallsViewController: UIViewController {
         allView.translatesAutoresizingMaskIntoConstraints = false
         missedView.translatesAutoresizingMaskIntoConstraints = false
         voicemailView.translatesAutoresizingMaskIntoConstraints = false
+        setupSegmentedControlIndicator()
+    }
+    
+    //MARK: - The tap button event that selects either the login view/signup view
+    func setupSegmentsTappedAction() {
+        let action = UIAction { [weak self] _ in
+            self?.segmentedControlChanged(self!.segmentedControl)
+        }
+        segmentedControl.addAction(action, for: .valueChanged)
     }
     
     //MARK: - Setting the properties of the segmented control
@@ -115,7 +125,7 @@ class CallsViewController: UIViewController {
         customView.addSubview(segmentedControlIndicatorView)
     }
     
-    //MARK: - The segmented control event functionality that selects either the
+    //MARK: - The segmented control event functionality that selects either of the segments
     func segmentedControlChanged(_ sender: UISegmentedControl) {
         allView.isHidden = sender.selectedSegmentIndex == 1
         missedView.isHidden = sender.selectedSegmentIndex == 0
