@@ -22,7 +22,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate  {
         self.navigationItem.setHidesBackButton(true, animated: true)
         delegate = self
         setupViewControllers()
-        selectedIndex = 1
+        selectedIndex = 2
     }
     
     func setupViewControllers() {
@@ -52,10 +52,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate  {
         setViewControllers(viewControllers, animated: true)
         
         // MARK: - Customize tab bar appearance -
-        self.tabBar.tintColor = .lightGray
+        self.tabBar.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         self.tabBar.barTintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         self.tabBar.barTintColor = .gray
-        UITabBar.appearance().backgroundColor = UIColor.gray
+        UITabBar.appearance().backgroundColor = .darkGray
         
         // MARK: - Add a straight line at the top of the tab bar -
         let topBorder = CALayer()
