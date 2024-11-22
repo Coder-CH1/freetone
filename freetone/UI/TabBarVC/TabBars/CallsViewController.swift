@@ -109,6 +109,7 @@ class CallsViewController: UIViewController {
         missedView.translatesAutoresizingMaskIntoConstraints = false
         voicemailView.translatesAutoresizingMaskIntoConstraints = false
         setupSegmentedControlIndicator()
+        setupSegmentsTappedAction()
     }
     
     //MARK: - The tap button event that selects either the login view/signup view
@@ -123,7 +124,7 @@ class CallsViewController: UIViewController {
     func setupSegmentedControlIndicator() {
         segmentedControlIndicatorView.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
-        segmentedControlIndicatorView.frame = CGRect(x: 40, y: 40, width: segmentedWidth * 2, height: 4)
+        segmentedControlIndicatorView.frame = CGRect(x: 40, y: 40, width: segmentedWidth, height: 4)
         customView.addSubview(segmentedControlIndicatorView)
     }
     
@@ -136,7 +137,7 @@ class CallsViewController: UIViewController {
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
         let indicatorX = CGFloat(sender.selectedSegmentIndex) * segmentedWidth
         UIView.animate(withDuration: 0.2) {
-            self.segmentedControlIndicatorView.frame.origin.x = indicatorX 
+            self.segmentedControlIndicatorView.frame.origin.x = indicatorX + 20
         }
     }
 }
