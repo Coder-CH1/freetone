@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+//MARK: - UI -
 class InboxViewController: UIViewController {
     
     //MARK: - Life Cycle -
@@ -17,14 +17,34 @@ class InboxViewController: UIViewController {
     
     //MARK: - Setting up navigation items -
     private func setupNavigationBar() {
+        if let navigationBar = navigationController?.navigationBar {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .darkGray
+            appearance
+                .titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationBar.standardAppearance = appearance
+            navigationBar.scrollEdgeAppearance = appearance
+        }
+        
+        //MARK: - Create a custom view for the navigation bar -
+        let customView = UIView()
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        customView.backgroundColor = .darkGray
+        view.addSubview(customView)
+        
+        //MARK: - Add the customview to the navigation bar -
+        navigationItem.titleView = customView
+        
+        //MARK: - Set up the label on the left -
         let label = UILabel()
         label.text = "Inbox"
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        customView.addSubview(label)
         
-        let leftBarButton = UIBarButtonItem(customView: label)
-        navigationItem.leftBarButtonItem = leftBarButton
-        
+        //MARK: - Create three buttons (UIBarButtonItems) -
         let searchBtn = UIButton(type: .system)
         searchBtn.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchBtn.addTarget(self, action: #selector(btntapped), for: .touchUpInside)
@@ -37,25 +57,29 @@ class InboxViewController: UIViewController {
         infoBtn.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         infoBtn.addTarget(self, action: #selector(btn3tapped), for: .touchUpInside)
         
+        //MARK: - Create stackview for the three buttons items at the right side -
         let stack = UIStackView(arrangedSubviews: [searchBtn, callBtn, infoBtn])
         stack.axis = .horizontal
         stack.spacing = 0
         stack.alignment = .center
         stack.distribution = .fillEqually
         stack.translatesAutoresizingMaskIntoConstraints = false
+        customView.addSubview(stack)
         
-        let rightBarButton = UIBarButtonItem(customView: stack)
-        navigationItem.rightBarButtonItem = rightBarButton
-        
+        //MARK: - Customize the navigationbar -
         navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.backgroundColor = .darkGray
         
         NSLayoutConstraint.activate([
-            stack.heightAnchor.constraint(equalToConstant: 150),
-            stack.widthAnchor.constraint(equalToConstant: 240),
+            customView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            customView.heightAnchor.constraint(equalToConstant: 200),
+            customView.widthAnchor.constraint(equalToConstant: view.bounds.width),
+            
+            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
+            label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
+            
+            stack.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
+            stack.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
         ])
-        
-        navigationController?.navigationBar.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
     //MARK: -
@@ -72,5 +96,4 @@ class InboxViewController: UIViewController {
     @objc func btn3tapped() {
         
     }
-    
 }
