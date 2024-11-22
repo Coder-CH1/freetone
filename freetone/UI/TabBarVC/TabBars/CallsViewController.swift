@@ -11,7 +11,5 @@ class CallsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-    
 }

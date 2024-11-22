@@ -60,7 +60,7 @@ class InboxViewController: UIViewController {
         //MARK: - Create stackview for the three buttons items at the right side -
         let stack = UIStackView(arrangedSubviews: [searchBtn, callBtn, infoBtn])
         stack.axis = .horizontal
-        stack.spacing = 0
+        stack.spacing = 30
         stack.alignment = .center
         stack.distribution = .fillEqually
         stack.translatesAutoresizingMaskIntoConstraints = false

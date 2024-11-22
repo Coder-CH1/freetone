@@ -11,7 +11,5 @@ class NumbersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    }
-    
+    }    
 }
