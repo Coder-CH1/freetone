@@ -26,20 +26,20 @@ class InboxViewController: UIViewController {
         navigationItem.leftBarButtonItem = leftBarButton
         
         let searchBtn = UIButton(type: .system)
-        searchBtn.setImage(UIImage(systemName: ""), for: .normal)
+        searchBtn.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchBtn.addTarget(self, action: #selector(btntapped), for: .touchUpInside)
         
         let callBtn = UIButton(type: .system)
-        callBtn.setImage(UIImage(systemName: ""), for: .normal)
+        callBtn.setImage(UIImage(systemName: "circle.hexagongrid.fill"), for: .normal)
         callBtn.addTarget(self, action: #selector(btn2tapped), for: .touchUpInside)
         
         let infoBtn = UIButton(type: .system)
-        infoBtn.setImage(UIImage(systemName: ""), for: .normal)
+        infoBtn.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         infoBtn.addTarget(self, action: #selector(btn3tapped), for: .touchUpInside)
         
         let stack = UIStackView(arrangedSubviews: [searchBtn, callBtn, infoBtn])
         stack.axis = .horizontal
-        stack.spacing = 5
+        stack.spacing = 0
         stack.alignment = .center
         stack.distribution = .fillEqually
         stack.translatesAutoresizingMaskIntoConstraints = false
