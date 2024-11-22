@@ -10,30 +10,16 @@ import UIKit
 // MARK: - ReusableObject -
 class FloatingTextField: UIView {
     
+    // MARK: - Objects properties -
     var textField: UITextField!
     var floatingLabel: UILabel!
+    var isFloatingLabelVisible = false
     
-    var placeHolder: String
-    var isSecureTextEntry: Bool
-    var radius: CGFloat
-    var background: UIColor
-    var borderWidth: Int
-    var borderColor: UIColor
-    
+    // MARK: - Object property and value initialization -
     init(placeHolder: String, isSecureTextEntry: Bool, radius: CGFloat, background: UIColor, borderWidth: Int, borderColor: UIColor) {
-        self.placeHolder = placeHolder
-        self.isSecureTextEntry = isSecureTextEntry
-        self.radius = radius
-        self.background = background
-        self.borderWidth = borderWidth
-        self.borderColor = borderColor
         super.init(frame: .zero)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupViews() {
+        
+        // MARK: - Set up textfield -
         textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont(name: "", size: 16)
@@ -44,63 +30,79 @@ class FloatingTextField: UIView {
         textField.autocorrectionType = .no
         textField.isSecureTextEntry = isSecureTextEntry
         textField.delegate = self
-        addSubview(textField)
         
+        // MARK: - Set up floatingLabel -
         floatingLabel = UILabel()
         floatingLabel.translatesAutoresizingMaskIntoConstraints = false
         floatingLabel.text = placeHolder
         floatingLabel.textColor = .lightGray
         floatingLabel.font = UIFont.systemFont(ofSize: 14)
+        
+        // MARK: - Adding textfield and floatingLabel to the view -
+        addSubview(textField)
         addSubview(floatingLabel)
         
+        // MARK: - Constraint for textfield and floatingLabel -
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            textField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            textField.topAnchor.constraint(equalTo: topAnchor),
+            textField.leadingAnchor.constraint(equalTo: leadingAnchor),
+            textField.trailingAnchor.constraint(equalTo: trailingAnchor),
             
             floatingLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
             floatingLabel.topAnchor.constraint(equalTo: textField.topAnchor, constant: 0)
         ])
-        textField.addTarget(self, action: #selector(editingDidBegin), for: .editingDidBegin)
-        textField.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEnd)
         updateFloatingLabel()
     }
-
-    @objc func editingDidBegin() {
-        animateFloatingLabel(up: true)
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func editingDidEnd() {
-        if textField.text?.isEmpty ?? true {
-            
-        }
-    }
-    
+    // MARK: -
     func updateFloatingLabel() {
-        if textField.text?.isEmpty ?? true {
-            floatingLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+        if let text = textField.text, !text.isEmpty || textField.isEditing {
+            showFloatingLabel()
         } else {
-            floatingLabel.transform = CGAffineTransform(translationX: 0, y: -24)
+            hideFloatingLabel()
         }
     }
     
-    func animateFloatingLabel(up: Bool) {
-        let translation: CGFloat = up ? -24 : 0
-        UIView.animate(withDuration: 0.3)  {
-            self.floatingLabel.transform = CGAffineTransform(translationX: 0, y: translation)
+    // MARK: -
+    func showFloatingLabel() {
+        if !isFloatingLabelVisible {
+            UIView.animate(withDuration: 0.3) {
+                self.floatingLabel.alpha = 1
+                self.floatingLabel.transform = CGAffineTransform(translationX: 0, y: -20)
+            }
+            isFloatingLabelVisible = true
         }
     }
+    
+    // MARK: -
+    func hideFloatingLabel() {
+        if isFloatingLabelVisible {
+            UIView.animate(withDuration: 0.3) {
+                self.floatingLabel.alpha = 0
+                self.floatingLabel.transform = .identity
+            }
+            isFloatingLabelVisible = false
+        }
+    }
+    
 }
 
+// MARK: - UITextFieldDelegate Implementation -
 extension FloatingTextField: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        animateFloatingLabel(up: true)
+        updateFloatingLabel()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.text?.isEmpty ?? true {
-            animateFloatingLabel(up: false)
-        }
+        updateFloatingLabel()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        updateFloatingLabel()
+        return true
     }
 }
