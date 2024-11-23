@@ -39,7 +39,7 @@ class CallsViewController: UIViewController {
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), ], for: .selected)
-        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
+        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
         segmentedControl.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
         segmentedControl.setBackgroundImage(UIImage(), for: .selected, barMetrics: .default)
         segmentedControl.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
@@ -63,8 +63,6 @@ class CallsViewController: UIViewController {
             navigationBar.standardAppearance = appearance
             navigationBar.scrollEdgeAppearance = appearance
         }
-        //MARK: - Customize the navigationbar -
-        navigationController?.navigationBar.tintColor = .white
         setSubviewsAndLayout()
     }
     
@@ -77,34 +75,36 @@ class CallsViewController: UIViewController {
             view.addSubview(subview)
         }
         NSLayoutConstraint.activate([
-            customView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            customView.topAnchor.constraint(equalTo: view.topAnchor),
             customView.heightAnchor.constraint(equalToConstant: 210),
-            customView.widthAnchor.constraint(equalToConstant: view.bounds.width),
+            customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            customView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
-            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: 0),
+            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -20),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
             
-            segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 1),
+            segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
             segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
-            segmentedControl.widthAnchor.constraint(equalToConstant: 450),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 25),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 30),
             
-            allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 1),
+            allView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             allView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             allView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            missedView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 1),
+            missedView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
             missedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             missedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             missedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            voicemailView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 1),
+            voicemailView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
             voicemailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             voicemailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             voicemailView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        allView.isHidden = false
         missedView.isHidden =  true
         voicemailView.isHidden = true
         
@@ -134,9 +134,6 @@ class CallsViewController: UIViewController {
     
     //MARK: - The segmented control event functionality that selects either of the segments -
     func segmentedControlChanged(_ sender: UISegmentedControl) {
-//        allView.isHidden = sender.selectedSegmentIndex != 0
-//        missedView.isHidden = sender.selectedSegmentIndex != 1
-//        voicemailView.isHidden = sender.selectedSegmentIndex != 2
         switch sender.selectedSegmentIndex {
         case 0:
             allView.isHidden = false
