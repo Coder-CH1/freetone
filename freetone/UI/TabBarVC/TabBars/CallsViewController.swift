@@ -6,9 +6,9 @@
 //
 
 import UIKit
-
+//MARK: - UI -
 class CallsViewController: UIViewController {
-    
+    //MARK: - Objects -
     let allView = AllView()
     let missedView = MissedView()
     let voicemailView = VoicemailView()
@@ -38,6 +38,8 @@ class CallsViewController: UIViewController {
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), ], for: .selected)
+        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.gray], for: .normal)
         segmentedControl.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
         segmentedControl.setBackgroundImage(UIImage(), for: .selected, barMetrics: .default)
         segmentedControl.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
@@ -105,14 +107,16 @@ class CallsViewController: UIViewController {
         ])
         missedView.isHidden =  true
         voicemailView.isHidden = true
+        
         allView.translatesAutoresizingMaskIntoConstraints = false
         missedView.translatesAutoresizingMaskIntoConstraints = false
         voicemailView.translatesAutoresizingMaskIntoConstraints = false
+        
         setupSegmentedControlIndicator()
         setupSegmentsTappedAction()
     }
     
-    //MARK: - The tap button event that selects either the login view/signup view
+    //MARK: - The tap button event that selects either the login view/signup view -
     func setupSegmentsTappedAction() {
         let action = UIAction { [weak self] _ in
             self?.segmentedControlChanged(self!.segmentedControl)
@@ -120,24 +124,40 @@ class CallsViewController: UIViewController {
         segmentedControl.addAction(action, for: .valueChanged)
     }
     
-    //MARK: - Setting the properties of the segmented control
+    //MARK: - Setting the properties of the segmented control -
     func setupSegmentedControlIndicator() {
         segmentedControlIndicatorView.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
-        segmentedControlIndicatorView.frame = CGRect(x: 40, y: 40, width: segmentedWidth, height: 4)
+        segmentedControlIndicatorView.frame = CGRect(x: 0, y: 42, width: segmentedWidth * 1.6, height: 2)
         customView.addSubview(segmentedControlIndicatorView)
     }
     
-    //MARK: - The segmented control event functionality that selects either of the segments
+    //MARK: - The segmented control event functionality that selects either of the segments -
     func segmentedControlChanged(_ sender: UISegmentedControl) {
-        allView.isHidden = sender.selectedSegmentIndex == 1
-        missedView.isHidden = sender.selectedSegmentIndex == 0
-        voicemailView.isHidden = sender.selectedSegmentIndex == 2
+//        allView.isHidden = sender.selectedSegmentIndex != 0
+//        missedView.isHidden = sender.selectedSegmentIndex != 1
+//        voicemailView.isHidden = sender.selectedSegmentIndex != 2
+        switch sender.selectedSegmentIndex {
+        case 0:
+            allView.isHidden = false
+            missedView.isHidden = true
+            voicemailView.isHidden = true
+        case 1:
+            allView.isHidden = true
+            missedView.isHidden = false
+            voicemailView.isHidden = true
+        case 2:
+            allView.isHidden = true
+            missedView.isHidden = true
+            voicemailView.isHidden = false
+        default:
+            break
+        }
         
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
         let indicatorX = CGFloat(sender.selectedSegmentIndex) * segmentedWidth
         UIView.animate(withDuration: 0.2) {
-            self.segmentedControlIndicatorView.frame.origin.x = indicatorX + 20
+            self.segmentedControlIndicatorView.frame.origin.x = indicatorX - 15
         }
     }
 }
