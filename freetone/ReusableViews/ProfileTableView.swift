@@ -15,10 +15,10 @@
 import UIKit
 
 //MARK: - Reusable object -
-class TableView: UITableView, UITableViewDataSource, UITableViewDelegate {
+class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Object initialization -
-    private var data: [String] = []
+    private var items: [String] = ["Name", "My Account", "My Numbers", "Theme", "Notification", "Text", "Calls", "Voicemail Greeting"]
     var didSelectRowAt: ((IndexPath) -> Void)?
     
     init(frame: CGRect){
@@ -42,11 +42,13 @@ class TableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
+        let item = items[indexPath.row]
+        cell.textLabel?.text = item
         return cell
     }
     

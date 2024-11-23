@@ -10,10 +10,27 @@ import UIKit
 //MARK: - Setting the objects views and its properties
 class VoicemailView: UIView {
     
+    //MARK: - Objects -
+    ////TABLEVIEW
+    private let tableView = SegmentedTableView(frame: .zero)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .green
+        setSubviewsAndLayout()
     }
+    
+    // MARK: - Subviews and Layout -
+    func setSubviewsAndLayout() {
+        addSubview(tableView)
+        tableView.backgroundColor = .red
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+    }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
