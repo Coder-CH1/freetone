@@ -29,13 +29,14 @@ class SegmentedTableView: UITableView, UITableViewDataSource, UITableViewDelegat
         self.dataSource = self
         self.showsVerticalScrollIndicator = false
         self.translatesAutoresizingMaskIntoConstraints = false
-        //self.backgroundColor = .lightGray
+        self.sectionIndexColor = .gray
         self.register(SegmentedTableViewCell.self, forCellReuseIdentifier: "SegmentedTableViewCell")
+        self.backgroundColor = .clear
     }
     
     // MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return 15
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

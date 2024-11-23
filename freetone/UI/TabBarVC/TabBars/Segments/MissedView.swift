@@ -16,17 +16,17 @@ class MissedView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .brown
         setSubviewsAndLayout() 
     }
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         addSubview(tableView)
-        tableView.backgroundColor = .purple
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
