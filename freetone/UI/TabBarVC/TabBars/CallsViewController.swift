@@ -130,7 +130,7 @@ class CallsViewController: UIViewController {
     func setupSegmentedControlIndicator() {
         segmentedControlIndicatorView.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
-        segmentedControlIndicatorView.frame = CGRect(x: 0, y: 42, width: segmentedWidth * 1.6, height: 2)
+        segmentedControlIndicatorView.frame = CGRect(x: -20, y: 42, width: segmentedWidth * 1.68, height: 2)
         customView.addSubview(segmentedControlIndicatorView)
     }
     
