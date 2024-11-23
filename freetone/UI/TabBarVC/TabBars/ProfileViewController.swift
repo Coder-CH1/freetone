@@ -19,12 +19,12 @@ class ProfileViewController: UIViewController {
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.backgroundColor = .darkGray
         navigationItem.titleView = customView
-      return customView
+        return customView
     }()
     
     ////TABLEVIEW
     private let tableView = ProfileTableView(frame: .zero)
-
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()

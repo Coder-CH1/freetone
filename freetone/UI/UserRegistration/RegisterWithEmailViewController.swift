@@ -18,13 +18,13 @@ class RegisterWithEmailViewController: UIViewController {
     
     ////BUTTON
     let regButton = Button(image: UIImage(), text: "Start calling & texting", btnTitleColor: .gray, backgroundColor: .darkGray, radius: 10, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
-
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         setSubviewsAndLayout()
     }
-
+    
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(emailTextField)
