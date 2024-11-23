@@ -34,6 +34,8 @@
 		049BBF072CF209F70042941B /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF062CF209F70042941B /* ProfileTableViewCell.swift */; };
 		049BBF092CF219A10042941B /* SegmentedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF082CF219A10042941B /* SegmentedTableView.swift */; };
 		049BBF0B2CF219BB0042941B /* SegmentedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF0A2CF219BB0042941B /* SegmentedTableViewCell.swift */; };
+		04A263432CF22A7C006CF114 /* InboxTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A263422CF22A7C006CF114 /* InboxTableView.swift */; };
+		04A263462CF22ABB006CF114 /* InboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A263452CF22ABB006CF114 /* InboxTableViewCell.swift */; };
 		04B495442CF1095C00A7E3BA /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495432CF1095C00A7E3BA /* AllView.swift */; };
 		04B495462CF1098900A7E3BA /* MissedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495452CF1098900A7E3BA /* MissedView.swift */; };
 		04B495482CF109BD00A7E3BA /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495472CF109BD00A7E3BA /* VoicemailView.swift */; };
@@ -88,6 +90,8 @@
 		049BBF062CF209F70042941B /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		049BBF082CF219A10042941B /* SegmentedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTableView.swift; sourceTree = "<group>"; };
 		049BBF0A2CF219BB0042941B /* SegmentedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTableViewCell.swift; sourceTree = "<group>"; };
+		04A263422CF22A7C006CF114 /* InboxTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTableView.swift; sourceTree = "<group>"; };
+		04A263452CF22ABB006CF114 /* InboxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTableViewCell.swift; sourceTree = "<group>"; };
 		04B495432CF1095C00A7E3BA /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
 		04B495452CF1098900A7E3BA /* MissedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedView.swift; sourceTree = "<group>"; };
 		04B495472CF109BD00A7E3BA /* VoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailView.swift; sourceTree = "<group>"; };
@@ -195,10 +199,9 @@
 				046701682CEE0D0B0018029C /* ImageView.swift */,
 				047132A82CEFB31F004BC266 /* Button.swift */,
 				047132AA2CF098CB004BC266 /* TextField.swift */,
-				049BBF082CF219A10042941B /* SegmentedTableView.swift */,
-				049BBF0C2CF219CB0042941B /* SegmentedTableViewCell */,
-				049BBF032CF2089C0042941B /* ProfileTableView.swift */,
-				049BBF052CF209CA0042941B /* ProfileTableViewCell */,
+				04A263472CF22AC8006CF114 /* InboxTableView */,
+				04A263482CF22AF2006CF114 /* SegmentedTableView */,
+				04A263492CF22B12006CF114 /* ProfileTableView */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -250,6 +253,41 @@
 				049BBF0A2CF219BB0042941B /* SegmentedTableViewCell.swift */,
 			);
 			path = SegmentedTableViewCell;
+			sourceTree = "<group>";
+		};
+		04A263442CF22A97006CF114 /* InboxTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				04A263452CF22ABB006CF114 /* InboxTableViewCell.swift */,
+			);
+			path = InboxTableViewCell;
+			sourceTree = "<group>";
+		};
+		04A263472CF22AC8006CF114 /* InboxTableView */ = {
+			isa = PBXGroup;
+			children = (
+				04A263422CF22A7C006CF114 /* InboxTableView.swift */,
+				04A263442CF22A97006CF114 /* InboxTableViewCell */,
+			);
+			path = InboxTableView;
+			sourceTree = "<group>";
+		};
+		04A263482CF22AF2006CF114 /* SegmentedTableView */ = {
+			isa = PBXGroup;
+			children = (
+				049BBF082CF219A10042941B /* SegmentedTableView.swift */,
+				049BBF0C2CF219CB0042941B /* SegmentedTableViewCell */,
+			);
+			path = SegmentedTableView;
+			sourceTree = "<group>";
+		};
+		04A263492CF22B12006CF114 /* ProfileTableView */ = {
+			isa = PBXGroup;
+			children = (
+				049BBF032CF2089C0042941B /* ProfileTableView.swift */,
+				049BBF052CF209CA0042941B /* ProfileTableViewCell */,
+			);
+			path = ProfileTableView;
 			sourceTree = "<group>";
 		};
 		04B495422CF1091700A7E3BA /* Segments */ = {
@@ -397,9 +435,11 @@
 				0471329F2CEF95F4004BC266 /* CallsViewController.swift in Sources */,
 				049BBF072CF209F70042941B /* ProfileTableViewCell.swift in Sources */,
 				046701372CEDDE310018029C /* ViewController.swift in Sources */,
+				04A263462CF22ABB006CF114 /* InboxTableViewCell.swift in Sources */,
 				047132992CEF9581004BC266 /* TabBarViewController.swift in Sources */,
 				046701332CEDDE310018029C /* AppDelegate.swift in Sources */,
 				046701352CEDDE310018029C /* SceneDelegate.swift in Sources */,
+				04A263432CF22A7C006CF114 /* InboxTableView.swift in Sources */,
 				047132A52CEF962A004BC266 /* ProfileViewController.swift in Sources */,
 				047132A32CEF9617004BC266 /* NumbersViewController.swift in Sources */,
 				046701672CEE0CE20018029C /* Label.swift in Sources */,

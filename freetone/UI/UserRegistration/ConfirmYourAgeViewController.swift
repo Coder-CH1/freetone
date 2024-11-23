@@ -105,7 +105,7 @@ class ConfirmYourAgeViewController: UIViewController {
             
             yesButton.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 20),
             yesButton.leadingAnchor.constraint(equalTo: noButton.trailingAnchor, constant: 60),
-
+            
             yesButton.heightAnchor.constraint(equalToConstant: 65),
             yesButton.widthAnchor.constraint(equalToConstant: 150),
         ])

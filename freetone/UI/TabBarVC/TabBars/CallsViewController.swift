@@ -20,7 +20,7 @@ class CallsViewController: UIViewController {
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.backgroundColor = .darkGray
         navigationItem.titleView = customView
-      return customView
+        return customView
     }()
     
     //MARK: - Set up the label on the left -

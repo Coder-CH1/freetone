@@ -19,9 +19,9 @@ class NumbersViewController: UIViewController {
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.backgroundColor = .darkGray
         navigationItem.titleView = customView
-      return customView
+        return customView
     }()
-
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,6 +9,9 @@ import UIKit
 //MARK: - UI -
 class InboxViewController: UIViewController {
     
+    ////TABLEVIEW
+    private let tableView = InboxTableView(frame: .zero)
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +82,18 @@ class InboxViewController: UIViewController {
             
             stack.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             stack.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
+        ])
+        setSubviewsAndLayout()
+    }
+    
+    // MARK: - Subviews and Layout -
+    func setSubviewsAndLayout() {
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
