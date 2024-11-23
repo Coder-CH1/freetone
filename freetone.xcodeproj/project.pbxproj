@@ -30,6 +30,9 @@
 		047132A52CEF962A004BC266 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047132A42CEF962A004BC266 /* ProfileViewController.swift */; };
 		047132A92CEFB31F004BC266 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047132A82CEFB31F004BC266 /* Button.swift */; };
 		047132AB2CF098CB004BC266 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047132AA2CF098CB004BC266 /* TextField.swift */; };
+		04732CCD2CF23A4300C3CDF7 /* Appwrite in Frameworks */ = {isa = PBXBuildFile; productRef = 04732CCC2CF23A4300C3CDF7 /* Appwrite */; };
+		04732CCF2CF23B3700C3CDF7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04732CCE2CF23B3700C3CDF7 /* NetworkManager.swift */; };
+		04732CD12CF23B5000C3CDF7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04732CD02CF23B5000C3CDF7 /* Model.swift */; };
 		049BBF042CF2089C0042941B /* ProfileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF032CF2089C0042941B /* ProfileTableView.swift */; };
 		049BBF072CF209F70042941B /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF062CF209F70042941B /* ProfileTableViewCell.swift */; };
 		049BBF092CF219A10042941B /* SegmentedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF082CF219A10042941B /* SegmentedTableView.swift */; };
@@ -86,6 +89,8 @@
 		047132A42CEF962A004BC266 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		047132A82CEFB31F004BC266 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		047132AA2CF098CB004BC266 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		04732CCE2CF23B3700C3CDF7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		04732CD02CF23B5000C3CDF7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		049BBF032CF2089C0042941B /* ProfileTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableView.swift; sourceTree = "<group>"; };
 		049BBF062CF209F70042941B /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		049BBF082CF219A10042941B /* SegmentedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTableView.swift; sourceTree = "<group>"; };
@@ -102,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04732CCD2CF23A4300C3CDF7 /* Appwrite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				046701362CEDDE310018029C /* ViewController.swift */,
+				04732CD02CF23B5000C3CDF7 /* Model.swift */,
+				04732CCE2CF23B3700C3CDF7 /* NetworkManager.swift */,
 				0467016A2CEE0D240018029C /* Delegates */,
 				0467016C2CEE0D430018029C /* ReusableViews */,
 				0467016B2CEE0D350018029C /* UI */,
@@ -316,6 +324,9 @@
 			dependencies = (
 			);
 			name = freetone;
+			packageProductDependencies = (
+				04732CCC2CF23A4300C3CDF7 /* Appwrite */,
+			);
 			productName = freetone;
 			productReference = 0467012F2CEDDE310018029C /* freetone.app */;
 			productType = "com.apple.product-type.application";
@@ -388,6 +399,9 @@
 				Base,
 			);
 			mainGroup = 046701262CEDDE310018029C;
+			packageReferences = (
+				04732CCB2CF23A4300C3CDF7 /* XCRemoteSwiftPackageReference "sdk-for-apple" */,
+			);
 			productRefGroup = 046701302CEDDE310018029C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -454,6 +468,8 @@
 				049BBF092CF219A10042941B /* SegmentedTableView.swift in Sources */,
 				047132AB2CF098CB004BC266 /* TextField.swift in Sources */,
 				047132922CEF94AE004BC266 /* RegisterWithEmailViewController.swift in Sources */,
+				04732CCF2CF23B3700C3CDF7 /* NetworkManager.swift in Sources */,
+				04732CD12CF23B5000C3CDF7 /* Model.swift in Sources */,
 				04B495482CF109BD00A7E3BA /* VoicemailView.swift in Sources */,
 				047132A92CEFB31F004BC266 /* Button.swift in Sources */,
 				04B495462CF1098900A7E3BA /* MissedView.swift in Sources */,
@@ -788,6 +804,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04732CCB2CF23A4300C3CDF7 /* XCRemoteSwiftPackageReference "sdk-for-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/appwrite/sdk-for-apple.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04732CCC2CF23A4300C3CDF7 /* Appwrite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04732CCB2CF23A4300C3CDF7 /* XCRemoteSwiftPackageReference "sdk-for-apple" */;
+			productName = Appwrite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 046701272CEDDE310018029C /* Project object */;
 }
