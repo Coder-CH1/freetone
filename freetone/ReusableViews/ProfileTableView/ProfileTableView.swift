@@ -18,7 +18,8 @@ import UIKit
 class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Object initialization -
-    private var items: [String] = ["Name", "My Account", "My Numbers", "Theme", "Notification", "Text", "Calls", "Voicemail Greeting"]
+    private var items1: [String] = ["My Account", "My Numbers"]
+    private var items2: [String] = ["Theme", "Notification", "Text", "Calls", "Voicemail Greeting"]
     var didSelectRowAt: ((IndexPath) -> Void)?
     
     init(frame: CGRect){
@@ -36,19 +37,31 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         self.dataSource = self
         self.showsVerticalScrollIndicator = false
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .lightGray
         self.register(ProfileTableViewCell.self, forCellReuseIdentifier: "ProfileTableViewCell")
+        
+        self.sectionHeaderTopPadding = 0
     }
     
     // MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if section == 0 {
+            return items1.count
+        } else {
+            return items2.count
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
-        let item = items[indexPath.row]
-        cell.textLabel?.text = item
+        if indexPath.section == 0 {
+            cell.textLabel?.text = items1[indexPath.row]
+        } else {
+            cell.textLabel?.text = items2[indexPath.row]
+        }
         return cell
     }
     
@@ -59,6 +72,44 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        if section == 0 {
+            headerView.backgroundColor = .black
+            let label = UILabel()
+            label.text = "Account"
+            label.textColor = .white
+            label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            headerView.addSubview(label)
+            
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 14),
+                label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+                label.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -14)
+            ])
+        } else {
+            headerView.backgroundColor = .brown
+            let label = UILabel()
+            label.text = "Settings"
+            label.textColor = .white
+            label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            headerView.addSubview(label)
+            
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 14),
+                label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+                label.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -14)
+            ])
+        }
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
     }
 }
 
