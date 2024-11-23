@@ -25,6 +25,9 @@ class ProfileViewController: UIViewController {
     ////TABLEVIEW
     private let tableView = ProfileTableView(frame: .zero)
     
+    ////BUTTON
+    let logoutButton = Button(image: UIImage(), text: "Log Out", btnTitleColor: .white, backgroundColor: .black, radius: 8, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +52,7 @@ class ProfileViewController: UIViewController {
     func setSubviewsAndLayout() {
         view.addSubview(customView)
         view.addSubview(tableView)
+        view.addSubview(logoutButton)
         customView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
             customView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -64,6 +68,11 @@ class ProfileViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+    
+//            logoutButton.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+//            logoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+//            logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+//            logoutButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 }
