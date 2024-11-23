@@ -45,6 +45,8 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     // MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
+            return 0
+        } else if section == 1{
             return items1.count
         } else {
             return items2.count
@@ -52,12 +54,14 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
         if indexPath.section == 0 {
+            cell.textLabel?.text = ""
+        } else if indexPath.section == 1 {
             cell.textLabel?.text = items1[indexPath.row]
         } else {
             cell.textLabel?.text = items2[indexPath.row]
@@ -77,6 +81,29 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         if section == 0 {
+            headerView.backgroundColor = .purple
+            let img = UIImageView(image: UIImage(systemName: "person.circle"))
+            img.translatesAutoresizingMaskIntoConstraints = false
+            
+            let label = UILabel()
+            label.text = "user"
+            label.textColor = .white
+            label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            
+            headerView.addSubview(img)
+            headerView.addSubview(label)
+            
+            NSLayoutConstraint.activate([
+                img.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 14),
+                img.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+                img.heightAnchor.constraint(equalToConstant: 60),
+                img.widthAnchor.constraint(equalToConstant: 60),
+            
+                label.leadingAnchor.constraint(equalTo: img.trailingAnchor, constant: 10),
+                label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+            ])
+        } else if section == 1 {
             headerView.backgroundColor = .black
             let label = UILabel()
             label.text = "Account"
@@ -109,7 +136,13 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        if section == 0 {
+            return 80
+        } else if section == 1 {
+            return 50
+        } else {
+            return 50
+        }
     }
 }
 
