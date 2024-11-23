@@ -9,9 +9,9 @@ import Foundation
 import Appwrite
 import NIO
 import UIKit
-
+//MARK: -
 class NetworkManager {
-    
+    //MARK: - Singleton design pattern to be shared to the adopted viewcontrollers -
     static let shared = NetworkManager()
     
     private init() {}
