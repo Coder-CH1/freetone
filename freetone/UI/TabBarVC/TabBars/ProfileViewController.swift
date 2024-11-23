@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
     }()
     
     ////TABLEVIEW
-    private let tableView = TableView(frame: .zero)
+    private let tableView = ProfileTableView(frame: .zero)
 
     //MARK: - Life Cycle -
     override func viewDidLoad() {
