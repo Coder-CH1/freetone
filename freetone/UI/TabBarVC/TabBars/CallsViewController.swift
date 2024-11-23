@@ -93,16 +93,19 @@ class CallsViewController: UIViewController {
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             allView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             allView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            allView.heightAnchor.constraint(equalToConstant: view.bounds.height),
             
             missedView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             missedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             missedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             missedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            missedView.heightAnchor.constraint(equalToConstant: view.bounds.height),
             
             voicemailView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             voicemailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             voicemailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            voicemailView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            voicemailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            voicemailView.heightAnchor.constraint(equalToConstant: view.bounds.height)
         ])
         missedView.isHidden =  true
         voicemailView.isHidden = true
@@ -133,22 +136,9 @@ class CallsViewController: UIViewController {
     
     //MARK: - The segmented control event functionality that selects either of the segments -
     func segmentedControlChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            allView.isHidden = false
-            missedView.isHidden = true
-            voicemailView.isHidden = true
-        case 1:
-            allView.isHidden = true
-            missedView.isHidden = false
-            voicemailView.isHidden = true
-        case 2:
-            allView.isHidden = true
-            missedView.isHidden = true
-            voicemailView.isHidden = false
-        default:
-            break
-        }
+        allView.isHidden = sender.selectedSegmentIndex != 0
+        missedView.isHidden = sender.selectedSegmentIndex != 1
+        voicemailView.isHidden = sender.selectedSegmentIndex != 2
         
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
         let indicatorX = CGFloat(sender.selectedSegmentIndex) * segmentedWidth

@@ -18,7 +18,8 @@ import UIKit
 class TableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Object initialization -
-    private let reuseIdentifier = "Cell"
+    private var data: [String] = []
+    var didSelectRowAt: ((IndexPath) -> Void)?
     
     init(frame: CGRect){
         super.init(frame: frame, style: .plain)
@@ -35,23 +36,24 @@ class TableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         self.dataSource = self
         self.showsVerticalScrollIndicator = false
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .lightGray
         self.register(ProfileTableViewCell.self, forCellReuseIdentifier: "ProfileTableViewCell")
     }
     
     // MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as! ProfileTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
         return cell
     }
     
-    //MARK: - DelegateFlowLayout -
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    // MARK: - DelegateFlowLayout -
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelectRowAt?(indexPath)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80

@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     let titleLabel = Label(label: "Account & Settings", textColor: .white, font: UIFont.systemFont(ofSize: 16, weight: .bold))
     
     //MARK: - Create a custom view for the navigation bar -
+    ////VIEW
     fileprivate lazy var customView: UIView = {
         let customView = UIView()
         customView.translatesAutoresizingMaskIntoConstraints = false
@@ -20,6 +21,9 @@ class ProfileViewController: UIViewController {
         navigationItem.titleView = customView
       return customView
     }()
+    
+    ////TABLEVIEW
+    private let tableView = TableView(frame: .zero)
 
     //MARK: - Life Cycle -
     override func viewDidLoad() {
@@ -44,6 +48,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(customView)
+        view.addSubview(tableView)
         customView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
             customView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -54,6 +59,11 @@ class ProfileViewController: UIViewController {
             
             titleLabel.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             titleLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
+            
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
 }
