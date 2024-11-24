@@ -85,10 +85,11 @@ class NumbersViewController: UIViewController {
         UIView.animate(withDuration: 1.2) {
             ////MODIFY THE BUTTON SIZE AND CORNER RADIUS
             self.phoneButton.layer.cornerRadius = 25
-            self.buttonWidthConstraint?.constant = 300
+            self.buttonWidthConstraint?.constant = 250
             self.buttonHeightConstraint?.constant = 50
             
             ////UPDATE TITLE BUTTON AND IMAGE
+            self.phoneButton.setTitleColor(.white, for: .normal)
             self.phoneButton.setImage(UIImage(systemName: "plus"), for: .normal)
             self.phoneButton.setTitle("  Get a first phone number", for: .normal)
             
