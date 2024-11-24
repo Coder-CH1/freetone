@@ -72,25 +72,27 @@ class NumbersViewController: UIViewController {
             buttonWidthConstraint!,
             buttonHeightConstraint!,
         ])
-        phoneButton.addTarget(self, action: #selector(phoneButtonTapped), for: .touchUpInside)
+    }
+    
+    //MARK: - Life Cycle -
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        expandButton()
     }
     
     // MARK: - Method to expand the button -
-    @objc func phoneButtonTapped() {
-        UIView.animate(withDuration: 0.3) {
-            if self.buttonExpanded {
-                self.phoneButton.layer.cornerRadius = 25
-                self.buttonWidthConstraint?.constant = 50
-                self.buttonHeightConstraint?.constant = 50
-            } else {
-                self.phoneButton.layer.cornerRadius = 25
-                self.buttonWidthConstraint?.constant = 300
-                self.buttonHeightConstraint?.constant = 50
-                self.phoneButton.setImage(UIImage(systemName: "plus"), for: .normal)
-                self.phoneButton.setTitle("  Get a first phone number", for: .normal)
-            }
+    func expandButton() {
+        UIView.animate(withDuration: 1.2) {
+            ////MODIFY THE BUTTON SIZE AND CORNER RADIUS
+            self.phoneButton.layer.cornerRadius = 25
+            self.buttonWidthConstraint?.constant = 300
+            self.buttonHeightConstraint?.constant = 50
+            
+            ////UPDATE TITLE BUTTON AND IMAGE
+            self.phoneButton.setImage(UIImage(systemName: "plus"), for: .normal)
+            self.phoneButton.setTitle("  Get a first phone number", for: .normal)
+            
             self.view.layoutIfNeeded()
         }
-        buttonExpanded = !buttonExpanded
     }
 }
