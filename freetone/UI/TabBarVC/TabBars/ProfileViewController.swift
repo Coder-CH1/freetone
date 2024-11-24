@@ -69,10 +69,10 @@ class ProfileViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
     
-            logoutButton.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            logoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            logoutButton.heightAnchor.constraint(equalToConstant: 50),
+//            logoutButton.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+//            logoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+//            logoutButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+//            logoutButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 }
