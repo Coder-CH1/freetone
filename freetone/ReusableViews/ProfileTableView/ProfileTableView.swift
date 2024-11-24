@@ -39,6 +39,8 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     func customizeTableView() {
         self.delegate = self
         self.dataSource = self
+        self.separatorStyle = .singleLine
+        self.separatorColor = .lightGray
         self.showsVerticalScrollIndicator = false
         self.translatesAutoresizingMaskIntoConstraints = false
         self.register(ProfileTableViewCell.self, forCellReuseIdentifier: "ProfileTableViewCell")
@@ -63,41 +65,46 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         return 3
     }
     
-    ////
+    ////ACCESSING AND MANIPULATING THE ITEMS IN THE ROW
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
         if indexPath.section == 0 {
             cell.textLabel?.text = ""
+            cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
         } else if indexPath.section == 1 {
             cell.textLabel?.text = items1[indexPath.row]
+            cell.textLabel?.textColor = .white
+            cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
         } else {
             cell.textLabel?.text = items2[indexPath.row]
+            cell.textLabel?.textColor = .white
+            cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
         }
         return cell
     }
     
     // MARK: - UITableViewDelegate -
-    ////
+    ////NAVIGATING FROM THE ROWS TO OTHER SCREENS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectRowAt?(indexPath)
     }
     
-    ////
+    ////HEIGHT FOR THE ROW
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
-    ////
+    ////OBJECTS IN EACH SECTION HEADER
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         if section == 0 {
-            headerView.backgroundColor = .purple
+            headerView.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
             let img = UIImageView(image: UIImage(systemName: "person.circle"))
             img.translatesAutoresizingMaskIntoConstraints = false
             
             let label = UILabel()
             label.text = "user"
-            label.textColor = .white
+            label.textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
             label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
             label.translatesAutoresizingMaskIntoConstraints = false
             
@@ -114,10 +121,10 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
                 label.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
             ])
         } else if section == 1 {
-            headerView.backgroundColor = .black
+            headerView.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
             let label = UILabel()
             label.text = "Account"
-            label.textColor = .white
+            label.textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
             label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
             label.translatesAutoresizingMaskIntoConstraints = false
             headerView.addSubview(label)
@@ -128,10 +135,10 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
                 label.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -14)
             ])
         } else {
-            headerView.backgroundColor = .brown
+            headerView.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
             let label = UILabel()
             label.text = "Settings"
-            label.textColor = .white
+            label.textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
             label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
             label.translatesAutoresizingMaskIntoConstraints = false
             headerView.addSubview(label)
@@ -160,7 +167,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 2 {
             let footerView = UIView()
-            footerView.backgroundColor = .brown
+            footerView.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
             
             footerView.addSubview(logoutButton)
             
