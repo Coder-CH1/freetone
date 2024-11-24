@@ -12,6 +12,12 @@ class InboxViewController: UIViewController {
     ////TABLEVIEW
     private let tableView = InboxTableView(frame: .zero)
     
+    ////BUTTON
+    let phoneButton = Button(image: UIImage(systemName: "plus"), text: "", btnTitleColor: .lightGray, backgroundColor: .systemPink, radius: 25, imageColor: .white, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    
+    var buttonWidthConstraint: NSLayoutConstraint?
+    var buttonHeightConstraint: NSLayoutConstraint?
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,11 +95,19 @@ class InboxViewController: UIViewController {
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(tableView)
+        view.addSubview(phoneButton)
+        buttonWidthConstraint = phoneButton.widthAnchor.constraint(equalToConstant: 50)
+        buttonHeightConstraint = phoneButton.heightAnchor.constraint(equalToConstant: 50)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            phoneButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            phoneButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            buttonWidthConstraint!,
+            buttonHeightConstraint!,
         ])
     }
     

@@ -25,6 +25,11 @@ class NumbersViewController: UIViewController {
     ////
     let phoneButton = Button(image: UIImage(systemName: "plus"), text: "", btnTitleColor: .lightGray, backgroundColor: .systemPink, radius: 25, imageColor: .white, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
+    var buttonExpanded = false
+    
+    var buttonWidthConstraint: NSLayoutConstraint?
+    var buttonHeightConstraint: NSLayoutConstraint?
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +55,8 @@ class NumbersViewController: UIViewController {
         view.addSubview(customView)
         view.addSubview(phoneButton)
         customView.addSubview(titleLabel)
+        buttonWidthConstraint = phoneButton.widthAnchor.constraint(equalToConstant: 50)
+        buttonHeightConstraint = phoneButton.heightAnchor.constraint(equalToConstant: 50)
         NSLayoutConstraint.activate([
             customView.topAnchor.constraint(equalTo: view.topAnchor),
             customView.heightAnchor.constraint(equalToConstant: 210),
@@ -61,14 +68,29 @@ class NumbersViewController: UIViewController {
             titleLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
             
             phoneButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            phoneButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            phoneButton.heightAnchor.constraint(equalToConstant: 50),
-            phoneButton.widthAnchor.constraint(equalToConstant: 50),
+            phoneButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            buttonWidthConstraint!,
+            buttonHeightConstraint!,
         ])
         phoneButton.addTarget(self, action: #selector(phoneButtonTapped), for: .touchUpInside)
     }
     
+    // MARK: - Method to expand the button -
     @objc func phoneButtonTapped() {
-        
+        UIView.animate(withDuration: 0.3) {
+            if self.buttonExpanded {
+                self.phoneButton.layer.cornerRadius = 25
+                self.buttonWidthConstraint?.constant = 50
+                self.buttonHeightConstraint?.constant = 50
+            } else {
+                self.phoneButton.layer.cornerRadius = 25
+                self.buttonWidthConstraint?.constant = 300
+                self.buttonHeightConstraint?.constant = 50
+                self.phoneButton.setImage(UIImage(systemName: "plus"), for: .normal)
+                self.phoneButton.setTitle("  Get a first phone number", for: .normal)
+            }
+            self.view.layoutIfNeeded()
+        }
+        buttonExpanded = !buttonExpanded
     }
 }
