@@ -47,9 +47,9 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btn1, btn2, btn3])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.spacing = 80
+        stack.spacing = 20
         stack.alignment = .center
-        stack.distribution = .fillProportionally
+        stack.distribution = .fillEqually
         return stack
     }()
     
@@ -58,8 +58,8 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btn4, btn5, btn6])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .fillProportionally
-        stack.spacing = 80
+        stack.distribution = .fillEqually
+        stack.spacing = 20
         stack.alignment = .center
         return stack
     }()
@@ -69,8 +69,8 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btn7, btn8, btn9])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .fillProportionally
-        stack.spacing = 80
+        stack.distribution = .fillEqually
+        stack.spacing = 20
         stack.alignment = .center
         return stack
     }()
@@ -80,8 +80,8 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btnStar, btn0, btnHash])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .fillProportionally
-        stack.spacing = 80
+        stack.distribution = .fillEqually
+        stack.spacing = 20
         stack.alignment = .center
         return stack
     }()
@@ -91,8 +91,8 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btnCall, btnDelete])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .fillProportionally
-        stack.spacing = 10
+        stack.distribution = .fillEqually
+        stack.spacing = 20
         stack.alignment = .center
         return stack
     }()
@@ -134,6 +134,7 @@ class PhoneNumberPadView: UIView {
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
         phoneNumberLabel.backgroundColor = .black
+        phoneNumberLabel.textAlignment = .center
     }
     
     // MARK: -
@@ -142,6 +143,8 @@ class PhoneNumberPadView: UIView {
         
         for button in buttons {
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+            button.layer.borderColor = UIColor.blue.cgColor
+            button.layer.borderWidth = 2
             button.heightAnchor.constraint(equalToConstant: 70).isActive = true
             button.widthAnchor.constraint(equalToConstant: 70).isActive = true
         }
