@@ -37,4 +37,80 @@ class PhoneNumberPadView: UIView {
     let btnHash = Button(image: UIImage(), text: "#", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     let btnCall = Button(image: UIImage(systemName: "phone.circle.fill"), text: "", btnTitleColor: .clear, backgroundColor: .clear, radius: 0, imageColor: .green, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    
+    let btnDelete = Button(image: UIImage(systemName: "delete.backward.fill"), text: "", btnTitleColor: .clear, backgroundColor: .clear, radius: 0, imageColor: .gray, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    
+    ////STACKVIEW
+    fileprivate lazy var firstStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [btn1, btn2, btn3])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.spacing = 20
+        stack.alignment = .center
+        stack.distribution = .equalSpacing
+        return stack
+    }()
+    
+    ////STACKVIEW
+    fileprivate lazy var secondStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [btn4, btn5, btn6])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
+        stack.spacing = 20
+        stack.alignment = .center
+        return stack
+    }()
+    
+    ////STACKVIEW
+    fileprivate lazy var thirdStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [btn7, btn8, btn9])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
+        stack.spacing = 20
+        stack.alignment = .center
+        return stack
+    }()
+    
+    ////STACKVIEW
+    fileprivate lazy var fourthStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [btnStar, btn0, btnHash])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
+        stack.spacing = 20
+        stack.alignment = .center
+        return stack
+    }()
+    
+    ////STACKVIEW
+    fileprivate lazy var fifthStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [btnCall, btnDelete])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        stack.alignment = .center
+        return stack
+    }()
+    
+    ////STACKVIEW
+    fileprivate lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [firstStackView, secondStackView, thirdStackView, fourthStackView, fifthStackView])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.spacing = 200
+        stack.alignment = .center
+        return stack
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
