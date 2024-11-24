@@ -15,14 +15,15 @@ class TextField: UITextField {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         font = UIFont(name: "", size: 18)
-        textColor = .black
+        textColor = .systemPink
         backgroundColor = background
         layer.cornerRadius = radius
         autocapitalizationType = .none
         autocorrectionType = .no
+        self.keyboardType = .numberPad
         self.placeholder = placeholder
         self.isSecureTextEntry = isSecureTextEntry
-        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

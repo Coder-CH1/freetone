@@ -8,10 +8,12 @@
 import UIKit
 import Contacts
 
-class PhoneNumberPadView: UIView {
+class PhoneNumberPadView: UIView, UITextFieldDelegate {
     var dialButtonTapHandler: ((String) -> Void)?
     
     //MARK: - Objects -
+    let phoneNumberTextField = TextField(placeholder: "", isSecureTextEntry: false, radius: 0, background: .lightGray)
+    
     let btn1 = Button(image: UIImage(), text: "1", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     let btn2 = Button(image: UIImage(), text: "2", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
@@ -119,12 +121,19 @@ class PhoneNumberPadView: UIView {
     // MARK: - Subviews and Layout -
     private func setupLayout() {
         addSubview(stackView)
+        addSubview(phoneNumberTextField)
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor),
+            phoneNumberTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            phoneNumberTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
+            phoneNumberTextField.trailingAnchor.constraint(equalTo: trailingAnchor),
+            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 50),
+            
+            stackView.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: -120),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+        phoneNumberTextField.delegate = self
     }
     
     // MARK: -
@@ -140,11 +149,22 @@ class PhoneNumberPadView: UIView {
     // MARK: -
     @objc func buttonTapped(_ sender: Button) {
         guard let title = sender.titleLabel?.text else { return }
+        phoneNumberTextField.text?.append(title)
         dialButtonTapHandler?(title)
     }
     
     // MARK: -
     @objc func callButtonTapped() {
         dialButtonTapHandler?("Call")
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" {
+            if let text = textField.text, !text.isEmpty {
+                textField.text?.removeLast()
+            }
+            return false
+        }
+        return true
     }
 }
