@@ -12,7 +12,7 @@ class PhoneNumberPadView: UIView, UITextFieldDelegate {
     var dialButtonTapHandler: ((String) -> Void)?
     
     //MARK: - Objects -
-    let phoneNumberTextField = TextField(placeholder: "", isSecureTextEntry: false, radius: 0, background: .lightGray)
+    let phoneNumberTextField = TextField(placeholder: "", isSecureTextEntry: false, radius: 0, background: .black)
     
     let btn1 = Button(image: UIImage(), text: "1", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
@@ -142,6 +142,8 @@ class PhoneNumberPadView: UIView, UITextFieldDelegate {
         
         for button in buttons {
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+//            button.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//            button.widthAnchor.constraint(equalToConstant: 80).isActive = true
         }
         btnCall.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
     }
@@ -149,7 +151,7 @@ class PhoneNumberPadView: UIView, UITextFieldDelegate {
     // MARK: -
     @objc func buttonTapped(_ sender: Button) {
         guard let title = sender.titleLabel?.text else { return }
-        phoneNumberTextField.text?.append(title)
+        phoneNumberTextField.text = phoneNumberTextField.text ?? "" + title
         dialButtonTapHandler?(title)
     }
     
