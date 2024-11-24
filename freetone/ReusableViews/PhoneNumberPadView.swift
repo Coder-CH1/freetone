@@ -138,10 +138,12 @@ class PhoneNumberPadView: UIView {
     
     // MARK: -
     private func setupAction() {
-        let buttons: [Button] = [btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnStar, btnHash, btnCall, btnDelete]
+        let buttons: [Button] = [btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnStar, btnHash]
         
         for button in buttons {
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+            button.heightAnchor.constraint(equalToConstant: 70).isActive = true
+            button.widthAnchor.constraint(equalToConstant: 70).isActive = true
         }
         btnCall.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
     }
