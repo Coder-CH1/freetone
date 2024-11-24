@@ -24,12 +24,12 @@ class PhoneNumberViewController: UIViewController {
         view.addSubview(phonePadView)
         view.addSubview(phoneNumberTextField)
         NSLayoutConstraint.activate([
-            phoneNumberTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            phoneNumberTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             phoneNumberTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             phoneNumberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             phoneNumberTextField.heightAnchor.constraint(equalToConstant: 50),
             
-            phonePadView.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 20),
+            phonePadView.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 0),
             phonePadView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             phonePadView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             phonePadView.bottomAnchor.constraint(equalTo: view.bottomAnchor),

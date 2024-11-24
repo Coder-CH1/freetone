@@ -12,19 +12,19 @@ class PhoneNumberPadView: UIView {
     var dialButtonTapHandler: ((String) -> Void)?
     
     //MARK: - Objects -
-    let btn1 = Button(image: UIImage(), text: "1", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn1 = Button(image: UIImage(), text: "1", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btn2 = Button(image: UIImage(), text: "2", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn2 = Button(image: UIImage(), text: "2", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btn3 = Button(image: UIImage(), text: "3", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn3 = Button(image: UIImage(), text: "3", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btn4 = Button(image: UIImage(), text: "4", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn4 = Button(image: UIImage(), text: "4", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btn5 = Button(image: UIImage(), text: "5", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn5 = Button(image: UIImage(), text: "5", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btn6 = Button(image: UIImage(), text: "6", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn6 = Button(image: UIImage(), text: "6", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btn7 = Button(image: UIImage(), text: "7", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn7 = Button(image: UIImage(), text: "7", btnTitleColor:UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     let btn8 = Button(image: UIImage(), text: "8", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
@@ -45,9 +45,9 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btn1, btn2, btn3])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.spacing = 20
+        stack.spacing = 80
         stack.alignment = .center
-        stack.distribution = .equalSpacing
+        stack.distribution = .fillProportionally
         return stack
     }()
     
@@ -56,8 +56,8 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btn4, btn5, btn6])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .equalSpacing
-        stack.spacing = 20
+        stack.distribution = .fillProportionally
+        stack.spacing = 80
         stack.alignment = .center
         return stack
     }()
@@ -67,8 +67,8 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btn7, btn8, btn9])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .equalSpacing
-        stack.spacing = 20
+        stack.distribution = .fillProportionally
+        stack.spacing = 80
         stack.alignment = .center
         return stack
     }()
@@ -78,8 +78,8 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btnStar, btn0, btnHash])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .equalSpacing
-        stack.spacing = 20
+        stack.distribution = .fillProportionally
+        stack.spacing = 80
         stack.alignment = .center
         return stack
     }()
@@ -89,7 +89,7 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [btnCall, btnDelete])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.distribution = .fillEqually
+        stack.distribution = .fillProportionally
         stack.spacing = 10
         stack.alignment = .center
         return stack
@@ -100,8 +100,8 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [firstStackView, secondStackView, thirdStackView, fourthStackView, fifthStackView])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 200
+        stack.distribution = .fillProportionally
+        stack.spacing = -250
         stack.alignment = .center
         return stack
     }()
