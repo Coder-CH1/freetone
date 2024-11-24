@@ -22,6 +22,10 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     private var items2: [String] = ["Theme", "Notification", "Text", "Calls", "Voicemail Greeting"]
     var didSelectRowAt: ((IndexPath) -> Void)?
     
+    ////BUTTON
+    let logoutButton = Button(image: UIImage(), text: "Log Out", btnTitleColor: .white, backgroundColor: .black, radius: 8, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    
+    //MARK: - Lifecycle -
     init(frame: CGRect){
         super.init(frame: frame, style: .plain)
         customizeTableView()
@@ -43,6 +47,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     }
     
     // MARK: - UITableViewDataSource -
+    ////
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 0
@@ -53,10 +58,12 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         }
     }
     
+    ////
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
+    ////
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
         if indexPath.section == 0 {
@@ -69,7 +76,8 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         return cell
     }
     
-    // MARK: - DelegateFlowLayout -
+    // MARK: - UITableViewDelegate -
+    ////
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectRowAt?(indexPath)
     }
@@ -78,6 +86,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         return 80
     }
     
+    ////
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         if section == 0 {
@@ -135,6 +144,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         return headerView
     }
     
+    ////
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 80
@@ -143,6 +153,33 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         } else {
             return 50
         }
+    }
+    
+    ////
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 2 {
+            let footerView = UIView()
+            footerView.backgroundColor = .brown
+            
+            footerView.addSubview(logoutButton)
+            
+            NSLayoutConstraint.activate([
+                logoutButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 30),
+                logoutButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 50),
+                logoutButton.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -50),
+                logoutButton.heightAnchor.constraint(equalToConstant: 50),
+            ])
+            return footerView
+        }
+        return nil
+    }
+    
+    ////
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 2 {
+            return 100
+        }
+        return 0.01
     }
 }
 
