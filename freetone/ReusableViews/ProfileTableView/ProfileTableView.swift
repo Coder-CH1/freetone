@@ -47,7 +47,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     }
     
     // MARK: - UITableViewDataSource -
-    ////
+    ////NUMBER OF ITEMS IN EACH SECTION
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 0
@@ -58,7 +58,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         }
     }
     
-    ////
+    ////SECTIONS IN THE TABLEVIEW
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -82,6 +82,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         didSelectRowAt?(indexPath)
     }
     
+    ////
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -144,7 +145,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         return headerView
     }
     
-    ////
+    ////HEIGHT FOT THE HEADER SECTION
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 80
@@ -155,7 +156,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         }
     }
     
-    ////
+    ////OBJECT IN THE FOOTER SECTION AND ITS CONSTRAINT
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == 2 {
             let footerView = UIView()
@@ -174,7 +175,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
         return nil
     }
     
-    ////
+    ////HEIGHT FOR THE FOOTER SECTION
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == 2 {
             return 100
