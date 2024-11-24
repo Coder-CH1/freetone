@@ -11,7 +11,7 @@ import Contacts
 class PhoneNumberPadView: UIView {
     var dialButtonTapHandler: ((String) -> Void)?
     
-    //MARK: -
+    //MARK: - Objects -
     let btn1 = Button(image: UIImage(), text: "1", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     let btn2 = Button(image: UIImage(), text: "2", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
@@ -26,15 +26,15 @@ class PhoneNumberPadView: UIView {
     
     let btn7 = Button(image: UIImage(), text: "7", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btn8 = Button(image: UIImage(), text: "8", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn8 = Button(image: UIImage(), text: "8", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btn9 = Button(image: UIImage(), text: "9", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn9 = Button(image: UIImage(), text: "9", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btn0 = Button(image: UIImage(), text: "0", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btn0 = Button(image: UIImage(), text: "0", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btnStar = Button(image: UIImage(), text: "*", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btnStar = Button(image: UIImage(), text: "*", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    let btnHash = Button(image: UIImage(), text: "#", btnTitleColor: UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let btnHash = Button(image: UIImage(), text: "#", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     let btnCall = Button(image: UIImage(systemName: "phone.circle.fill"), text: "", btnTitleColor: .clear, backgroundColor: .clear, radius: 0, imageColor: .green, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
@@ -108,13 +108,17 @@ class PhoneNumberPadView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        setupLayout()
+        setupAction()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Subviews and Layout -
     private func setupLayout() {
+        addSubview(stackView)
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -123,6 +127,7 @@ class PhoneNumberPadView: UIView {
         ])
     }
     
+    // MARK: -
     private func setupAction() {
         let buttons: [Button] = [btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnStar, btnHash, btnCall, btnDelete]
         
@@ -132,11 +137,13 @@ class PhoneNumberPadView: UIView {
         btnCall.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
     }
     
+    // MARK: -
     @objc func buttonTapped(_ sender: Button) {
         guard let title = sender.titleLabel?.text else { return }
         dialButtonTapHandler?(title)
     }
     
+    // MARK: -
     @objc func callButtonTapped() {
         dialButtonTapHandler?("Call")
     }

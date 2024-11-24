@@ -43,6 +43,12 @@ class AllView: UIView {
             buttonWidthConstraint!,
             buttonHeightConstraint!,
         ])
+        phoneButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc func buttonTapped() {
+        let vc = PhoneNumberViewController()
+        vc.modalPresentationStyle = .fullScreen        
     }
     
     required init?(coder: NSCoder) {
