@@ -113,4 +113,31 @@ class PhoneNumberPadView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupLayout() {
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+    }
+    
+    private func setupAction() {
+        let buttons: [Button] = [btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnStar, btnHash, btnCall, btnDelete]
+        
+        for button in buttons {
+            button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        }
+        btnCall.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func buttonTapped(_ sender: Button) {
+        guard let title = sender.titleLabel?.text else { return }
+        dialButtonTapHandler?(title)
+    }
+    
+    @objc func callButtonTapped() {
+        dialButtonTapHandler?("Call")
+    }
 }
