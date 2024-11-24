@@ -28,7 +28,7 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         self.delegate = self
         self.dataSource = self
         self.separatorStyle = .singleLine
-        self.separatorColor = .black
+        self.separatorColor = .lightGray
         self.showsVerticalScrollIndicator = false
         self.translatesAutoresizingMaskIntoConstraints = false
         self.register(InboxTableViewCell.self, forCellReuseIdentifier: "InboxTableViewCell")
@@ -41,6 +41,7 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxTableViewCell", for: indexPath) as! InboxTableViewCell
+        cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
         return cell
     }
     

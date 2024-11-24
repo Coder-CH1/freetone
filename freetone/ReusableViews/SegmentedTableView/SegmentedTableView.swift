@@ -28,7 +28,7 @@ class SegmentedTableView: UITableView, UITableViewDataSource, UITableViewDelegat
         self.delegate = self
         self.dataSource = self
         self.separatorStyle = .singleLine
-        self.separatorColor = .black
+        self.separatorColor = .lightGray
         self.showsVerticalScrollIndicator = false
         self.translatesAutoresizingMaskIntoConstraints = false
         self.register(SegmentedTableViewCell.self, forCellReuseIdentifier: "SegmentedTableViewCell")
@@ -42,6 +42,7 @@ class SegmentedTableView: UITableView, UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SegmentedTableViewCell", for: indexPath) as! SegmentedTableViewCell
+        cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
         return cell
     }
     
