@@ -8,11 +8,11 @@
 import UIKit
 import Contacts
 
-class PhoneNumberPadView: UIView, UITextFieldDelegate {
+class PhoneNumberPadView: UIView {
     var dialButtonTapHandler: ((String) -> Void)?
     
     //MARK: - Objects -
-    let phoneNumberTextField = TextField(placeholder: "", isSecureTextEntry: false, radius: 0, background: .black)
+    let phoneNumberLabel = Label(label: "", textColor: .red, font: UIFont.systemFont(ofSize: 18, weight: .bold))
     
     let btn1 = Button(image: UIImage(), text: "1", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
@@ -121,19 +121,19 @@ class PhoneNumberPadView: UIView, UITextFieldDelegate {
     // MARK: - Subviews and Layout -
     private func setupLayout() {
         addSubview(stackView)
-        addSubview(phoneNumberTextField)
+        addSubview(phoneNumberLabel)
         NSLayoutConstraint.activate([
-            phoneNumberTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
-            phoneNumberTextField.leadingAnchor.constraint(equalTo: leadingAnchor),
-            phoneNumberTextField.trailingAnchor.constraint(equalTo: trailingAnchor),
-            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 50),
+            phoneNumberLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            phoneNumberLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            phoneNumberLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            phoneNumberLabel.heightAnchor.constraint(equalToConstant: 50),
             
-            stackView.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: -120),
+            stackView.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: -120),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
-        phoneNumberTextField.delegate = self
+        phoneNumberLabel.backgroundColor = .black
     }
     
     // MARK: -
@@ -142,31 +142,22 @@ class PhoneNumberPadView: UIView, UITextFieldDelegate {
         
         for button in buttons {
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-//            button.heightAnchor.constraint(equalToConstant: 80).isActive = true
-//            button.widthAnchor.constraint(equalToConstant: 80).isActive = true
         }
         btnCall.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
     }
     
     // MARK: -
     @objc func buttonTapped(_ sender: Button) {
-        guard let title = sender.titleLabel?.text else { return }
-        phoneNumberTextField.text = phoneNumberTextField.text ?? "" + title
-        dialButtonTapHandler?(title)
+        if let title = sender.title(for: .normal) {
+            phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + title
+            dialButtonTapHandler?(title)
+        } else {
+            print("button title is nil")
+        }
     }
     
     // MARK: -
     @objc func callButtonTapped() {
         dialButtonTapHandler?("Call")
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string == "" {
-            if let text = textField.text, !text.isEmpty {
-                textField.text?.removeLast()
-            }
-            return false
-        }
-        return true
     }
 }
