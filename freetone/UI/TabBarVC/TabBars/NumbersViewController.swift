@@ -22,6 +22,9 @@ class NumbersViewController: UIViewController {
         return customView
     }()
     
+    ////
+    let phoneButton = Button(image: UIImage(systemName: "plus"), text: "", btnTitleColor: .lightGray, backgroundColor: .systemPink, radius: 25, imageColor: .white, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +48,7 @@ class NumbersViewController: UIViewController {
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(customView)
+        view.addSubview(phoneButton)
         customView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
             customView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -55,6 +59,16 @@ class NumbersViewController: UIViewController {
             
             titleLabel.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             titleLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
+            
+            phoneButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            phoneButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            phoneButton.heightAnchor.constraint(equalToConstant: 50),
+            phoneButton.widthAnchor.constraint(equalToConstant: 50),
         ])
+        phoneButton.addTarget(self, action: #selector(phoneButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func phoneButtonTapped() {
+        
     }
 }
