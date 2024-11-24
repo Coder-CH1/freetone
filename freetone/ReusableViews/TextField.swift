@@ -20,7 +20,6 @@ class TextField: UITextField {
         layer.cornerRadius = radius
         autocapitalizationType = .none
         autocorrectionType = .no
-        self.keyboardType = .numberPad
         self.placeholder = placeholder
         self.isSecureTextEntry = isSecureTextEntry
         attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])

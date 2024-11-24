@@ -18,7 +18,6 @@ class Label: UILabel {
         self.text = label
         self.textColor = textColor
         self.lineBreakMode = .byWordWrapping
-        self.clipsToBounds = true
         self.font = font
     }
     required init?(coder aDecoder: NSCoder) {
