@@ -27,10 +27,10 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     func customizeTableView() {
         self.delegate = self
         self.dataSource = self
+        self.separatorStyle = .singleLine
+        self.separatorColor = .black
         self.showsVerticalScrollIndicator = false
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .blue
-        self.sectionIndexColor = .gray
         self.register(InboxTableViewCell.self, forCellReuseIdentifier: "InboxTableViewCell")
     }
     

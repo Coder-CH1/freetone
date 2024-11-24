@@ -27,9 +27,10 @@ class SegmentedTableView: UITableView, UITableViewDataSource, UITableViewDelegat
     func customizeTableView() {
         self.delegate = self
         self.dataSource = self
+        self.separatorStyle = .singleLine
+        self.separatorColor = .black
         self.showsVerticalScrollIndicator = false
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.sectionIndexColor = .gray
         self.register(SegmentedTableViewCell.self, forCellReuseIdentifier: "SegmentedTableViewCell")
         self.backgroundColor = .clear
     }
