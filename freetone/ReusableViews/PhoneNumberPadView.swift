@@ -38,6 +38,8 @@ class PhoneNumberPadView: UIView {
     
     let btnHash = Button(image: UIImage(), text: "#", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
+    let btnAt = Button(image: UIImage(), text: "@", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    
     let btnCall = Button(image: UIImage(systemName: "phone.circle.fill"), text: "", btnTitleColor: .clear, backgroundColor: .clear, radius: 0, imageColor: .green, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     let btnDelete = Button(image: UIImage(systemName: "delete.backward.fill"), text: "", btnTitleColor: .clear, backgroundColor: .clear, radius: 0, imageColor: .gray, borderWidth: 0, borderColor: UIColor.clear.cgColor)
@@ -88,7 +90,7 @@ class PhoneNumberPadView: UIView {
     
     ////STACKVIEW
     fileprivate lazy var fifthStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [btnCall, btnDelete])
+        let stack = UIStackView(arrangedSubviews: [btnAt,btnCall, btnDelete])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.distribution = .fillEqually
@@ -102,8 +104,8 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [firstStackView, secondStackView, thirdStackView, fourthStackView, fifthStackView])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = -250
+        stack.distribution = .fillProportionally
+        stack.spacing = -170
         stack.alignment = .center
         return stack
     }()
@@ -139,7 +141,7 @@ class PhoneNumberPadView: UIView {
     
     // MARK: -
     private func setupAction() {
-        let buttons: [Button] = [btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnStar, btnHash]
+        let buttons: [Button] = [btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnAt, btnStar, btnHash]
         
         for button in buttons {
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
@@ -152,8 +154,11 @@ class PhoneNumberPadView: UIView {
     // MARK: -
     @objc func buttonTapped(_ sender: Button) {
         if let title = sender.title(for: .normal) {
-            phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + title
-            dialButtonTapHandler?(title)
+            print("Button tapped: \(title)")
+            if phoneNumberLabel.text?.last != title.last {
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + title
+                dialButtonTapHandler?(title)
+            }
         } else {
             print("button title is nil")
         }
