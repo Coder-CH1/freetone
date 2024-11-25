@@ -102,7 +102,7 @@ class PhoneNumberPadView: UIView {
         let stack = UIStackView(arrangedSubviews: [firstStackView, secondStackView, thirdStackView, fourthStackView, fifthStackView])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillProportionally
+        stack.distribution = .fillEqually
         stack.spacing = -250
         stack.alignment = .center
         return stack
@@ -143,8 +143,6 @@ class PhoneNumberPadView: UIView {
         
         for button in buttons {
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
-            button.layer.borderColor = UIColor.blue.cgColor
-            button.layer.borderWidth = 2
             button.heightAnchor.constraint(equalToConstant: 70).isActive = true
             button.widthAnchor.constraint(equalToConstant: 70).isActive = true
         }
