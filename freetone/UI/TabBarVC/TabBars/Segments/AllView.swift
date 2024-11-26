@@ -47,8 +47,8 @@ class AllView: UIView {
     }
     
     @objc func buttonTapped() {
-        let vc = PhoneNumberViewController()
-        vc.modalPresentationStyle = .fullScreen        
+        let vc = DialerViewController()
+        vc.modalPresentationStyle = .fullScreen
     }
     
     required init?(coder: NSCoder) {
