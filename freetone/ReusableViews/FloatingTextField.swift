@@ -31,6 +31,11 @@ class FloatingTextField: UIView {
         textField.isSecureTextEntry = isSecureTextEntry
         textField.delegate = self
         
+        textField.layer.borderWidth = CGFloat(borderWidth)
+        textField.layer.borderColor = borderColor.cgColor
+        
+        let textFieldHeight = CGFloat(55) + CGFloat(borderWidth + 2)
+        
         // MARK: - Set up floatingLabel -
         floatingLabel = UILabel()
         floatingLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -47,9 +52,11 @@ class FloatingTextField: UIView {
             textField.topAnchor.constraint(equalTo: topAnchor),
             textField.leadingAnchor.constraint(equalTo: leadingAnchor),
             textField.trailingAnchor.constraint(equalTo: trailingAnchor),
+            textField.heightAnchor.constraint(equalToConstant: textFieldHeight),
             
             floatingLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-            floatingLabel.topAnchor.constraint(equalTo: textField.topAnchor, constant: 0)
+            floatingLabel.centerXAnchor.constraint(equalTo: textField.centerXAnchor),
+            floatingLabel.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
         ])
         updateFloatingLabel()
     }
@@ -72,7 +79,7 @@ class FloatingTextField: UIView {
         if !isFloatingLabelVisible {
             UIView.animate(withDuration: 0.3) {
                 self.floatingLabel.alpha = 1
-                self.floatingLabel.transform = CGAffineTransform(translationX: 0, y: -20)
+                self.floatingLabel.transform = CGAffineTransform(translationX: 0, y: -25)
             }
             isFloatingLabelVisible = true
         }
