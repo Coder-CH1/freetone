@@ -33,6 +33,7 @@
 		04732CCD2CF23A4300C3CDF7 /* Appwrite in Frameworks */ = {isa = PBXBuildFile; productRef = 04732CCC2CF23A4300C3CDF7 /* Appwrite */; };
 		04732CCF2CF23B3700C3CDF7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04732CCE2CF23B3700C3CDF7 /* NetworkManager.swift */; };
 		04732CD12CF23B5000C3CDF7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04732CD02CF23B5000C3CDF7 /* Model.swift */; };
+		0486071E2CF70385000B5A46 /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486071D2CF70385000B5A46 /* CallViewController.swift */; };
 		049BBF042CF2089C0042941B /* ProfileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF032CF2089C0042941B /* ProfileTableView.swift */; };
 		049BBF072CF209F70042941B /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF062CF209F70042941B /* ProfileTableViewCell.swift */; };
 		049BBF092CF219A10042941B /* SegmentedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF082CF219A10042941B /* SegmentedTableView.swift */; };
@@ -93,6 +94,7 @@
 		047132AA2CF098CB004BC266 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
 		04732CCE2CF23B3700C3CDF7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		04732CD02CF23B5000C3CDF7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0486071D2CF70385000B5A46 /* CallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
 		049BBF032CF2089C0042941B /* ProfileTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableView.swift; sourceTree = "<group>"; };
 		049BBF062CF209F70042941B /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		049BBF082CF219A10042941B /* SegmentedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTableView.swift; sourceTree = "<group>"; };
@@ -252,6 +254,14 @@
 			path = TabBars;
 			sourceTree = "<group>";
 		};
+		0486071C2CF7036D000B5A46 /* CallViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0486071D2CF70385000B5A46 /* CallViewController.swift */,
+			);
+			path = CallViewController;
+			sourceTree = "<group>";
+		};
 		049BBF052CF209CA0042941B /* ProfileTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				04CD02C82CF3AA8D004E854C /* DialerViewController.swift */,
+				0486071C2CF7036D000B5A46 /* CallViewController */,
 			);
 			path = PhoneNumberViewController;
 			sourceTree = "<group>";
@@ -472,6 +483,7 @@
 				047132A32CEF9617004BC266 /* NumbersViewController.swift in Sources */,
 				046701672CEE0CE20018029C /* Label.swift in Sources */,
 				049BBF042CF2089C0042941B /* ProfileTableView.swift in Sources */,
+				0486071E2CF70385000B5A46 /* CallViewController.swift in Sources */,
 				047132A12CEF9609004BC266 /* InboxViewController.swift in Sources */,
 				047132942CEF94E4004BC266 /* SignInViewController.swift in Sources */,
 				04B495442CF1095C00A7E3BA /* AllView.swift in Sources */,
