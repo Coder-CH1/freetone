@@ -12,9 +12,9 @@ import Contacts
 class DialerViewController: UIViewController {
     
     // MARK: - Objects -
-    private var phoneNumberLabel: UILabel!
-    private var digitButtons: [UIButton] = []
-    private let digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*","0", "#"]
+    var phoneNumberLabel: UILabel!
+    var digitButtons: [UIButton] = []
+    let digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*","0", "#"]
     
     // MARK: - Lifecycle -
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class DialerViewController: UIViewController {
     }
     
     // MARK: - Customizing the label and setting the constraint -
-    private func setupPhoneNumberLabel() {
+    func setupPhoneNumberLabel() {
         phoneNumberLabel = UILabel()
         phoneNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         phoneNumberLabel.text = ""
@@ -45,7 +45,7 @@ class DialerViewController: UIViewController {
     }
     
     // MARK: - Customizing the buttons and setting the constraint -
-    private func setupDialerButtons() {
+    func setupDialerButtons() {
         let rows = 3
         let columns = 3
         let buttonSize: CGFloat = 80
@@ -74,7 +74,7 @@ class DialerViewController: UIViewController {
     }
     
     // MARK: - Customizing the call and delete, setting the constraint -
-    private func setupActionButtons() {
+    func setupActionButtons() {
         let callBtn = UIButton(type: .system)
         callBtn.translatesAutoresizingMaskIntoConstraints = false
         callBtn.tintColor = .white
@@ -105,18 +105,18 @@ class DialerViewController: UIViewController {
     }
     
     // MARK: - Method that shows the button text on the label when tapped -
-    @objc private func digitButtonTapped(_ sender: UIButton) {
+    @objc func digitButtonTapped(_ sender: UIButton) {
         guard let digit = sender.title(for: .normal) else {return}
         phoneNumberLabel.text = (phoneNumberLabel?.text ?? "") + digit
     }
     
     // MARK: -
-    @objc private func callButtonTapped() {
+    @objc func callButtonTapped() {
         print("")
     }
     
     // MARK: - Method that deletes the button text from the label -
-    @objc private func deleteButtonTapped() {
+    @objc func deleteButtonTapped() {
         phoneNumberLabel.text = String(phoneNumberLabel.text?.dropLast() ?? "")
     }    
 }
