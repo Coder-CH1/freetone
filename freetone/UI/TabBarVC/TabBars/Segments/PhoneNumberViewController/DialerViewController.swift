@@ -16,6 +16,9 @@ class DialerViewController: UIViewController {
     var digitButtons: [UIButton] = []
     let digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*","0", "#"]
     
+    var lastPressTime: Date?
+    let doublePressTime: TimeInterval = 0.3
+    
     // MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +63,6 @@ class DialerViewController: UIViewController {
             btn.setTitleColor(UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), for: .normal)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 32)
             btn.addTarget(self, action: #selector(digitButtonTapped(_:)), for: .touchUpInside)
-            
             digitButtons.append(btn)
             view.addSubview(btn)
             
@@ -108,6 +110,40 @@ class DialerViewController: UIViewController {
     @objc func digitButtonTapped(_ sender: UIButton) {
         guard let digit = sender.title(for: .normal) else {return}
         phoneNumberLabel.text = (phoneNumberLabel?.text ?? "") + digit
+        let currentTime = Date()
+        
+        if let lastTime = lastPressTime,
+           currentTime.timeIntervalSince(lastTime) < doublePressTime {
+            switch digit {
+            case "2":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "A"
+            case "3":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "B"
+            case "4":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "C"
+            case "5":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "D"
+            case "6":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "E"
+            case "7":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "F"
+            case "8":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "G"
+            case "9":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "H"
+            case "0":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "+"
+            case "*":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "I"
+            case "#":
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "J"
+            default:
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + digit
+            }
+        } else {
+            phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + digit
+        }
+        lastPressTime = currentTime
     }
     
     // MARK: -
@@ -118,5 +154,5 @@ class DialerViewController: UIViewController {
     // MARK: - Method that deletes the button text from the label -
     @objc func deleteButtonTapped() {
         phoneNumberLabel.text = String(phoneNumberLabel.text?.dropLast() ?? "")
-    }    
+    }
 }
