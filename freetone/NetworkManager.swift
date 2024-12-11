@@ -18,8 +18,8 @@ class NetworkManager {
     
     //MARK: -
     let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
-        .setProject("6746f883000a071f1c3f") // Your project ID
+        .setEndpoint("https://cloud.appwrite.io/v1")
+        .setProject("6746f883000a071f1c3f") 
 
     //MARK: -
     lazy var account: Account = {
