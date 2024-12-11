@@ -19,13 +19,16 @@ class NetworkManager {
     //MARK: -
     let client = Client()
         .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("6746f883000a071f1c3f") 
+        .setProject("6746f883000a071f1c3f")
 
     //MARK: -
     lazy var account: Account = {
         let account = Account(client)
         return account
     }()
+    
+    @Published var email = ""
+    @Published var password = ""
     
     //MARK: - FETCHING USER -
     func getUser() async {
@@ -53,8 +56,8 @@ class NetworkManager {
         do {
             _  = try await account.create(
                 userId: ID.unique(),
-                email: "",
-                password: ""
+                email: email,
+                password: password
             )
         } catch {
             await MainActor.run {
@@ -67,8 +70,8 @@ class NetworkManager {
     func login() async {
         do {
             let session = try await account.createEmailPasswordSession(
-                email: "",
-                password: ""
+                email: email,
+                password: password
             )
         } catch {
             await MainActor.run {
