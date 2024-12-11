@@ -55,6 +55,9 @@ class SignInViewController: UIViewController {
     ////BUTTON
     let loginButton = Button(image: UIImage(), text: "Log in", btnTitleColor: .gray, backgroundColor: .darkGray, radius: 10, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
+    ////BUTTON
+    let signupButton = Button(image: UIImage(), text: "Sign up", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,8 +72,9 @@ class SignInViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(forgotPasswordBtn)
         view.addSubview(loginButton)
+        view.addSubview(signupButton)
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             
@@ -96,12 +100,29 @@ class SignInViewController: UIViewController {
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             loginButton.heightAnchor.constraint(equalToConstant: 55),
-            loginButton.widthAnchor.constraint(equalToConstant: 300)
+            loginButton.widthAnchor.constraint(equalToConstant: 300),
+            
+            signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
+            signupButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordBtn.translatesAutoresizingMaskIntoConstraints = false
         loginButton.translatesAutoresizingMaskIntoConstraints = false
+        signupButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func loginButtonTapped() {
+        let vc = TabBarViewController()
+        present(vc, animated: false)
+    }
+    
+    @objc func signupButtonTapped() {
+        let vc = RegisterWithEmailViewController()
+        navigationController?.pushViewController(vc, animated: false)
     }
 }

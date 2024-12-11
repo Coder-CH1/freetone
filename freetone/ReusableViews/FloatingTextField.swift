@@ -21,6 +21,9 @@ class FloatingTextField: UIView {
         
         // MARK: - Set up textfield -
         textField = UITextField()
+        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 50))
+        textField.leftView = leftPaddingView
+        textField.leftViewMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = UIFont(name: "", size: 16)
         textField.textColor = .white

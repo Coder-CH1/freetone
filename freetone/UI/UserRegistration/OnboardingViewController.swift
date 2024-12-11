@@ -187,5 +187,12 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             privacyPolicyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             privacyPolicyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
+        
+        loginBtn.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func loginButtonTapped() {
+        let vc = SignInViewController()
+        navigationController?.pushViewController(vc, animated: false)
     }
 }
