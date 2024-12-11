@@ -16,14 +16,27 @@ class NetworkManager {
     
     private init() {}
     
+    //MARK: -
     let client = Client()
         .setEndpoint("https://cloud.appwrite.io/v1") // Your API Endpoint
         .setProject("6746f883000a071f1c3f") // Your project ID
 
+    //MARK: -
     lazy var account: Account = {
         let account = Account(client)
         return account
     }()
+    
+    //MARK: - FETCHING USER -
+    func getUser() async {
+        do {
+            let user = try await account.get()
+        } catch {
+            await MainActor.run {
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     //MARK: - PERSIST USER SESSION/LOGIN SESSION -
     func checkStoredSession() async {
@@ -62,11 +75,6 @@ class NetworkManager {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    //MARK: - FETCHING USER -
-    func getUser() async {
-       
     }
     
     //MARK: - LOGING USER OUT -
