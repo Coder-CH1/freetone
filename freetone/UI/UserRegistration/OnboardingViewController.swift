@@ -155,11 +155,11 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = Int(pageIndex)
     }
     
-    //MARK: - Method to configure the app logo -
-    func configureAppLogo() {
-        
-    }
-    
+//    //MARK: - Method to configure the app logo -
+//    func configureAppLogo() {
+//        
+//    }
+//    
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(stackView)
