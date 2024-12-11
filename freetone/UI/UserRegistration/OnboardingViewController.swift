@@ -131,7 +131,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         pageControl.frame = CGRect(x: 0, y: 450, width: view.frame.size.width, height: 50)
         view.addSubview(pageControl)
         pageControlSelectedAction()
-        configureAppLogo()
+        //configureAppLogo()
     }
     
     //MARK: - This action when tapped shows each page control.
@@ -157,9 +157,9 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     
 //    //MARK: - Method to configure the app logo -
 //    func configureAppLogo() {
-//        
+//
 //    }
-//    
+//
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(stackView)
