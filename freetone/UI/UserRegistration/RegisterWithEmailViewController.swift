@@ -23,6 +23,7 @@ class RegisterWithEmailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setSubviewsAndLayout()
+        setupTextFieldListeners()
     }
     
     // MARK: - Subviews and Layout -
@@ -51,5 +52,22 @@ class RegisterWithEmailViewController: UIViewController {
         ])
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func setupTextFieldListeners() {
+        emailTextField.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        if let emailText = emailTextField.textField.text, !emailText.isEmpty,
+           let passwordText = passwordTextField.textField.text, !passwordText.isEmpty {
+            regButton.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
+            regButton.isEnabled = true
+            regButton.setTitleColor(UIColor.white, for: .normal)
+        } else {
+            regButton.backgroundColor = .darkGray
+            //loginButton.isEnabled = false
+        }
     }
 }
