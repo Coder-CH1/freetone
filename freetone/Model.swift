@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+class User {
+    var email: String
+    var id: String
+    
+    init(email: String, id: String) {
+        self.email = email
+        self.id = id
+    }
+}

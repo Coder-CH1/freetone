@@ -27,6 +27,7 @@ class AuthManager {
         return account
     }()
     
+    var currentUser: User?
     @Published var email = ""
     @Published var password = ""
     @Published var token = ""
@@ -38,6 +39,9 @@ class AuthManager {
     func getUser() async {
         do {
             let user = try await account.get()
+            await MainActor.run {
+                self.email = user.email 
+            }
         } catch {
             await MainActor.run {
                 print(error.localizedDescription)
