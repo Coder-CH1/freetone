@@ -55,11 +55,13 @@ class RegisterWithEmailViewController: UIViewController {
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    // MARK: - Method to listens and changes the background color of the button -
     func setupTextFieldListeners() {
         emailTextField.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordTextField.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
+    // MARK: - Method for changing the background color of the button -
     @objc func textFieldDidChange() {
         if let emailText = emailTextField.textField.text, !emailText.isEmpty,
            let passwordText = passwordTextField.textField.text, !passwordText.isEmpty {
@@ -72,6 +74,7 @@ class RegisterWithEmailViewController: UIViewController {
         }
     }
     
+    // MARK: - Method that registers users, implementing singleton pattern design -
     @objc func registerUser() {
         NetworkManager.shared.email = emailTextField.textField.text ?? ""
         NetworkManager.shared.password = passwordTextField.textField.text ?? ""
