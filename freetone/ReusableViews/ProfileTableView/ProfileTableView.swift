@@ -29,6 +29,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     init(frame: CGRect){
         super.init(frame: frame, style: .plain)
         customizeTableView()
+        logoutButton.addTarget(self, action: #selector(logoutUser), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -188,6 +189,12 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
             return 100
         }
         return 0.01
+    }
+    
+    @objc func logoutUser() {
+        Task {
+            await AuthManager.shared.logout()
+        }
     }
 }
 

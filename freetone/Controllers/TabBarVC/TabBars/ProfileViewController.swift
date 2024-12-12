@@ -66,4 +66,18 @@ class ProfileViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+    func checkUserSession() {
+        Task {
+            await AuthManager.shared.checkSession()
+            if !AuthManager.shared.isLoggedIn {
+                navigateToLoginScreen()
+            }
+        }
+    }
+    
+    func navigateToLoginScreen() {
+        let vc = SignInViewController()
+        navigationController?.pushViewController(vc, animated: false)
+    }
 }
