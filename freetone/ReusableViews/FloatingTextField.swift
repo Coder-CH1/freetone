@@ -36,9 +36,7 @@ class FloatingTextField: UIView {
         
         textField.layer.borderWidth = CGFloat(borderWidth)
         textField.layer.borderColor = borderColor.cgColor
-        let attributedString = NSMutableAttributedString(string: textField.text!)
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: CGFloat(14.0), range: NSRange(location: 0, length: attributedString.length))
-            textField.attributedText = attributedString
+        textField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 10)
         
         let textFieldHeight = CGFloat(55) + CGFloat(borderWidth + 2)
         
@@ -119,3 +117,4 @@ extension FloatingTextField: UITextFieldDelegate {
         return true
     }
 }
+
