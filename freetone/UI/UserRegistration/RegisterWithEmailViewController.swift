@@ -50,6 +50,7 @@ class RegisterWithEmailViewController: UIViewController {
             regButton.heightAnchor.constraint(equalToConstant: 55),
             regButton.widthAnchor.constraint(equalToConstant: 300)
         ])
+        regButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -68,6 +69,23 @@ class RegisterWithEmailViewController: UIViewController {
         } else {
             regButton.backgroundColor = .darkGray
             //loginButton.isEnabled = false
+        }
+    }
+    
+    @objc func registerUser() {
+        NetworkManager.shared.email = emailTextField.textField.text ?? ""
+        NetworkManager.shared.password = passwordTextField.textField.text ?? ""
+        
+        Task {
+            await NetworkManager.shared.register()
+            if NetworkManager.shared.errorMessage.isEmpty {
+                let vc = TabBarViewController()
+                present(vc, animated: false)
+            } else {
+                let alert = UIAlertController(title: "Error", message: NetworkManager.shared.errorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                self.present(alert, animated: true)
+            }
         }
     }
 }
