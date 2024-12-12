@@ -29,6 +29,10 @@ class NetworkManager {
     
     @Published var email = ""
     @Published var password = ""
+    @Published var token = ""
+    @Published var errorMessage = ""
+    @Published var sessionToken: String?
+    @Published var isLoggedIn: Bool = false
     
     //MARK: - FETCHING USER -
     func getUser() async {
@@ -43,12 +47,30 @@ class NetworkManager {
     
     //MARK: - PERSIST USER SESSION/LOGIN SESSION -
     func checkStoredSession() async {
-        
+        if let token = UserDefaults.standard.string(forKey: "sessionToken") {
+            self.sessionToken = token
+            await checkSession()
+        } else {
+            await MainActor.run {
+                isLoggedIn = false
+            }
+        }
     }
     
     //MARK: - CHECK USER SESSION -
     func checkSession() async {
-       
+        do {
+            let session = try await account.getSession(sessionId: "current")
+            await MainActor.run {
+                isLoggedIn = true
+                self.sessionToken = session.userId
+            }
+        } catch {
+            await MainActor.run {
+                self.isLoggedIn = false
+                self.errorMessage = "No active session"
+            }
+        }
     }
     
     //MARK: - REGISTER USER -
