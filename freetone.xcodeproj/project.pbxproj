@@ -31,7 +31,7 @@
 		047132A92CEFB31F004BC266 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047132A82CEFB31F004BC266 /* Button.swift */; };
 		047132AB2CF098CB004BC266 /* FloatingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047132AA2CF098CB004BC266 /* FloatingTextField.swift */; };
 		04732CCD2CF23A4300C3CDF7 /* Appwrite in Frameworks */ = {isa = PBXBuildFile; productRef = 04732CCC2CF23A4300C3CDF7 /* Appwrite */; };
-		04732CCF2CF23B3700C3CDF7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04732CCE2CF23B3700C3CDF7 /* NetworkManager.swift */; };
+		04732CCF2CF23B3700C3CDF7 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04732CCE2CF23B3700C3CDF7 /* AuthManager.swift */; };
 		04732CD12CF23B5000C3CDF7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04732CD02CF23B5000C3CDF7 /* Model.swift */; };
 		0486071E2CF70385000B5A46 /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486071D2CF70385000B5A46 /* CallViewController.swift */; };
 		049BBF042CF2089C0042941B /* ProfileTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF032CF2089C0042941B /* ProfileTableView.swift */; };
@@ -40,6 +40,7 @@
 		049BBF0B2CF219BB0042941B /* SegmentedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBF0A2CF219BB0042941B /* SegmentedTableViewCell.swift */; };
 		04A263432CF22A7C006CF114 /* InboxTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A263422CF22A7C006CF114 /* InboxTableView.swift */; };
 		04A263462CF22ABB006CF114 /* InboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A263452CF22ABB006CF114 /* InboxTableViewCell.swift */; };
+		04ABF8C42D0B2D0500538459 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABF8C32D0B2D0500538459 /* DatabaseManager.swift */; };
 		04B495442CF1095C00A7E3BA /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495432CF1095C00A7E3BA /* AllView.swift */; };
 		04B495462CF1098900A7E3BA /* MissedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495452CF1098900A7E3BA /* MissedView.swift */; };
 		04B495482CF109BD00A7E3BA /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495472CF109BD00A7E3BA /* VoicemailView.swift */; };
@@ -92,7 +93,7 @@
 		047132A42CEF962A004BC266 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		047132A82CEFB31F004BC266 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		047132AA2CF098CB004BC266 /* FloatingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTextField.swift; sourceTree = "<group>"; };
-		04732CCE2CF23B3700C3CDF7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		04732CCE2CF23B3700C3CDF7 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		04732CD02CF23B5000C3CDF7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0486071D2CF70385000B5A46 /* CallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
 		049BBF032CF2089C0042941B /* ProfileTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableView.swift; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		049BBF0A2CF219BB0042941B /* SegmentedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedTableViewCell.swift; sourceTree = "<group>"; };
 		04A263422CF22A7C006CF114 /* InboxTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTableView.swift; sourceTree = "<group>"; };
 		04A263452CF22ABB006CF114 /* InboxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTableViewCell.swift; sourceTree = "<group>"; };
+		04ABF8C32D0B2D0500538459 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		04B495432CF1095C00A7E3BA /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
 		04B495452CF1098900A7E3BA /* MissedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedView.swift; sourceTree = "<group>"; };
 		04B495472CF109BD00A7E3BA /* VoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailView.swift; sourceTree = "<group>"; };
@@ -159,7 +161,8 @@
 			children = (
 				046701362CEDDE310018029C /* ViewController.swift */,
 				04732CD02CF23B5000C3CDF7 /* Model.swift */,
-				04732CCE2CF23B3700C3CDF7 /* NetworkManager.swift */,
+				04ABF8C32D0B2D0500538459 /* DatabaseManager.swift */,
+				04732CCE2CF23B3700C3CDF7 /* AuthManager.swift */,
 				0467016A2CEE0D240018029C /* Delegates */,
 				0467016C2CEE0D430018029C /* ReusableViews */,
 				0467016B2CEE0D350018029C /* Controllers */,
@@ -492,10 +495,11 @@
 				047132902CEF948F004BC266 /* ConfirmYourAgeViewController.swift in Sources */,
 				04CD02C62CF3A9F3004E854C /* TextField.swift in Sources */,
 				0471329D2CEF95D6004BC266 /* StoreViewController.swift in Sources */,
+				04ABF8C42D0B2D0500538459 /* DatabaseManager.swift in Sources */,
 				049BBF092CF219A10042941B /* SegmentedTableView.swift in Sources */,
 				047132AB2CF098CB004BC266 /* FloatingTextField.swift in Sources */,
 				047132922CEF94AE004BC266 /* RegisterWithEmailViewController.swift in Sources */,
-				04732CCF2CF23B3700C3CDF7 /* NetworkManager.swift in Sources */,
+				04732CCF2CF23B3700C3CDF7 /* AuthManager.swift in Sources */,
 				04732CD12CF23B5000C3CDF7 /* Model.swift in Sources */,
 				04CD02C92CF3AA8D004E854C /* DialerViewController.swift in Sources */,
 				04B495482CF109BD00A7E3BA /* VoicemailView.swift in Sources */,
