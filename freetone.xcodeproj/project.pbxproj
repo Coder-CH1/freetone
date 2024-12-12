@@ -162,7 +162,7 @@
 				04732CCE2CF23B3700C3CDF7 /* NetworkManager.swift */,
 				0467016A2CEE0D240018029C /* Delegates */,
 				0467016C2CEE0D430018029C /* ReusableViews */,
-				0467016B2CEE0D350018029C /* UI */,
+				0467016B2CEE0D350018029C /* Controllers */,
 				047132952CEF9524004BC266 /* GetANewNumberViewController.swift */,
 				0467013B2CEDDE330018029C /* Assets.xcassets */,
 				0467013D2CEDDE330018029C /* LaunchScreen.storyboard */,
@@ -197,13 +197,13 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		0467016B2CEE0D350018029C /* UI */ = {
+		0467016B2CEE0D350018029C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				047132972CEF9547004BC266 /* UserRegistration */,
 				0471329A2CEF9597004BC266 /* TabBarVC */,
 			);
-			path = UI;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		0467016C2CEE0D430018029C /* ReusableViews */ = {
