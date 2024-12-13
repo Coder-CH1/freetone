@@ -138,16 +138,16 @@ class SignInViewController: UIViewController {
     
     // MARK: - Method that logs in users, implementing singleton pattern design -
     @objc func loginUser() {
-        NetworkManager.shared.email = emailTextField.textField.text ?? ""
-        NetworkManager.shared.password = passwordTextField.textField.text ?? ""
+        AuthManager.shared.email = emailTextField.textField.text ?? ""
+        AuthManager.shared.password = passwordTextField.textField.text ?? ""
         
         Task {
-            await NetworkManager.shared.login()
-            if NetworkManager.shared.errorMessage.isEmpty {
+            await AuthManager.shared.login()
+            if AuthManager.shared.errorMessage.isEmpty {
                 let vc = TabBarViewController()
                 present(vc, animated: false)
             } else {
-                let alert = UIAlertController(title: "Error", message: NetworkManager.shared.errorMessage, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: AuthManager.shared.errorMessage, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default))
                 self.present(alert, animated: true)
             }
