@@ -145,6 +145,7 @@ class SignInViewController: UIViewController {
             await AuthManager.shared.login()
             if AuthManager.shared.errorMessage.isEmpty {
                 let vc = TabBarViewController()
+                vc.modalPresentationStyle = .fullScreen
                 present(vc, animated: false)
             } else {
                 let alert = UIAlertController(title: "Error", message: AuthManager.shared.errorMessage, preferredStyle: .alert)
