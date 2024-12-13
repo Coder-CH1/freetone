@@ -114,7 +114,7 @@ class SignInViewController: UIViewController {
         signupButton.translatesAutoresizingMaskIntoConstraints = false
         
         loginButton.addTarget(self, action: #selector(loginUser), for: .touchUpInside)
-        signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+        signupButton.addTarget(self, action: #selector(navigateToSignup), for: .touchUpInside)
     }
     
     // MARK: - Method to listens and changes the background color of the button -
@@ -155,7 +155,8 @@ class SignInViewController: UIViewController {
         }
     }
     
-    @objc func signupButtonTapped() {
+    //MARK: -
+    @objc func navigateToSignup() {
         let vc = RegisterWithEmailViewController()
         navigationController?.pushViewController(vc, animated: false)
     }
