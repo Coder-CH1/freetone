@@ -103,8 +103,14 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
             let img = UIImageView(image: UIImage(systemName: "person.circle"))
             img.translatesAutoresizingMaskIntoConstraints = false
             
+            if let profileImageUrl = AuthManager.shared.currentUser?.profileImageUrl, let url = URL(string: profileImageUrl) {
+                img.load(url: url)
+            } else {
+                img.image = UIImage(systemName: "person.circle")
+            }
+                
             let label = UILabel()
-            label.text = "user"
+            label.text = AuthManager.shared.currentUser?.email
             label.textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
             label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -198,3 +204,16 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     }
 }
 
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}

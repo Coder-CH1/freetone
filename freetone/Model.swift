@@ -10,9 +10,11 @@ import Foundation
 class User {
     var email: String
     var id: String
+    var profileImageUrl: String
     
-    init(email: String, id: String) {
+    init(email: String, id: String, profileImageUrl: String) {
         self.email = email
         self.id = id
+        self.profileImageUrl = profileImageUrl
     }
 }
