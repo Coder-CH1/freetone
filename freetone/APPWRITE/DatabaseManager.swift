@@ -30,8 +30,19 @@ class DatabaseManager {
         return database
     }()
     
-    func createCollection() async {
-        
+    func createCollection(user: User) async {
+        let collectionId = "users"
+        let databaseId = "default"
+        do {
+        let document = try await database.createDocument(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                documentId: ID.unique(),
+                data: user.toDictionary())
+            print("Document created with ID: \(document.id)")
+        } catch {
+            print("Error creating document \(error.localizedDescription)")
+        }
     }
     
     func fetchUser() async {

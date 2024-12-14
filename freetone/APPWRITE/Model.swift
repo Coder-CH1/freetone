@@ -17,4 +17,13 @@ class User {
         self.id = id
         self.profileImageUrl = profileImageUrl
     }
+    
+    //MARK: - Convert user object to a dictionary -
+    func toDictionary() -> [String: Any] {
+        return [
+            "email": self.email,
+            "id": self.id,
+            "profileImageUrl": self.profileImageUrl
+        ]
+    }
 }
