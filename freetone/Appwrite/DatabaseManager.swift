@@ -11,7 +11,7 @@ import NIO
 import UIKit
 
 class DatabaseManager {
-    //MARK: - Singleton design pattern to be shared to the adopted viewcontrollers -
+    //MARK: - Singleton design pattern -
     static let shared = DatabaseManager()
     
     private init() {}
