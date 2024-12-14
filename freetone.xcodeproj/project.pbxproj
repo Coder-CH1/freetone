@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				046701362CEDDE310018029C /* ViewController.swift */,
-				04B397362D0C8F3300952057 /* APPWRITE */,
+				04B397362D0C8F3300952057 /* Appwrite */,
 				0467016A2CEE0D240018029C /* Delegates */,
 				0467016C2CEE0D430018029C /* ReusableViews */,
 				0467016B2CEE0D350018029C /* Controllers */,
@@ -314,14 +314,14 @@
 			path = ProfileTableView;
 			sourceTree = "<group>";
 		};
-		04B397362D0C8F3300952057 /* APPWRITE */ = {
+		04B397362D0C8F3300952057 /* Appwrite */ = {
 			isa = PBXGroup;
 			children = (
 				04732CD02CF23B5000C3CDF7 /* Model.swift */,
 				04ABF8C32D0B2D0500538459 /* DatabaseManager.swift */,
 				04732CCE2CF23B3700C3CDF7 /* AuthManager.swift */,
 			);
-			path = APPWRITE;
+			path = Appwrite;
 			sourceTree = "<group>";
 		};
 		04B495422CF1091700A7E3BA /* Segments */ = {
