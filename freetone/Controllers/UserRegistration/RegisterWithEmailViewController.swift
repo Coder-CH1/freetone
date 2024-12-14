@@ -28,9 +28,10 @@ class RegisterWithEmailViewController: UIViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(regButton)
+        let subViews = [emailTextField, passwordTextField, regButton]
+        for subView in subViews {
+            view.addSubview(subView)
+        }
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),

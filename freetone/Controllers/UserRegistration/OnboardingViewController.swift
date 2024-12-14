@@ -154,17 +154,12 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = Int(pageIndex)
     }
     
-//    //MARK: - Method to configure the app logo -
-//    func configureAppLogo() {
-//
-//    }
-//
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        view.addSubview(stackView)
-        view.addSubview(getPhoneNumberBtn)
-        view.addSubview(loginBtn)
-        view.addSubview(privacyPolicyLabel)
+        let subViews = [stackView, getPhoneNumberBtn, loginBtn, privacyPolicyLabel]
+        for subView in subViews {
+            view.addSubview(subView)
+        }
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),

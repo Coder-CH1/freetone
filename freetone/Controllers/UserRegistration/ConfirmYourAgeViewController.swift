@@ -78,11 +78,10 @@ class ConfirmYourAgeViewController: UIViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        view.addSubview(stackView)
-        view.addSubview(titleLabel)
-        view.addSubview(subTitleLabel)
-        view.addSubview(noButton)
-        view.addSubview(yesButton)
+        let subViews = [stackView, titleLabel, subTitleLabel, noButton, yesButton]
+        for subView in subViews {
+            view.addSubview(subView)
+        }
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),

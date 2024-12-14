@@ -67,13 +67,10 @@ class SignInViewController: UIViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        view.addSubview(stackView)
-        view.addSubview(titleLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(forgotPasswordBtn)
-        view.addSubview(loginButton)
-        view.addSubview(signupButton)
+        let subViews = [stackView, titleLabel, emailTextField, passwordTextField, forgotPasswordBtn, loginButton, signupButton]
+        for subView in subViews {
+            view.addSubview(subView)
+        }
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
