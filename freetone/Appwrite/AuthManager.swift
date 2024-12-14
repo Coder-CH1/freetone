@@ -16,7 +16,7 @@ class AuthManager {
     
     private init() {}
     
-    //MARK: - Retrieve values from info.plist -
+    //MARK: - Retrieve project id values from info.plist -
     var projectID: String {
         guard let id = Bundle.main.object(forInfoDictionaryKey: "APPWRITE_PROJECT_ID") as? String else {
             fatalError("")
@@ -24,7 +24,7 @@ class AuthManager {
         return id
     }
     
-    //MARK: - Retrieve values from info.plist -
+    //MARK: - Retrieve endpoint values from info.plist -
     var endPoint: String {
         guard let url = Bundle.main.object(forInfoDictionaryKey: "APPWRITE_ENDPOINT") as? String else {
             fatalError("")
