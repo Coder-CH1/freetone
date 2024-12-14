@@ -41,6 +41,7 @@
 		04A263432CF22A7C006CF114 /* InboxTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A263422CF22A7C006CF114 /* InboxTableView.swift */; };
 		04A263462CF22ABB006CF114 /* InboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A263452CF22ABB006CF114 /* InboxTableViewCell.swift */; };
 		04ABF8C42D0B2D0500538459 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABF8C32D0B2D0500538459 /* DatabaseManager.swift */; };
+		04B397382D0D899A00952057 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B397372D0D899A00952057 /* Protocols.swift */; };
 		04B495442CF1095C00A7E3BA /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495432CF1095C00A7E3BA /* AllView.swift */; };
 		04B495462CF1098900A7E3BA /* MissedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495452CF1098900A7E3BA /* MissedView.swift */; };
 		04B495482CF109BD00A7E3BA /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495472CF109BD00A7E3BA /* VoicemailView.swift */; };
@@ -103,6 +104,7 @@
 		04A263422CF22A7C006CF114 /* InboxTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTableView.swift; sourceTree = "<group>"; };
 		04A263452CF22ABB006CF114 /* InboxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTableViewCell.swift; sourceTree = "<group>"; };
 		04ABF8C32D0B2D0500538459 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		04B397372D0D899A00952057 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		04B495432CF1095C00A7E3BA /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
 		04B495452CF1098900A7E3BA /* MissedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedView.swift; sourceTree = "<group>"; };
 		04B495472CF109BD00A7E3BA /* VoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailView.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				0467016C2CEE0D430018029C /* ReusableViews */,
 				0467016B2CEE0D350018029C /* Controllers */,
 				047132952CEF9524004BC266 /* GetANewNumberViewController.swift */,
+				04B397392D0D89AC00952057 /* Protocols */,
 				0467013B2CEDDE330018029C /* Assets.xcassets */,
 				0467013D2CEDDE330018029C /* LaunchScreen.storyboard */,
 				046701402CEDDE330018029C /* Info.plist */,
@@ -322,6 +325,14 @@
 				04732CCE2CF23B3700C3CDF7 /* AuthManager.swift */,
 			);
 			path = Appwrite;
+			sourceTree = "<group>";
+		};
+		04B397392D0D89AC00952057 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				04B397372D0D899A00952057 /* Protocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		04B495422CF1091700A7E3BA /* Segments */ = {
@@ -495,6 +506,7 @@
 				046701672CEE0CE20018029C /* Label.swift in Sources */,
 				049BBF042CF2089C0042941B /* ProfileTableView.swift in Sources */,
 				0486071E2CF70385000B5A46 /* CallViewController.swift in Sources */,
+				04B397382D0D899A00952057 /* Protocols.swift in Sources */,
 				047132A12CEF9609004BC266 /* InboxViewController.swift in Sources */,
 				047132942CEF94E4004BC266 /* SignInViewController.swift in Sources */,
 				04B495442CF1095C00A7E3BA /* AllView.swift in Sources */,

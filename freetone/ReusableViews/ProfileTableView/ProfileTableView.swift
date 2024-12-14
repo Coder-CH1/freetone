@@ -21,6 +21,7 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     private var items1: [String] = ["My Account", "My Numbers"]
     private var items2: [String] = ["Theme", "Notification", "Text", "Calls", "Voicemail Greeting"]
     var didSelectRowAt: ((IndexPath) -> Void)?
+    var profileTableViewDelegate: ProfileTableViewDelegate?
     
     ////BUTTON
     let logoutButton = Button(image: UIImage(), text: "Log Out", btnTitleColor: .white, backgroundColor: .black, radius: 8, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
@@ -200,6 +201,10 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     @objc func logoutUser() {
         Task {
             await AuthManager.shared.logout()
+            
+            if !AuthManager.shared.isLoggedIn {
+                profileTableViewDelegate?.didLogout()                
+            }
         }
     }
 }

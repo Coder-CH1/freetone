@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, ProfileTableViewDelegate {
     //MARK: - Objects -
     ////LABEL
     let titleLabel = Label(label: "Account & Settings", textColor: .white, font: UIFont.systemFont(ofSize: 16, weight: .bold))
@@ -47,6 +47,7 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
+        tableView.profileTableViewDelegate = self
         view.addSubview(customView)
         view.addSubview(tableView)
         customView.addSubview(titleLabel)
@@ -66,18 +67,10 @@ class ProfileViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-    func checkUserSession() {
-        Task {
-            await AuthManager.shared.checkSession()
-            if !AuthManager.shared.isLoggedIn {
-                navigateToLoginScreen()
-            }
-        }
-    }
-    
-    func navigateToLoginScreen() {
+
+    func didLogout() {
         let vc = SignInViewController()
-        navigationController?.pushViewController(vc, animated: false)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: false)
     }
 }

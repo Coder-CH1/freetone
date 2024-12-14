@@ -111,6 +111,11 @@ class AuthManager {
         do {
             _  = try await account.deleteSession(sessionId: "current")
             UserDefaults.standard.removeObject(forKey: "sessionToken")
+            await MainActor.run {
+                self.currentUser = nil
+                self.isLoggedIn = false
+                self.email = ""
+            }
         } catch {
             await MainActor.run {
                  print(error.localizedDescription)
