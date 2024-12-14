@@ -34,6 +34,7 @@ class DatabaseManager {
     func createCollection(user: User) async {
         let collectionId = "users"
         let databaseId = "default"
+        
         do {
         let document = try await database.createDocument(
                 databaseId: databaseId,
@@ -48,7 +49,24 @@ class DatabaseManager {
         }
     }
     
-    //MARK: -  -
+    //MARK: - Fetch All documents in a Collection -
+    func fetchAllDocuments() async {
+        let collectionId = "users"
+        let databaseId = "default"
+        
+        do {
+            let documents = try await database.listDocuments(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                queries: []
+            )
+            for document in documents.documents {
+                print("Document in collection fetched successfully: \(document)")
+            }
+        } catch {
+            print("Error fetching documents: \(error.localizedDescription)")
+        }
+    }
     
     //MARK: - Fetch document by ID -
     func fetchDocumentById(documentId: String) async {
