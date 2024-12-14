@@ -16,12 +16,31 @@ class AuthManager {
     
     private init() {}
     
-    //MARK: -
-    let client = Client()
-        .setEndpoint("https://cloud.appwrite.io/v1")
-        .setProject("6746f883000a071f1c3f")
+    //MARK: - Retrieve values from info.plist -
+    var projectID: String {
+        guard let id = Bundle.main.object(forInfoDictionaryKey: "APPWRITE_PROJECT_ID") as? String else {
+            fatalError("")
+        }
+        return id
+    }
+    
+    //MARK: - Retrieve values from info.plist -
+    var endPoint: String {
+        guard let url = Bundle.main.object(forInfoDictionaryKey: "APPWRITE_ENDPOINT") as? String else {
+            fatalError("")
+        }
+        return url
+    }
+    
+    //MARK: - Lazy initialization of client -
+    lazy var client: Client = {
+        let client = Client()
+            .setEndpoint(endPoint)
+            .setProject(projectID)
+        return client
+    }()
 
-    //MARK: -
+    //MARK: - Lazy initialization of account -
     lazy var account: Account = {
         let account = Account(client)
         return account
@@ -35,7 +54,7 @@ class AuthManager {
     @Published var sessionToken: String?
     @Published var isLoggedIn: Bool = false
     
-    //MARK: - FETCHING USER -
+    //MARK: - FETCHING USER INFO -
     func getUser() async {
         do {
             let user = try await account.get()
