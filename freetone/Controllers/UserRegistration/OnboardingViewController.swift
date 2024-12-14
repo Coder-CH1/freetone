@@ -103,7 +103,6 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             let imageView = UIImageView(frame: CGRect(x: view.bounds.width * CGFloat(index), y: 100, width: UIScreen.main.bounds.width, height: 200))
             imageView.image = UIImage(named: imageLogo)
             imageView.contentMode = .scaleAspectFit
-            imageView.heightAnchor.constraint(equalToConstant: 300).isActive = true
             scrollView.addSubview(imageView)
             
             
