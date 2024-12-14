@@ -25,9 +25,9 @@ class DatabaseManager {
     }()
 
     //MARK: - Lazy initialization of account -
-    lazy var account: Account = {
-        let account = Account(client)
-        return account
+    lazy var database: Databases = {
+        let database = Databases(client)
+        return database
     }()
     
     func createCollection() async {
