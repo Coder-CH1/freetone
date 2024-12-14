@@ -86,13 +86,11 @@ class SignInViewController: UIViewController {
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 50),
-            emailTextField.widthAnchor.constraint(equalToConstant: 300),
             
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-            passwordTextField.widthAnchor.constraint(equalToConstant: 300),
             
             forgotPasswordBtn.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
             forgotPasswordBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -101,7 +99,6 @@ class SignInViewController: UIViewController {
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             loginButton.heightAnchor.constraint(equalToConstant: 55),
-            loginButton.widthAnchor.constraint(equalToConstant: 300),
             
             signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
             signupButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
