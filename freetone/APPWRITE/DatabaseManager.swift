@@ -30,6 +30,7 @@ class DatabaseManager {
         return database
     }()
     
+    //MARK: - Create document in a Collection -
     func createCollection(user: User) async {
         let collectionId = "users"
         let databaseId = "default"
@@ -38,14 +39,65 @@ class DatabaseManager {
                 databaseId: databaseId,
                 collectionId: collectionId,
                 documentId: ID.unique(),
-                data: user.toDictionary())
+                data: user.toDictionary(),
+                permissions: ["read('any')"]
+        )
             print("Document created with ID: \(document.id)")
         } catch {
             print("Error creating document \(error.localizedDescription)")
         }
     }
     
-    func fetchUser() async {
+    //MARK: -  -
+    
+    //MARK: - Fetch document by ID -
+    func fetchDocumentById(documentId: String) async {
+        let collectionId = "users"
+        let databaseId = "default"
         
+        do {
+            let document = try await database.getDocument(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                documentId: documentId)
+            print("Document fetched successfully: \(document)")
+        } catch {
+            print("Error fetching document: \(error.localizedDescription)")
+        }
+    }
+    
+    //MARK: - Update document by ID -
+    func updateDocument(documentId: String, user: User) async {
+        let collectionId = "users"
+        let databaseId = "default"
+        
+        do {
+            let updatedDocument = try await database.updateDocument(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                documentId: documentId,
+                data: user.toDictionary(),
+                permissions: ["read('any')"]
+            )
+            print("Document upddated successfully: \(updatedDocument)")
+        } catch {
+            print("Error updating document: \(error.localizedDescription)")
+        }
+    }
+    
+    //MARK: - Delete document by ID -
+    func deleteDocument(documentId: String) async {
+        let collectionId = "users"
+        let databaseId = "default"
+        
+        do {
+           _ = try await database.deleteDocument(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                documentId: documentId)
+            print("Document deleted successfully with ID: \(documentId)")
+        } catch {
+            print("Error deleting document: \(error.localizedDescription)")
+        }
     }
 }
