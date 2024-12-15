@@ -37,7 +37,7 @@ class RegisterWithEmailViewController: UIViewController {
         setupTextFieldListeners()
     }
     
-    // MARK: - Subviews and Layout -
+    //MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         let subViews = [emailTextField, passwordTextField, regButton]
         for subView in subViews {
@@ -116,6 +116,7 @@ class RegisterWithEmailViewController: UIViewController {
         }
     }
     
+    //MARK: - Method to toggle the password visibility -
     @objc func togglePasswordVisibility() {
         passwordTextField.textField.isSecureTextEntry.toggle()
         

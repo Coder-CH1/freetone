@@ -175,13 +175,13 @@ class SignInViewController: UIViewController {
         }
     }
     
-    //MARK: -
+    //MARK: - Navigate to signup screen -
     @objc func navigateToSignup() {
         let vc = RegisterWithEmailViewController()
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    //MARK: -
+    //MARK: - Method to toggle the password visibility -
     @objc func togglePasswordVisibility() {
         passwordTextField.textField.isSecureTextEntry.toggle()
         
