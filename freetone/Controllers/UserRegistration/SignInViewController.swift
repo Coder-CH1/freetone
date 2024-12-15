@@ -40,17 +40,6 @@ class SignInViewController: UIViewController {
         return stack
     }()
     
-    ////UIBUTTON
-    fileprivate var togglePasswordVisibilityButton: UIButton {
-        let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        let eyeIcon = UIImage(systemName: "eye.fill")
-        btn.setImage(eyeIcon, for: .normal)
-        btn.tintColor = .white
-        btn.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
-        return btn
-    }
-    
     ////LABEL
     let titleLabel = Label(label: "Welcome back! \n\n Log in below.", textColor: .white, font: UIFont.systemFont(ofSize: 18, weight: .black))
     
@@ -117,12 +106,9 @@ class SignInViewController: UIViewController {
         forgotPasswordBtn.translatesAutoresizingMaskIntoConstraints = false
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         signupButton.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         loginButton.addTarget(self, action: #selector(loginUser), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(navigateToSignup), for: .touchUpInside)
-        
-        passwordTextField.textField.rightView = togglePasswordVisibilityButton
-        passwordTextField.textField.rightViewMode = .always
     }
     
     // MARK: - Method to listens and changes the background color of the button -
@@ -174,17 +160,9 @@ class SignInViewController: UIViewController {
         }
     }
     
-    //MARK: - Navigate to signup screen -
+    //MARK: -
     @objc func navigateToSignup() {
         let vc = RegisterWithEmailViewController()
         navigationController?.pushViewController(vc, animated: false)
-    }
-    
-    //MARK: - Method to toggle the password visibility -
-    @objc func togglePasswordVisibility() {
-        passwordTextField.textField.isSecureTextEntry.toggle()
-        
-        let imgName = passwordTextField.textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
-        togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
     }
 }

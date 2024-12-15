@@ -13,6 +13,7 @@ class FloatingTextField: UIView {
     // MARK: - Objects properties -
     var textField: UITextField!
     var floatingLabel: UILabel!
+    var togglePasswordVisibilityButton: UIButton!
     var isFloatingLabelVisible = false
     
     // MARK: - Object property and value initialization -
@@ -33,6 +34,18 @@ class FloatingTextField: UIView {
         textField.autocorrectionType = .no
         textField.isSecureTextEntry = isSecureTextEntry
         textField.delegate = self
+        
+        if isSecureTextEntry {
+            togglePasswordVisibilityButton = UIButton()
+            togglePasswordVisibilityButton.translatesAutoresizingMaskIntoConstraints = false
+            let eyeIcon = UIImage(systemName: "eye.fill")
+            togglePasswordVisibilityButton.setImage(eyeIcon, for: .normal)
+            togglePasswordVisibilityButton.tintColor = .white
+            togglePasswordVisibilityButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+            
+            textField.rightView = togglePasswordVisibilityButton
+            textField.rightViewMode = .always
+        }
         
         textField.layer.borderWidth = CGFloat(borderWidth)
         textField.layer.borderColor = borderColor.cgColor
@@ -99,7 +112,13 @@ class FloatingTextField: UIView {
             isFloatingLabelVisible = false
         }
     }
-    
+    //MARK: -
+    @objc func togglePasswordVisibility() {
+        textField.isSecureTextEntry.toggle()
+        
+        let imgName = textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
+        togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
+    }
 }
 
 // MARK: - UITextFieldDelegate Implementation -
