@@ -146,8 +146,20 @@ class SignInViewController: UIViewController {
     
     // MARK: - Method that logs in users, implementing singleton pattern design -
     @objc func loginUser() {
-        AuthManager.shared.email = emailTextField.textField.text ?? ""
-        AuthManager.shared.password = passwordTextField.textField.text ?? ""
+        let email = emailTextField.textField.text ?? ""
+        let password = passwordTextField.textField.text ?? ""
+        
+        ////VALIDATE THAT BOTH EMAIL AND PASSWORD NON-EMPTY
+        guard !email.isEmpty, !password.isEmpty else {
+            let alert = UIAlertController(title: "Error", message: "Please enter both email and password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+            return
+        }
+        
+        ////SET THE EMAIL AND PASSWORD
+        AuthManager.shared.email = email
+        AuthManager.shared.password = password
         
         Task {
             await AuthManager.shared.login()
