@@ -82,7 +82,6 @@ class RegisterWithEmailViewController: UIViewController {
             regButton.setTitleColor(UIColor.white, for: .normal)
         } else {
             regButton.backgroundColor = .darkGray
-            //loginButton.isEnabled = false
         }
     }
     

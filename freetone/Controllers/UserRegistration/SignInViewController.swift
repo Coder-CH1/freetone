@@ -140,7 +140,6 @@ class SignInViewController: UIViewController {
             loginButton.setTitleColor(UIColor.white, for: .normal)
         } else {
             loginButton.backgroundColor = .darkGray
-            //loginButton.isEnabled = false
         }
     }
     
