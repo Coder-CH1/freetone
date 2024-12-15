@@ -43,8 +43,14 @@ class FloatingTextField: UIView {
             togglePasswordVisibilityButton.tintColor = .white
             togglePasswordVisibilityButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
             
-            textField.rightView = togglePasswordVisibilityButton
-            textField.rightViewMode = .always
+            textField.addSubview(togglePasswordVisibilityButton)
+            
+            NSLayoutConstraint.activate([
+                togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
+                togglePasswordVisibilityButton.widthAnchor.constraint(equalToConstant: 24),
+                togglePasswordVisibilityButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
+                togglePasswordVisibilityButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -20)
+            ])
         }
         
         textField.layer.borderWidth = CGFloat(borderWidth)
@@ -118,6 +124,10 @@ class FloatingTextField: UIView {
         
         let imgName = textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
         togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
+        
+        UIView.animate(withDuration: 0.2) {
+            self.textField.layoutIfNeeded()
+        }
     }
 }
 
