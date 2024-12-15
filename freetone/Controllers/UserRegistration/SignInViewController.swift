@@ -46,7 +46,7 @@ class SignInViewController: UIViewController {
         btn.translatesAutoresizingMaskIntoConstraints = false
         let eyeIcon = UIImage(systemName: "eye.fill")
         btn.setImage(eyeIcon, for: .normal)
-        btn.tintColor = .gray
+        btn.tintColor = .white
         btn.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
         return btn
     }
@@ -117,7 +117,7 @@ class SignInViewController: UIViewController {
         forgotPasswordBtn.translatesAutoresizingMaskIntoConstraints = false
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         signupButton.translatesAutoresizingMaskIntoConstraints = false
-        
+    
         loginButton.addTarget(self, action: #selector(loginUser), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(navigateToSignup), for: .touchUpInside)
         

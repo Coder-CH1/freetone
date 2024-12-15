@@ -25,7 +25,7 @@ class RegisterWithEmailViewController: UIViewController {
         btn.translatesAutoresizingMaskIntoConstraints = false
         let eyeIcon = UIImage(systemName: "eye.fill")
         btn.setImage(eyeIcon, for: .normal)
-        btn.tintColor = .gray
+        btn.tintColor = .white
         btn.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
         return btn
     }
