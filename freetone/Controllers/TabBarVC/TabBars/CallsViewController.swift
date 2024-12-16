@@ -76,10 +76,10 @@ class CallsViewController: UIViewController {
         }
         NSLayoutConstraint.activate([
             customView.topAnchor.constraint(equalTo: view.topAnchor),
-            customView.heightAnchor.constraint(equalToConstant: 210),
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            customView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+            customView.heightAnchor.constraint(equalToConstant: 250),
+            //customView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             
             label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -20),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
@@ -132,6 +132,12 @@ class CallsViewController: UIViewController {
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
         segmentedControlIndicatorView.frame = CGRect(x: -20, y: 42, width: segmentedWidth * 1.68, height: 2)
         customView.addSubview(segmentedControlIndicatorView)
+        
+        NSLayoutConstraint.activate([
+            segmentedControlIndicatorView.heightAnchor.constraint(equalToConstant: 2),
+            segmentedControlIndicatorView.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor, multiplier: 1.2 / CGFloat(segmentedControl.numberOfSegments)),
+            segmentedControlIndicatorView.bottomAnchor.constraint(equalTo: segmentedControl.bottomAnchor)
+        ])
     }
     
     //MARK: - The segmented control event functionality that selects either of the segments -
