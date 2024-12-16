@@ -226,7 +226,7 @@ extension UIImageView {
                 }
             } else  {
                 DispatchQueue.main.async {
-                    self.image = UIImage(systemName: "person.circle")
+                    self?.image = UIImage(systemName: "person.circle")
                 }
             }
         }
