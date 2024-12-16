@@ -15,7 +15,7 @@ class SignInViewController: UIViewController {
         btn.translatesAutoresizingMaskIntoConstraints = false
         let eyeIcon = UIImage(systemName: "eye.fill")
         btn.setImage(eyeIcon, for: .normal)
-        btn.tintColor = .white
+        btn.tintColor = .gray
         btn.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
        return btn
     }()
@@ -149,7 +149,7 @@ class SignInViewController: UIViewController {
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
         
-        navigationController?.navigationBar.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)        
+        navigationController?.navigationBar.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         navigationController?.pushViewController(vc, animated: false)
     }
     
