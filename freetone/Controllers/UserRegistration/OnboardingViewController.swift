@@ -37,7 +37,8 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         btn.setTitle("Get a phone number", for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
-        btn.layer.cornerRadius = 8
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        btn.layer.cornerRadius = 12
         return btn
     }()
     
@@ -46,9 +47,10 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("Log in", for: .normal)
-        btn.setTitleColor(.white, for: .normal)
-        btn.layer.cornerRadius = 8
+        btn.setTitleColor(UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), for: .normal)
+        btn.layer.cornerRadius = 12
         btn.layer.borderWidth = 2
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         btn.layer.borderColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0).cgColor
         return btn
     }()
@@ -125,7 +127,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
     func configurePageControl() {
         pageControl.numberOfPages = 3
         pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = .white
         pageControl.pageIndicatorTintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         pageControl.frame = CGRect(x: 0, y: 450, width: view.frame.size.width, height: 50)
         view.addSubview(pageControl)
@@ -167,17 +169,17 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
             appLogo.heightAnchor.constraint(equalToConstant: 50),
             
             getPhoneNumberBtn.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 380),
-            getPhoneNumberBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            getPhoneNumberBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            getPhoneNumberBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            getPhoneNumberBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             getPhoneNumberBtn.heightAnchor.constraint(equalToConstant: 50),
             
             loginBtn.topAnchor.constraint(equalTo: getPhoneNumberBtn.bottomAnchor, constant: 20),
-            loginBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            loginBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            loginBtn.heightAnchor.constraint(equalToConstant: 50),
+            loginBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            loginBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            loginBtn.heightAnchor.constraint(equalToConstant: 45),
             
             privacyPolicyLabel.topAnchor.constraint(equalTo: loginBtn.bottomAnchor, constant: 20),
-            privacyPolicyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            privacyPolicyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             privacyPolicyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
         
