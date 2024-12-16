@@ -51,8 +51,6 @@ class FloatingTextField: UIView {
             NSLayoutConstraint.activate([
                 togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
                 togglePasswordVisibilityButton.widthAnchor.constraint(equalToConstant: 24),
-                togglePasswordVisibilityButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
-                togglePasswordVisibilityButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -50)
             ])
         }
         
