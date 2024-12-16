@@ -25,10 +25,10 @@ class SignInViewController: UIViewController {
     let titleLabel = Label(label: "Welcome back! \n\n Log in below.", textColor: .white, font: UIFont.systemFont(ofSize: 18, weight: .black))
     
     ////TEXTFIELD
-    let emailTextField = FloatingTextField(placeHolder: "Enter your valid email address", isSecureTextEntry: false, radius: 5, background: .clear, borderWidth: 2, borderColor: .red)
+    let emailTextField = FloatingTextField(placeHolder: "Enter your valid email address", isSecureTextEntry: false, radius: 5, background: .clear, borderWidth: 2, borderColor: .gray)
     
     ////TEXTFIELD
-    let passwordTextField = FloatingTextField(placeHolder: "Create your password", isSecureTextEntry: true, radius: 5, background: .clear, borderWidth: 2, borderColor: .red)
+    let passwordTextField = FloatingTextField(placeHolder: "Create your password", isSecureTextEntry: true, radius: 5, background: .clear, borderWidth: 2, borderColor: .gray)
     
     ////BUTTON
     let forgotPasswordBtn = Button(image: UIImage(), text: "Forgot your password?", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
@@ -51,24 +51,24 @@ class SignInViewController: UIViewController {
         }
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             
             emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
-            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             emailTextField.heightAnchor.constraint(equalToConstant: 50),
             
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
             
             forgotPasswordBtn.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-            forgotPasswordBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            forgotPasswordBtn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             
             loginButton.topAnchor.constraint(equalTo: forgotPasswordBtn.bottomAnchor, constant: 20),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             loginButton.heightAnchor.constraint(equalToConstant: 55),
             
             togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
@@ -83,6 +83,7 @@ class SignInViewController: UIViewController {
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         
         loginButton.addTarget(self, action: #selector(loginUser), for: .touchUpInside)
+        forgotPasswordBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     }
     
     // MARK: - Method to listens and changes the background color of the button -

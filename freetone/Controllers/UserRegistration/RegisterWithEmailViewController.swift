@@ -11,10 +11,10 @@ class RegisterWithEmailViewController: UIViewController {
     
     //MARK: - Objects -
     ////TEXTFIELD
-    let emailTextField = FloatingTextField(placeHolder: "Enter your valid email address", isSecureTextEntry: false, radius: 5, background: .clear, borderWidth: 2, borderColor: .red)
+    let emailTextField = FloatingTextField(placeHolder: "Enter your valid email address", isSecureTextEntry: false, radius: 5, background: .clear, borderWidth: 2, borderColor: .gray)
     
     ////TEXTFIELD
-    let passwordTextField = FloatingTextField(placeHolder: "Create your password", isSecureTextEntry: true, radius: 5, background: .clear, borderWidth: 2, borderColor: .red)
+    let passwordTextField = FloatingTextField(placeHolder: "Create your password", isSecureTextEntry: true, radius: 5, background: .clear, borderWidth: 2, borderColor: .gray)
     
     ////BUTTON
     let regButton = Button(image: UIImage(), text: "Start calling & texting", btnTitleColor: .gray, backgroundColor: .darkGray, radius: 10, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
@@ -45,18 +45,18 @@ class RegisterWithEmailViewController: UIViewController {
         }
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             emailTextField.heightAnchor.constraint(equalToConstant: 50),
             
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             passwordTextField.heightAnchor.constraint(equalToConstant: 50),
             
             regButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 40),
-            regButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            regButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            regButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            regButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             regButton.heightAnchor.constraint(equalToConstant: 55),
             
             togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
