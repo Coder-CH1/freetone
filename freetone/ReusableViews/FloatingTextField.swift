@@ -13,9 +13,7 @@ class FloatingTextField: UIView {
     // MARK: - Objects properties -
     var textField: UITextField!
     var floatingLabel: UILabel!
-    var togglePasswordVisibilityButton: UIButton!
     var isFloatingLabelVisible = false
-    var iconClick = true
     
     // MARK: - Object property and value initialization -
     init(placeHolder: String, isSecureTextEntry: Bool, radius: CGFloat, background: UIColor, borderWidth: Int, borderColor: UIColor) {
@@ -35,27 +33,6 @@ class FloatingTextField: UIView {
         textField.autocorrectionType = .no
         textField.isSecureTextEntry = isSecureTextEntry
         textField.delegate = self
-        
-//        if isSecureTextEntry {
-//            togglePasswordVisibilityButton = UIButton()
-//            togglePasswordVisibilityButton.translatesAutoresizingMaskIntoConstraints = false
-//            let eyeIcon = UIImage(systemName: "eye.fill")
-//            togglePasswordVisibilityButton.setImage(eyeIcon, for: .normal)
-//            togglePasswordVisibilityButton.tintColor = .white
-//            togglePasswordVisibilityButton.backgroundColor = .red
-//            togglePasswordVisibilityButton.isUserInteractionEnabled = true
-//            self.isUserInteractionEnabled = true
-//
-//            textField.addSubview(togglePasswordVisibilityButton)
-//            NSLayoutConstraint.activate([
-//                togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
-//                togglePasswordVisibilityButton.widthAnchor.constraint(equalToConstant: 24),
-//                togglePasswordVisibilityButton.topAnchor.constraint(equalTo: textField.topAnchor, constant: 20),
-//                togglePasswordVisibilityButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -20),
-//
-//            ])
-//            togglePasswordVisibilityButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
-//        }
         
         textField.layer.borderWidth = CGFloat(borderWidth)
         textField.layer.borderColor = borderColor.cgColor
@@ -122,17 +99,6 @@ class FloatingTextField: UIView {
             isFloatingLabelVisible = false
         }
     }
-//    //MARK: -
-//    @objc func togglePasswordVisibility() {
-//            textField.isSecureTextEntry.toggle()
-//            
-//            let imgName = textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
-//            togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
-//            
-//            UIView.animate(withDuration: 0.2) {
-//                self.textField.layoutIfNeeded()
-//            }
-//    }
 }
 
 // MARK: - UITextFieldDelegate Implementation -

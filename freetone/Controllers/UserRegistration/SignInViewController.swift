@@ -10,36 +10,6 @@ import UIKit
 class SignInViewController: UIViewController {
     
     //MARK: - Objects -
-    ////UIImageView
-    fileprivate lazy var appLogo: UIImageView = {
-        let logo = UIImageView(image: UIImage(named: "logo"))
-        logo.translatesAutoresizingMaskIntoConstraints = false
-        logo.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
-        logo.contentMode = .scaleAspectFit
-        return logo
-    }()
-    
-    ////LABEL
-    fileprivate lazy var appLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "FreeTone"
-        label.textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        return label
-    }()
-    
-    ////STACKVIEW
-    fileprivate lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [appLogo, appLabel])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.spacing = -80
-        stack.alignment = .center
-        return stack
-    }()
-    
     fileprivate lazy var togglePasswordVisibilityButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -77,16 +47,12 @@ class SignInViewController: UIViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        let subViews = [stackView, titleLabel, emailTextField, passwordTextField, forgotPasswordBtn, loginButton, signupButton,togglePasswordVisibilityButton]
+        let subViews = [titleLabel, emailTextField, passwordTextField, forgotPasswordBtn, loginButton, signupButton,togglePasswordVisibilityButton]
         for subView in subViews {
             view.addSubview(subView)
         }
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
-            
-            titleLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             
             emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
@@ -178,6 +144,12 @@ class SignInViewController: UIViewController {
     //MARK: -
     @objc func navigateToSignup() {
         let vc = RegisterWithEmailViewController()
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+        
+        navigationController?.navigationBar.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)        
         navigationController?.pushViewController(vc, animated: false)
     }
     
