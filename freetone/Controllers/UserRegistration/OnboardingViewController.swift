@@ -189,10 +189,10 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         let vc = SignInViewController()
         
         let backItem = UIBarButtonItem()
-        backItem.title = ""
+        backItem.title = "Login with email"
         navigationItem.backBarButtonItem = backItem
         
-        navigationController?.navigationBar.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
+        navigationController?.navigationBar.tintColor = .gray
         navigationController?.pushViewController(vc, animated: false)
     }
 }

@@ -122,7 +122,7 @@ class ConfirmYourAgeViewController: UIViewController {
         subTitleLabel.textColor = .lightGray
         let vc = RegisterWithEmailViewController()
         self.navigationController?.pushViewController(vc, animated: false)
-        let backButton = UIBarButtonItem(title: "     Register with email", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "Register with email", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = backButton
         backButton.tintColor = .white
     }

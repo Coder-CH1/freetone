@@ -10,6 +10,7 @@ import UIKit
 class SignInViewController: UIViewController {
     
     //MARK: - Objects -
+    ////BUTTON
     fileprivate lazy var togglePasswordVisibilityButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +18,7 @@ class SignInViewController: UIViewController {
         btn.setImage(eyeIcon, for: .normal)
         btn.tintColor = .gray
         btn.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
-       return btn
+        return btn
     }()
     
     ////LABEL
@@ -141,27 +142,27 @@ class SignInViewController: UIViewController {
         }
     }
     
-    //MARK: -
+    //MARK: - Navigate to sign up screen -
     @objc func navigateToSignup() {
-        let vc = RegisterWithEmailViewController()
+        let vc = ConfirmYourAgeViewController()
         
         let backItem = UIBarButtonItem()
-        backItem.title = ""
+        backItem.title = "Confirm your age"
         navigationItem.backBarButtonItem = backItem
         
-        navigationController?.navigationBar.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
+        navigationController?.navigationBar.tintColor = .gray
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    //MARK: -
+    //MARK: - Method to toggle the visibility of the password -
     @objc func togglePasswordVisibility() {
         passwordTextField.textField.isSecureTextEntry.toggle()
-            
+        
         let imgName = passwordTextField.textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
-            togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
-            
-            UIView.animate(withDuration: 0.2) {
-                self.passwordTextField.textField.layoutIfNeeded()
-            }
+        togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
+        
+        UIView.animate(withDuration: 0.2) {
+            self.passwordTextField.textField.layoutIfNeeded()
+        }
     }
 }

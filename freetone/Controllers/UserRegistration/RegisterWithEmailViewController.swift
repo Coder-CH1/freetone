@@ -19,6 +19,7 @@ class RegisterWithEmailViewController: UIViewController {
     ////BUTTON
     let regButton = Button(image: UIImage(), text: "Start calling & texting", btnTitleColor: .gray, backgroundColor: .darkGray, radius: 10, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
+    ////BUTTON
     fileprivate lazy var togglePasswordVisibilityButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +27,7 @@ class RegisterWithEmailViewController: UIViewController {
         btn.setImage(eyeIcon, for: .normal)
         btn.tintColor = .gray
         btn.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
-       return btn
+        return btn
     }()
     
     //MARK: - Life Cycle -
@@ -47,7 +48,7 @@ class RegisterWithEmailViewController: UIViewController {
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 50),
-        
+            
             passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -116,15 +117,15 @@ class RegisterWithEmailViewController: UIViewController {
         }
     }
     
-    //MARK: -
+    //MARK: - Method to toggle the visibility of the password -
     @objc func togglePasswordVisibility() {
         passwordTextField.textField.isSecureTextEntry.toggle()
-            
+        
         let imgName = passwordTextField.textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
-            togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
-            
-            UIView.animate(withDuration: 0.2) {
-                self.passwordTextField.textField.layoutIfNeeded()
-            }
+        togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
+        
+        UIView.animate(withDuration: 0.2) {
+            self.passwordTextField.textField.layoutIfNeeded()
+        }
     }
 }
