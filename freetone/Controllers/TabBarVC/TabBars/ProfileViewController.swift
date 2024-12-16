@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController, ProfileTableViewDelegate {
         return customView
     }()
     
-    ////TABLEVIEW
+    //// CUSTOMTABLEVIEW
     private let tableView = ProfileTableView(frame: .zero)
     
     //MARK: - Life Cycle -
