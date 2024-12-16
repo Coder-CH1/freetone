@@ -46,8 +46,6 @@ class SignInViewController: UIViewController {
         let eyeIcon = UIImage(systemName: "eye.fill")
         btn.setImage(eyeIcon, for: .normal)
         btn.tintColor = .white
-        btn.backgroundColor = .red
-        btn.isUserInteractionEnabled = true
         btn.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
        return btn
     }()
