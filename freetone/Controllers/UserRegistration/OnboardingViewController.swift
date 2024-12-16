@@ -130,7 +130,6 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         pageControl.frame = CGRect(x: 0, y: 450, width: view.frame.size.width, height: 50)
         view.addSubview(pageControl)
         pageControlSelectedAction()
-        //configureAppLogo()
     }
     
     //MARK: - This action when tapped shows each page control.
@@ -183,6 +182,7 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         ])
         
         loginBtn.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        getPhoneNumberBtn.addTarget(self, action: #selector(confirmAgeButtonTapped), for: .touchUpInside)
     }
     
     @objc func loginButtonTapped() {
@@ -190,6 +190,18 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate {
         
         let backItem = UIBarButtonItem()
         backItem.title = "Login with email"
+        navigationItem.backBarButtonItem = backItem
+        
+        navigationController?.navigationBar.tintColor = .gray
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    //MARK: - Navigate to sign up screen -
+    @objc func confirmAgeButtonTapped() {
+        let vc = ConfirmYourAgeViewController()
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Confirm your age"
         navigationItem.backBarButtonItem = backItem
         
         navigationController?.navigationBar.tintColor = .gray

@@ -36,9 +36,6 @@ class SignInViewController: UIViewController {
     ////BUTTON
     let loginButton = Button(image: UIImage(), text: "Log in", btnTitleColor: .gray, backgroundColor: .darkGray, radius: 10, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
-    ////BUTTON
-    let signupButton = Button(image: UIImage(), text: "Confirm your age", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
-    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +45,7 @@ class SignInViewController: UIViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        let subViews = [titleLabel, emailTextField, passwordTextField, forgotPasswordBtn, loginButton, signupButton,togglePasswordVisibilityButton]
+        let subViews = [titleLabel, emailTextField, passwordTextField, forgotPasswordBtn, loginButton, togglePasswordVisibilityButton]
         for subView in subViews {
             view.addSubview(subView)
         }
@@ -74,9 +71,6 @@ class SignInViewController: UIViewController {
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             loginButton.heightAnchor.constraint(equalToConstant: 55),
             
-            signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
-            signupButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            
             togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
             togglePasswordVisibilityButton.widthAnchor.constraint(equalToConstant: 24),
             togglePasswordVisibilityButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 20),
@@ -87,10 +81,8 @@ class SignInViewController: UIViewController {
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         forgotPasswordBtn.translatesAutoresizingMaskIntoConstraints = false
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        signupButton.translatesAutoresizingMaskIntoConstraints = false
         
         loginButton.addTarget(self, action: #selector(loginUser), for: .touchUpInside)
-        signupButton.addTarget(self, action: #selector(navigateToSignup), for: .touchUpInside)
     }
     
     // MARK: - Method to listens and changes the background color of the button -
@@ -153,18 +145,6 @@ class SignInViewController: UIViewController {
                 AlertManager.shared.showAlert(on: self, title: "Error", message: AuthManager.shared.errorMessage)
             }
         }
-    }
-    
-    //MARK: - Navigate to sign up screen -
-    @objc func navigateToSignup() {
-        let vc = ConfirmYourAgeViewController()
-        
-        let backItem = UIBarButtonItem()
-        backItem.title = "Confirm your age"
-        navigationItem.backBarButtonItem = backItem
-        
-        navigationController?.navigationBar.tintColor = .gray
-        navigationController?.pushViewController(vc, animated: false)
     }
     
     //MARK: - Method to toggle the visibility of the password -
