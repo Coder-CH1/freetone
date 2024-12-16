@@ -18,6 +18,7 @@ import UIKit
 class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Object initialization -
+    var users: [User] = []
     private var items1: [String] = ["My Account", "My Numbers"]
     private var items2: [String] = ["Theme", "Notification", "Text", "Calls", "Voicemail Greeting"]
     var didSelectRowAt: ((IndexPath) -> Void)?
@@ -71,7 +72,12 @@ class ProfileTableView: UITableView, UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
         if indexPath.section == 0 {
-            cell.textLabel?.text = ""
+            let user = users.first
+            cell.textLabel?.text = user?.email ?? "No email"
+            
+            let profileImageView = UIImageView()
+            profileImageView.load(url: URL(string: user?.profileImageUrl ?? "")!)
+            cell.contentView.addSubview(profileImageView)
             cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
         } else if indexPath.section == 1 {
             cell.textLabel?.text = items1[indexPath.row]
