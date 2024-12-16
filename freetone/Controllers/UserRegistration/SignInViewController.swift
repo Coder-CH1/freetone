@@ -40,6 +40,18 @@ class SignInViewController: UIViewController {
         return stack
     }()
     
+    fileprivate lazy var togglePasswordVisibilityButton: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        let eyeIcon = UIImage(systemName: "eye.fill")
+        btn.setImage(eyeIcon, for: .normal)
+        btn.tintColor = .white
+        btn.backgroundColor = .red
+        btn.isUserInteractionEnabled = true
+        btn.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+       return btn
+    }()
+    
     ////LABEL
     let titleLabel = Label(label: "Welcome back! \n\n Log in below.", textColor: .white, font: UIFont.systemFont(ofSize: 18, weight: .black))
     
@@ -67,7 +79,7 @@ class SignInViewController: UIViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        let subViews = [stackView, titleLabel, emailTextField, passwordTextField, forgotPasswordBtn, loginButton, signupButton]
+        let subViews = [stackView, titleLabel, emailTextField, passwordTextField, forgotPasswordBtn, loginButton, signupButton,togglePasswordVisibilityButton]
         for subView in subViews {
             view.addSubview(subView)
         }
@@ -99,6 +111,11 @@ class SignInViewController: UIViewController {
             
             signupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
             signupButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
+            togglePasswordVisibilityButton.widthAnchor.constraint(equalToConstant: 24),
+            togglePasswordVisibilityButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 20),
+            togglePasswordVisibilityButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -20),
         ])
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -164,5 +181,17 @@ class SignInViewController: UIViewController {
     @objc func navigateToSignup() {
         let vc = RegisterWithEmailViewController()
         navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    //MARK: -
+    @objc func togglePasswordVisibility() {
+        passwordTextField.textField.isSecureTextEntry.toggle()
+            
+        let imgName = passwordTextField.textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
+            togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
+            
+            UIView.animate(withDuration: 0.2) {
+                self.passwordTextField.textField.layoutIfNeeded()
+            }
     }
 }

@@ -19,6 +19,18 @@ class RegisterWithEmailViewController: UIViewController {
     ////BUTTON
     let regButton = Button(image: UIImage(), text: "Start calling & texting", btnTitleColor: .gray, backgroundColor: .darkGray, radius: 10, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
+    fileprivate lazy var togglePasswordVisibilityButton: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        let eyeIcon = UIImage(systemName: "eye.fill")
+        btn.setImage(eyeIcon, for: .normal)
+        btn.tintColor = .white
+        btn.backgroundColor = .red
+        btn.isUserInteractionEnabled = true
+        btn.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+       return btn
+    }()
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +40,7 @@ class RegisterWithEmailViewController: UIViewController {
     
     //MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        let subViews = [emailTextField, passwordTextField, regButton]
+        let subViews = [emailTextField, passwordTextField, regButton, togglePasswordVisibilityButton]
         for subView in subViews {
             view.addSubview(subView)
         }
@@ -47,6 +59,11 @@ class RegisterWithEmailViewController: UIViewController {
             regButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             regButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             regButton.heightAnchor.constraint(equalToConstant: 55),
+            
+            togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
+            togglePasswordVisibilityButton.widthAnchor.constraint(equalToConstant: 24),
+            togglePasswordVisibilityButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 20),
+            togglePasswordVisibilityButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor, constant: -20),
         ])
         regButton.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -99,5 +116,17 @@ class RegisterWithEmailViewController: UIViewController {
                 self.present(alert, animated: true)
             }
         }
+    }
+    
+    //MARK: -
+    @objc func togglePasswordVisibility() {
+        passwordTextField.textField.isSecureTextEntry.toggle()
+            
+        let imgName = passwordTextField.textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
+            togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
+            
+            UIView.animate(withDuration: 0.2) {
+                self.passwordTextField.textField.layoutIfNeeded()
+            }
     }
 }
