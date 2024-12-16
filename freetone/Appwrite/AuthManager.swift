@@ -120,12 +120,14 @@ class AuthManager {
             )
             await MainActor.run {
                 isLoggedIn = true
+                self.sessionToken = session.userId
                 self.errorMessage = "Logged in successfully: \(session.userId)"
             }            
             UserDefaults.standard.set(session.userId, forKey: "sessionToken")
         } catch {
             await MainActor.run {
-                print(error.localizedDescription)
+                isLoggedIn = false
+                self.errorMessage = "Login failed: \(error.localizedDescription)"
             }
         }
     }

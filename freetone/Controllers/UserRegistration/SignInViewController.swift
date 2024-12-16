@@ -137,17 +137,18 @@ class SignInViewController: UIViewController {
         AuthManager.shared.password = password
         
         Task {
+            await AuthManager.shared.login()
             await AuthManager.shared.checkSession()
             
             if AuthManager.shared.isLoggedIn {
-                await AuthManager.shared.logout()
-            }
-            
-            await AuthManager.shared.login()
-            if AuthManager.shared.errorMessage.isEmpty {
-                let vc = TabBarViewController()
-                vc.modalPresentationStyle = .fullScreen
-                present(vc, animated: false)
+                UserDefaults.standard.set(AuthManager.shared.sessionToken, forKey: "sessionToken")
+                
+                DispatchQueue.main.async {
+                    let vc = TabBarViewController()
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: false)
+                    self.navigationController?.viewControllers.removeAll()
+                }
             } else {
                 AlertManager.shared.showAlert(on: self, title: "Error", message: AuthManager.shared.errorMessage)
             }
