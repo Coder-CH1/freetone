@@ -92,15 +92,20 @@ class RegisterWithEmailViewController: UIViewController {
         let email = emailTextField.textField.text ?? ""
         let password = passwordTextField.textField.text ?? ""
         
+        var errorMessage = [String]()
+        
         ////VALIDATE THAT BOTH EMAIL AND PASSWORD NON-EMPTY
-        guard email.isValidEmail else {
-            AlertManager.shared.showAlert(on: self, title: "Error", message: "Please enter a valid email address")
-            return
+        if !email.isValidEmail {
+            errorMessage.append("Please enter a valid email address")
+        }
+
+        if !password.isValidPassword {
+            errorMessage.append("Password must contain at least lowercase letter, one uppercase letter, one digit, and be at least 8 characters long")
         }
         
-        guard password.isValidPassword else {
-            AlertManager.shared.showAlert(on: self, title: "Error", message: "Password must contain at least lowercase letter, one uppercase letter, one digit, and be at least 8 characters long")
-            return
+        if !errorMessage.isEmpty {
+            let combinedMessage = errorMessage.joined(separator: "\n")
+            AlertManager.shared.showAlert(on: self, title: "Error", message: combinedMessage)
         }
         
         ////SET THE EMAIL AND PASSWORD
