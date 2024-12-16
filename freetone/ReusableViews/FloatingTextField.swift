@@ -15,6 +15,7 @@ class FloatingTextField: UIView {
     var floatingLabel: UILabel!
     var togglePasswordVisibilityButton: UIButton!
     var isFloatingLabelVisible = false
+    var iconClick = true
     
     // MARK: - Object property and value initialization -
     init(placeHolder: String, isSecureTextEntry: Bool, radius: CGFloat, background: UIColor, borderWidth: Int, borderColor: UIColor) {
@@ -43,14 +44,15 @@ class FloatingTextField: UIView {
             togglePasswordVisibilityButton.tintColor = .white
             togglePasswordVisibilityButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
             togglePasswordVisibilityButton.backgroundColor = .red
+            togglePasswordVisibilityButton.isUserInteractionEnabled = true
             
-            textField.rightView = togglePasswordVisibilityButton
-            textField.rightViewMode = .always
             textField.addSubview(togglePasswordVisibilityButton)
-            
             NSLayoutConstraint.activate([
                 togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
                 togglePasswordVisibilityButton.widthAnchor.constraint(equalToConstant: 24),
+                togglePasswordVisibilityButton.topAnchor.constraint(equalTo: textField.topAnchor, constant: 20),
+                togglePasswordVisibilityButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -10),
+
             ])
         }
         
@@ -121,13 +123,15 @@ class FloatingTextField: UIView {
     }
     //MARK: -
     @objc func togglePasswordVisibility() {
-        textField.isSecureTextEntry.toggle()
-        
-        let imgName = textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
-        togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
-        
-        UIView.animate(withDuration: 0.2) {
-            self.textField.layoutIfNeeded()
+        if textField.isSecureTextEntry {
+            textField.isSecureTextEntry.toggle()
+            
+            let imgName = textField.isSecureTextEntry ? "eye.fill" : "eye.slash.fill"
+            togglePasswordVisibilityButton.setImage(UIImage(systemName: imgName), for: .normal)
+            
+            UIView.animate(withDuration: 0.2) {
+                self.textField.layoutIfNeeded()
+            }
         }
     }
 }
