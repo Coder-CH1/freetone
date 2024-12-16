@@ -42,14 +42,17 @@ class FloatingTextField: UIView {
             togglePasswordVisibilityButton.setImage(eyeIcon, for: .normal)
             togglePasswordVisibilityButton.tintColor = .white
             togglePasswordVisibilityButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+            togglePasswordVisibilityButton.backgroundColor = .red
             
+            textField.rightView = togglePasswordVisibilityButton
+            textField.rightViewMode = .always
             textField.addSubview(togglePasswordVisibilityButton)
             
             NSLayoutConstraint.activate([
                 togglePasswordVisibilityButton.heightAnchor.constraint(equalToConstant: 20),
                 togglePasswordVisibilityButton.widthAnchor.constraint(equalToConstant: 24),
                 togglePasswordVisibilityButton.centerYAnchor.constraint(equalTo: textField.centerYAnchor),
-                togglePasswordVisibilityButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -20)
+                togglePasswordVisibilityButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor, constant: -50)
             ])
         }
         
