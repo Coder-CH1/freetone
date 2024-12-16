@@ -45,6 +45,7 @@
 		04B495442CF1095C00A7E3BA /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495432CF1095C00A7E3BA /* AllView.swift */; };
 		04B495462CF1098900A7E3BA /* MissedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495452CF1098900A7E3BA /* MissedView.swift */; };
 		04B495482CF109BD00A7E3BA /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495472CF109BD00A7E3BA /* VoicemailView.swift */; };
+		04B5E02A2D10612B0029934A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5E0292D10612B0029934A /* Extensions.swift */; };
 		04CD02C62CF3A9F3004E854C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD02C52CF3A9F3004E854C /* TextField.swift */; };
 		04CD02C92CF3AA8D004E854C /* DialerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD02C82CF3AA8D004E854C /* DialerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -108,6 +109,7 @@
 		04B495432CF1095C00A7E3BA /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
 		04B495452CF1098900A7E3BA /* MissedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedView.swift; sourceTree = "<group>"; };
 		04B495472CF109BD00A7E3BA /* VoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailView.swift; sourceTree = "<group>"; };
+		04B5E0292D10612B0029934A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		04CD02C52CF3A9F3004E854C /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		04CD02C82CF3AA8D004E854C /* DialerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +163,7 @@
 		046701312CEDDE310018029C /* freetone */ = {
 			isa = PBXGroup;
 			children = (
+				04B5E0282D1061040029934A /* Extensions */,
 				046701362CEDDE310018029C /* ViewController.swift */,
 				04B397362D0C8F3300952057 /* Appwrite */,
 				0467016A2CEE0D240018029C /* Delegates */,
@@ -346,6 +349,14 @@
 			path = Segments;
 			sourceTree = "<group>";
 		};
+		04B5E0282D1061040029934A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04B5E0292D10612B0029934A /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		04CD02C72CF3AA4C004E854C /* PhoneNumberViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +522,7 @@
 				047132942CEF94E4004BC266 /* SignInViewController.swift in Sources */,
 				04B495442CF1095C00A7E3BA /* AllView.swift in Sources */,
 				046701652CEDE5F90018029C /* OnboardingViewController.swift in Sources */,
+				04B5E02A2D10612B0029934A /* Extensions.swift in Sources */,
 				047132962CEF9524004BC266 /* GetANewNumberViewController.swift in Sources */,
 				047132902CEF948F004BC266 /* ConfirmYourAgeViewController.swift in Sources */,
 				04CD02C62CF3A9F3004E854C /* TextField.swift in Sources */,
