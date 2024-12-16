@@ -37,7 +37,7 @@ class SignInViewController: UIViewController {
     let loginButton = Button(image: UIImage(), text: "Log in", btnTitleColor: .gray, backgroundColor: .darkGray, radius: 10, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     ////BUTTON
-    let signupButton = Button(image: UIImage(), text: "Sign up", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let signupButton = Button(image: UIImage(), text: "Confirm your age", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     //MARK: - Life Cycle -
     override func viewDidLoad() {
