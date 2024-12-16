@@ -117,10 +117,13 @@ class SignInViewController: UIViewController {
         let password = passwordTextField.textField.text ?? ""
         
         ////VALIDATE THAT BOTH EMAIL AND PASSWORD NON-EMPTY
-        guard !email.isEmpty, !password.isEmpty else {
-            let alert = UIAlertController(title: "Error", message: "Please enter both email and password", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true)
+        guard email.isValidEmail else {
+            AlertManager.shared.showAlert(on: self, title: "Error", message: "Please enter a valid email address")
+            return
+        }
+        
+        guard password.isValidPassword else {
+            AlertManager.shared.showAlert(on: self, title: "Error", message: "Password must contain at least lowercase letter, one uppercase letter, one digit, and be at least 8 characters long")
             return
         }
         
@@ -141,9 +144,7 @@ class SignInViewController: UIViewController {
                 vc.modalPresentationStyle = .fullScreen
                 present(vc, animated: false)
             } else {
-                let alert = UIAlertController(title: "Error", message: AuthManager.shared.errorMessage, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default))
-                self.present(alert, animated: true)
+                AlertManager.shared.showAlert(on: self, title: "Error", message: AuthManager.shared.errorMessage)
             }
         }
     }
