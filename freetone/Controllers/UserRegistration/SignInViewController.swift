@@ -129,6 +129,12 @@ class SignInViewController: UIViewController {
         AuthManager.shared.password = password
         
         Task {
+            await AuthManager.shared.checkSession()
+            
+            if AuthManager.shared.isLoggedIn {
+                await AuthManager.shared.logout()
+            }
+            
             await AuthManager.shared.login()
             if AuthManager.shared.errorMessage.isEmpty {
                 let vc = TabBarViewController()
