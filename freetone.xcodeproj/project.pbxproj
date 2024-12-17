@@ -45,6 +45,7 @@
 		04B495442CF1095C00A7E3BA /* AllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495432CF1095C00A7E3BA /* AllView.swift */; };
 		04B495462CF1098900A7E3BA /* MissedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495452CF1098900A7E3BA /* MissedView.swift */; };
 		04B495482CF109BD00A7E3BA /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495472CF109BD00A7E3BA /* VoicemailView.swift */; };
+		04B4CC1E2D11D84F00D8267B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CC1D2D11D84F00D8267B /* MenuTableViewCell.swift */; };
 		04B5E02A2D10612B0029934A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5E0292D10612B0029934A /* Extensions.swift */; };
 		04B5E02C2D1064940029934A /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5E02B2D1064940029934A /* AlertManager.swift */; };
 		04CD02C62CF3A9F3004E854C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD02C52CF3A9F3004E854C /* TextField.swift */; };
@@ -110,6 +111,7 @@
 		04B495432CF1095C00A7E3BA /* AllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllView.swift; sourceTree = "<group>"; };
 		04B495452CF1098900A7E3BA /* MissedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissedView.swift; sourceTree = "<group>"; };
 		04B495472CF109BD00A7E3BA /* VoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailView.swift; sourceTree = "<group>"; };
+		04B4CC1D2D11D84F00D8267B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		04B5E0292D10612B0029934A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		04B5E02B2D1064940029934A /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		04CD02C52CF3A9F3004E854C /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -256,7 +258,7 @@
 				0471329C2CEF95D6004BC266 /* StoreViewController.swift */,
 				0471329E2CEF95F4004BC266 /* CallsViewController.swift */,
 				04B495422CF1091700A7E3BA /* Segments */,
-				047132A02CEF9609004BC266 /* InboxViewController.swift */,
+				04B4CC172D11D51800D8267B /* InboxViewController */,
 				047132A22CEF9617004BC266 /* NumbersViewController.swift */,
 				047132A42CEF962A004BC266 /* ProfileViewController.swift */,
 			);
@@ -349,6 +351,23 @@
 				04B495472CF109BD00A7E3BA /* VoicemailView.swift */,
 			);
 			path = Segments;
+			sourceTree = "<group>";
+		};
+		04B4CC172D11D51800D8267B /* InboxViewController */ = {
+			isa = PBXGroup;
+			children = (
+				047132A02CEF9609004BC266 /* InboxViewController.swift */,
+				04B4CC1C2D11D82800D8267B /* MenuTableViewCell */,
+			);
+			path = InboxViewController;
+			sourceTree = "<group>";
+		};
+		04B4CC1C2D11D82800D8267B /* MenuTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				04B4CC1D2D11D84F00D8267B /* MenuTableViewCell.swift */,
+			);
+			path = MenuTableViewCell;
 			sourceTree = "<group>";
 		};
 		04B5E0282D1061040029934A /* Extensions */ = {
@@ -536,6 +555,7 @@
 				047132AB2CF098CB004BC266 /* FloatingTextField.swift in Sources */,
 				047132922CEF94AE004BC266 /* RegisterWithEmailViewController.swift in Sources */,
 				04732CCF2CF23B3700C3CDF7 /* AuthManager.swift in Sources */,
+				04B4CC1E2D11D84F00D8267B /* MenuTableViewCell.swift in Sources */,
 				04732CD12CF23B5000C3CDF7 /* Model.swift in Sources */,
 				04CD02C92CF3AA8D004E854C /* DialerViewController.swift in Sources */,
 				04B495482CF109BD00A7E3BA /* VoicemailView.swift in Sources */,

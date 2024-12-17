@@ -10,6 +10,8 @@ import UIKit
 class InboxViewController: UIViewController {
     
     ////TABLEVIEW
+    let menuView = UIView()
+    let customView = UIView()
     private let tableView = InboxTableView(frame: .zero)
     
     ////BUTTON
@@ -37,7 +39,6 @@ class InboxViewController: UIViewController {
         }
         
         //MARK: - Create a custom view for the navigation bar -
-        let customView = UIView()
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.backgroundColor = .darkGray
         view.addSubview(customView)
@@ -90,6 +91,8 @@ class InboxViewController: UIViewController {
             stack.leadingAnchor.constraint(equalTo: label.safeAreaLayoutGuide.trailingAnchor, constant: 130),
             stack.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
         ])
+        infoBtn.addTarget(self, action: #selector(showMenuTapped), for: .touchUpInside)
+        setupMenuView()
         setSubviewsAndLayout()
     }
     
@@ -125,5 +128,61 @@ class InboxViewController: UIViewController {
     //MARK: -
     @objc func btn3tapped() {
         
+    }
+    
+    func setupMenuView() {
+        menuView.backgroundColor = .white
+        menuView.layer.shadowOpacity = 0.3
+        menuView.layer.shadowOffset = CGSize(width: -3, height: 3)
+        menuView.translatesAutoresizingMaskIntoConstraints = false
+        
+        customView.addSubview(menuView)
+        
+        let menuTableView = UITableView()
+        menuTableView.translatesAutoresizingMaskIntoConstraints = false
+        menuTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
+        menuTableView.dataSource = self
+        menuTableView.delegate = self
+        
+        menuView.addSubview(menuTableView)
+        
+        NSLayoutConstraint.activate([
+            menuView.topAnchor.constraint(equalTo: customView.topAnchor, constant: -300),
+            menuView.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: 200),
+            menuView.widthAnchor.constraint(equalToConstant: 200),
+            menuView.heightAnchor.constraint(equalToConstant: 200),
+            
+            menuTableView.topAnchor.constraint(equalTo: menuView.topAnchor),
+            menuTableView.leadingAnchor.constraint(equalTo: menuView.leadingAnchor),
+            menuTableView.trailingAnchor.constraint(equalTo: menuView.trailingAnchor),
+            menuTableView.bottomAnchor.constraint(equalTo: menuView.bottomAnchor),
+        ])
+    }
+    @objc func showMenuTapped() {
+        UIView.animate(withDuration: 0.3) {
+            self.menuView.transform = CGAffineTransform(translationX: -180, y: 200)
+        }
+    }
+    
+    func hideMenu() {
+        UIView.animate(withDuration: 0.3) {
+            self.menuView.transform = .identity
+        }
+    }
+}
+
+extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
+        cell.textLabel?.text = "Options \(indexPath.row) + 1"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        hideMenu()
     }
 }
