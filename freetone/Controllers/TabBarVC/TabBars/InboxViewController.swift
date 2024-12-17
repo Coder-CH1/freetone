@@ -63,7 +63,7 @@ class InboxViewController: UIViewController {
         callBtn.addTarget(self, action: #selector(btn2tapped), for: .touchUpInside)
         
         let infoBtn = UIButton(type: .system)
-        infoBtn.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        infoBtn.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         infoBtn.addTarget(self, action: #selector(btn3tapped), for: .touchUpInside)
         
         //MARK: - Create stackview for the three buttons items at the right side -
@@ -87,6 +87,7 @@ class InboxViewController: UIViewController {
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
             
             stack.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
+            stack.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 150),
             stack.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
         ])
         setSubviewsAndLayout()
