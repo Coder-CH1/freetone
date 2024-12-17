@@ -90,17 +90,14 @@ class CallsViewController: UIViewController {
             allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             allView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            allView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1),
             
             missedView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             missedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             missedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            missedView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1),
             
             voicemailView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             voicemailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             voicemailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            voicemailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1),
         ])
         missedView.isHidden =  true
         voicemailView.isHidden = true
