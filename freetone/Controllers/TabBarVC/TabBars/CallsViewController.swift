@@ -130,7 +130,6 @@ class CallsViewController: UIViewController {
         customView.addSubview(segmentedControlIndicatorView)
         
         NSLayoutConstraint.activate([
-            segmentedControlIndicatorView.heightAnchor.constraint(equalToConstant: 2),
             segmentedControlIndicatorView.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor, multiplier: 1.2 / CGFloat(segmentedControl.numberOfSegments)),
             segmentedControlIndicatorView.bottomAnchor.constraint(equalTo: segmentedControl.bottomAnchor)
         ])
