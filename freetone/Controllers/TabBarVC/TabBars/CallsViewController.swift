@@ -78,7 +78,7 @@ class CallsViewController: UIViewController {
             customView.topAnchor.constraint(equalTo: view.topAnchor),
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            //customView.widthAnchor.constraint(equalToConstant: view.bounds.width),
+            customView.widthAnchor.constraint(equalToConstant: view.bounds.width),
             
             label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -30),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
@@ -126,7 +126,7 @@ class CallsViewController: UIViewController {
     func setupSegmentedControlIndicator() {
         segmentedControlIndicatorView.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
-        segmentedControlIndicatorView.frame = CGRect(x: -20, y: 42, width: segmentedWidth * 1.68, height: 2)
+        segmentedControlIndicatorView.frame = CGRect(x: -15, y: 42, width: segmentedWidth * 1.68, height: 2)
         customView.addSubview(segmentedControlIndicatorView)
         
         NSLayoutConstraint.activate([
