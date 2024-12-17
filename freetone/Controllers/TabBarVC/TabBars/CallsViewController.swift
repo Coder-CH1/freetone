@@ -78,7 +78,6 @@ class CallsViewController: UIViewController {
             customView.topAnchor.constraint(equalTo: view.topAnchor),
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            customView.widthAnchor.constraint(equalToConstant: view.bounds.width),
             
             label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -30),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
