@@ -114,6 +114,15 @@ class CallsViewController: UIViewController {
         
         setupSegmentedControlIndicator()
         setupSegmentsTappedAction()
+        
+        dialButton.addTarget(self, action: #selector(dialbuttontapped), for: .touchUpInside)
+    }
+    
+    @objc func dialbuttontapped() {
+        let vc = DialerViewController()
+        
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     //MARK: - The tap button event that selects either the login view/signup view -

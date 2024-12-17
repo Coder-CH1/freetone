@@ -138,10 +138,10 @@ class DialerViewController: UIViewController {
             case "#":
                 phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "J"
             default:
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + digit
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             }
         } else {
-            phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + digit
+            phoneNumberLabel.text = (phoneNumberLabel.text ?? "") 
         }
         lastPressTime = currentTime
     }

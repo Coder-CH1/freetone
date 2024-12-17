@@ -87,7 +87,7 @@ class InboxViewController: UIViewController {
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
             
             stack.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
-            stack.leadingAnchor.constraint(equalTo: label.safeAreaLayoutGuide.trailingAnchor, constant: 120),
+            stack.leadingAnchor.constraint(equalTo: label.safeAreaLayoutGuide.trailingAnchor, constant: 130),
             stack.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
         ])
         setSubviewsAndLayout()
