@@ -118,7 +118,7 @@ class SignInViewController: UIViewController {
         }
 
         if !password.isValidPassword {
-            errorMessage.append("Password must contain at least lowercase letter, one uppercase letter, one digit, and be at least 8 characters long")
+            errorMessage.append("Password must contain at least lowercase letter, one uppercase letter, one digit, and be at least 6 characters long")
         }
         
         if !errorMessage.isEmpty {
