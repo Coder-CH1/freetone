@@ -78,32 +78,32 @@ class CallsViewController: UIViewController {
             customView.topAnchor.constraint(equalTo: view.topAnchor),
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            //customView.heightAnchor.constraint(equalToConstant: 250),
+            //customView.widthAnchor.constraint(equalToConstant: view.bounds.width),
             
-            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -20),
+            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -30),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
             
             segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
             segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 30),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 40),
             
             allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             allView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            allView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            //allView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             allView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1),
             
             missedView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             missedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             missedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            missedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            //missedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             missedView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1),
             
             voicemailView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             voicemailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             voicemailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            voicemailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            //voicemailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             voicemailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1),
         ])
         missedView.isHidden =  true

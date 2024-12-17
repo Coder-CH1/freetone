@@ -80,8 +80,9 @@ class InboxViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             customView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            customView.heightAnchor.constraint(equalToConstant: view.bounds.width),
-            customView.widthAnchor.constraint(equalToConstant: view.bounds.width),
+            customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            //customView.widthAnchor.constraint(equalToConstant: view.bounds.width),
             
             label.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
