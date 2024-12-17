@@ -61,7 +61,6 @@ class NumbersViewController: UIViewController {
             customView.topAnchor.constraint(equalTo: view.topAnchor),
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            //customView.widthAnchor.constraint(equalToConstant: view.bounds.width),
             
             titleLabel.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             titleLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
