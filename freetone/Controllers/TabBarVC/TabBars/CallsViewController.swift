@@ -85,7 +85,6 @@ class CallsViewController: UIViewController {
             segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
             segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 40),
             
             allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
