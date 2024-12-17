@@ -99,6 +99,7 @@ class SignInViewController: UIViewController {
             loginButton.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
             loginButton.isEnabled = true
             loginButton.setTitleColor(UIColor.white, for: .normal)
+            loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         } else {
             loginButton.backgroundColor = .darkGray
         }
