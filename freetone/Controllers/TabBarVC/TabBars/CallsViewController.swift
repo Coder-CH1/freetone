@@ -46,6 +46,8 @@ class CallsViewController: UIViewController {
         return segmentedControl
     }()
     
+    let dialButton = Button(image: UIImage(systemName: "circle.hexagongrid.fill"), text: "", btnTitleColor: .clear, backgroundColor: .systemPink, radius: 25, imageColor: .white, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +72,7 @@ class CallsViewController: UIViewController {
     func setSubviewsAndLayout() {
         customView.addSubview(label)
         customView.addSubview(segmentedControl)
-        let subviews = [customView, allView, missedView, voicemailView]
+        let subviews = [customView, allView, missedView, voicemailView, dialButton]
         for subview in subviews {
             view.addSubview(subview)
         }
@@ -97,6 +99,11 @@ class CallsViewController: UIViewController {
             voicemailView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
             voicemailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             voicemailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            dialButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            dialButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            dialButton.heightAnchor.constraint(equalToConstant: 50),
+            dialButton.widthAnchor.constraint(equalToConstant: 50),
         ])
         missedView.isHidden =  true
         voicemailView.isHidden = true
