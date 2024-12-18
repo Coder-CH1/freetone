@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ContactsUI
 //MARK: - UI -
 class InboxViewController: UIViewController {
     
@@ -150,7 +151,7 @@ class InboxViewController: UIViewController {
             menuView.topAnchor.constraint(equalTo: customView.topAnchor, constant: -300),
             menuView.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: 200),
             menuView.widthAnchor.constraint(equalToConstant: 200),
-            menuView.heightAnchor.constraint(equalToConstant: 200),
+            menuView.heightAnchor.constraint(equalToConstant: 120),
             
             menuTableView.topAnchor.constraint(equalTo: menuView.topAnchor),
             menuTableView.leadingAnchor.constraint(equalTo: menuView.leadingAnchor),
@@ -173,16 +174,37 @@ class InboxViewController: UIViewController {
 
 extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-        cell.textLabel?.text = "Options \(indexPath.row) + 1"
+        if indexPath.row == 0 {
+            cell.textLabel?.text = "Contacts"
+        } else {
+            cell.textLabel?.text = "Refresh"
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         hideMenu()
+        if indexPath.row == 0 {
+            let contactPicker = CNContactPickerViewController()
+            contactPicker.delegate = self
+            present(contactPicker, animated: true)
+        } else if indexPath.row == 1 {
+            print("Refresh")
+        }
+    }
+}
+
+extension InboxViewController: CNContactPickerDelegate {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        print("")
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        print("")
     }
 }
