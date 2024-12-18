@@ -31,10 +31,22 @@ class CallsViewController: UIViewController {
         let label = UILabel()
         label.text = "Calls"
         label.textColor = .white
+        label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    ////STACKVIEW
+    fileprivate lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [label, segmentedControl])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 5
+        stack.alignment = .center
+        return stack
+    }()
+    
     ////SEGMENTED CONTROL
     fileprivate lazy var segmentedControl: UISegmentedControl = {
         let items = ["ALL", "MISSED", "VOICEMAIL"]
@@ -74,8 +86,8 @@ class CallsViewController: UIViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        customView.addSubview(label)
-        customView.addSubview(segmentedControl)
+        customView.addSubview(stackView)
+//        customView.addSubview(segmentedControl)
         let subviews = [customView, allView, missedView, voicemailView, dialButton]
         for subview in subviews {
             view.addSubview(subview)
@@ -85,12 +97,10 @@ class CallsViewController: UIViewController {
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: 0),
-            label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
-            
-            segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
-            segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
-            segmentedControl.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 0),
+            stackView.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10),
             
             allView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
             allView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
