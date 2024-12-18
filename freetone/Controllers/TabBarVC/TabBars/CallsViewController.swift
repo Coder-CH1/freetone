@@ -121,13 +121,17 @@ class CallsViewController: UIViewController {
     @objc func dialbuttontapped() {
         let vc = DialerViewController()
         navigationController?.pushViewController(vc, animated: true)
-        let backItem = UIBarButtonItem(
-            image: UIImage(systemName: "xmark"),
-            style: .plain,
-            target: self,
-            action: #selector(backButtonTapped)
-        )
-        backItem.title = "Dial a number"
+        let backButton = UIButton(type: .system)
+        backButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        backButton.setTitle("Dial a number", for: .normal)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        
+        backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -25, bottom: 0, right: 0)
+        
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        let backItem = UIBarButtonItem(customView: backButton)
         vc.navigationItem.leftBarButtonItem = backItem
         
         navigationController?.navigationBar.tintColor = .gray
