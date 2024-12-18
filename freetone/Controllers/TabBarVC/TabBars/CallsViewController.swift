@@ -221,7 +221,7 @@ extension CallsViewController: CNContactPickerDelegate {
         if let phoneNumber = contact.phoneNumbers.first?.value.stringValue {
             let dialVC = DialerViewController()
             dialVC.selectedPhoneNumber = phoneNumber
-            navigationController?.pushViewController(dialVC, animated: true)
+            navigationController?.pushViewController(dialVC, animated: false)
         }
         print("")
     }
