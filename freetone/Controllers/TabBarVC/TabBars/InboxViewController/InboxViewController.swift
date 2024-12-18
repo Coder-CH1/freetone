@@ -166,24 +166,24 @@ class InboxViewController: UIViewController {
     
     //MARK: - Show menu -
     @objc func toggleMenuView() {
-       isMenuViewVisible = !isMenuViewVisible
-           UIView.animate(withDuration: 0.3) {
-               if self.isMenuViewVisible {
-                   self.menuView.transform = CGAffineTransform(translationX: 30, y: -20)
-               } else {
-                   self.menuView.transform = CGAffineTransform(translationX: 250, y: 0)
-               }
-           }
+        isMenuViewVisible = !isMenuViewVisible
+        UIView.animate(withDuration: 0.3) {
+            if self.isMenuViewVisible {
+                self.menuView.transform = CGAffineTransform(translationX: 30, y: -20)
+            } else {
+                self.menuView.transform = CGAffineTransform(translationX: 250, y: 0)
+            }
+        }
     }
     
     //MARK: - Using the method for fetching array of CNContact objects -
     func callGetContacts() {
         let contacts = ContactManager.shared.getContactFromCNContact()
-            for contact in contacts {
-                print(contact.middleName)
-                print(contact.familyName)
-                print(contact.givenName)
-            }
+        for contact in contacts {
+            print(contact.middleName)
+            print(contact.familyName)
+            print(contact.givenName)
+        }
     }
 }
 
@@ -207,7 +207,6 @@ extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if indexPath.row == 0 {
             let contactPicker = CNContactPickerViewController()
             contactPicker.delegate = self

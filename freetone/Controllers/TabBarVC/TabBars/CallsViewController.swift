@@ -174,11 +174,11 @@ class CallsViewController: UIViewController {
     //MARK: - Using the method for fetching array of CNContact objects -
     func callGetContacts() {
         let contacts = ContactManager.shared.getContactFromCNContact()
-            for contact in contacts {
-                print(contact.middleName)
-                print(contact.familyName)
-                print(contact.givenName)
-            }
+        for contact in contacts {
+            print(contact.middleName)
+            print(contact.familyName)
+            print(contact.givenName)
+        }
     }
     
     //MARK: - The tap button event that selects either the login view/signup view -

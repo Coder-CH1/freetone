@@ -156,7 +156,7 @@ class DialerViewController: UIViewController {
                 phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             }
         } else {
-            phoneNumberLabel.text = (phoneNumberLabel.text ?? "") 
+            phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
         }
         lastPressTime = currentTime
     }
