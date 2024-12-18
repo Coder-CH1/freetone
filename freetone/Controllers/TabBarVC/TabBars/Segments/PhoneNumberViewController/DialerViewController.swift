@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ContactsUI
 import Contacts
 
 // MARK: - UI -
@@ -54,7 +55,7 @@ class DialerViewController: UIViewController {
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            phoneNumberLabel.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 50),
+            phoneNumberLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             phoneNumberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             phoneNumberLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             phoneNumberLabel.heightAnchor.constraint(equalToConstant: 50)
@@ -65,7 +66,7 @@ class DialerViewController: UIViewController {
     func setupDialerButtons() {
         let rows = 3
         let columns = 3
-        let buttonSize: CGFloat = 80
+        let buttonSize: CGFloat = 70
         
         for i in 0..<digits.count {
             let row = i / rows
@@ -83,7 +84,7 @@ class DialerViewController: UIViewController {
             NSLayoutConstraint.activate([
                 btn.widthAnchor.constraint(equalToConstant: buttonSize),
                 btn.heightAnchor.constraint(equalToConstant: buttonSize),
-                btn.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 100 + CGFloat(row) * (buttonSize + 20)),
+                btn.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 50 + CGFloat(row) * (buttonSize + 10)),
                 btn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: CGFloat(column) * (buttonSize + 35) + 35)
             ])
         }
