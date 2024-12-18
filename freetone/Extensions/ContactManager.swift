@@ -8,6 +8,7 @@
 import Foundation
 import ContactsUI
 
+//MARK: - 
 class ContactManager {
     static let shared = ContactManager()
     
