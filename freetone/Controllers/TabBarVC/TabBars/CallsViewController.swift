@@ -35,7 +35,7 @@ class CallsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+    ////SEGMENTED CONTROL
     fileprivate lazy var segmentedControl: UISegmentedControl = {
         let items = ["ALL", "MISSED", "VOICEMAIL"]
         let segmentedControl = UISegmentedControl(items: items)
@@ -122,6 +122,7 @@ class CallsViewController: UIViewController {
         dialButton.addTarget(self, action: #selector(dialbuttontapped), for: .touchUpInside)
     }
     
+    //MARK: - Method for navigating, customizes navigation bar of the DialViewcontroller -
     @objc func dialbuttontapped() {
         let vc = DialerViewController()
         navigationController?.pushViewController(vc, animated: false)
@@ -148,16 +149,19 @@ class CallsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
     }
     
+    //MARK: - Method for navigating to the present viewcontroller -
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
     
+    //MARK: - Method that opens the contact picker viewcontroller -
     @objc func contactButtonTapped() {
         let contactPicker = CNContactPickerViewController()
         contactPicker.delegate = self
         present(contactPicker, animated: true)
     }
     
+    //MARK: - Using the method for fetching array of CNContact objects -
     func callGetContacts() {
         let contacts = self.getContactFromCNContact()
             for contact in contacts {
@@ -167,6 +171,7 @@ class CallsViewController: UIViewController {
             }
     }
     
+    //MARK: Method that fetches the array of CNContact objects -
     func getContactFromCNContact() -> [CNContact] {
         let contactStore = CNContactStore()
         let keysToFetch = [
@@ -235,6 +240,7 @@ class CallsViewController: UIViewController {
     }
 }
 
+//MARK: - Extension for protocol delegates for opening the device contact -
 extension CallsViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         print("")
