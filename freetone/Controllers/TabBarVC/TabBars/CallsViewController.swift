@@ -85,24 +85,24 @@ class CallsViewController: UIViewController {
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -30),
+            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: 0),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
             
-            segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
+            segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
             segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             
-            allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
-            allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            allView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            allView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
+            allView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
+            allView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             
-            missedView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
-            missedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            missedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            missedView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
+            missedView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
+            missedView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             
-            voicemailView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 15),
-            voicemailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            voicemailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            voicemailView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
+            voicemailView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
+            voicemailView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             
             dialButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             dialButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
