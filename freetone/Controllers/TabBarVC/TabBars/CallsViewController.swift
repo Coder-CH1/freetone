@@ -11,6 +11,7 @@ import Contacts
 //MARK: - UI -
 class CallsViewController: UIViewController {
     //MARK: - Objects -
+    let contactStore = CNContactStore()
     let allView = AllView()
     let missedView = MissedView()
     let voicemailView = VoicemailView()
@@ -53,6 +54,7 @@ class CallsViewController: UIViewController {
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        callGetContacts()
         setupNavigationBar()
     }
     
@@ -135,12 +137,12 @@ class CallsViewController: UIViewController {
         
         let backItem = UIBarButtonItem(customView: backButton)
         vc.navigationItem.leftBarButtonItem = backItem
-    
+        
         let contactButton = UIBarButtonItem(
-        image: UIImage(systemName: "person.crop.square"),
-        style: .plain,
-        target: self,
-        action: #selector(contactButtonTapped)
+            image: UIImage(systemName: "person.crop.square"),
+            style: .plain,
+            target: self,
+            action: #selector(contactButtonTapped)
         )
         vc.navigationItem.rightBarButtonItem = contactButton
         navigationController?.navigationBar.tintColor = .white
@@ -151,7 +153,51 @@ class CallsViewController: UIViewController {
     }
     
     @objc func contactButtonTapped() {
-        
+        let contactPicker = CNContactPickerViewController()
+        contactPicker.delegate = self
+        present(contactPicker, animated: true)
+    }
+    
+    func callGetContacts() {
+        let contacts = self.getContactFromCNContact()
+            for contact in contacts {
+                print(contact.middleName)
+                print(contact.familyName)
+                print(contact.givenName)
+            }
+    }
+    
+    func getContactFromCNContact() -> [CNContact] {
+        let contactStore = CNContactStore()
+        let keysToFetch = [
+            CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+            CNContactGivenNameKey,
+            CNContactMiddleNameKey,
+            CNContactFamilyNameKey,
+            CNContactEmailAddressesKey,
+        ] as [Any]
+        //Get all the containers
+        var allContainers: [CNContainer] = []
+        do {
+            allContainers = try contactStore.containers(matching: nil)
+        } catch {
+            print("Error fetching containers")
+        }
+        var results: [CNContact] = []
+        // Iterate all containers and append their contacts to our results array
+        for container in allContainers {
+            
+            let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
+            
+            do {
+                let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
+                results.append(contentsOf: containerResults)
+                
+            } catch {
+                print("Error fetching results for container")
+            }
+        }
+        return results
     }
     
     //MARK: - The tap button event that selects either the login view/signup view -
@@ -186,5 +232,15 @@ class CallsViewController: UIViewController {
         UIView.animate(withDuration: 0.2) {
             self.segmentedControlIndicatorView.frame.origin.x = indicatorX - 15
         }
+    }
+}
+
+extension CallsViewController: CNContactPickerDelegate {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        print("")
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        print("")
     }
 }
