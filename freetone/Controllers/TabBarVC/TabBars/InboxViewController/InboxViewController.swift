@@ -11,6 +11,7 @@ import ContactsUI
 class InboxViewController: UIViewController {
     
     ////TABLEVIEW
+    var menuTableView: UITableView!
     var isMenuViewVisible = false
     let menuView = UIView()
     let customView = UIView()
@@ -142,7 +143,7 @@ class InboxViewController: UIViewController {
         
         customView.addSubview(menuView)
         
-        let menuTableView = UITableView()
+        menuTableView = UITableView()
         menuTableView.translatesAutoresizingMaskIntoConstraints = false
         menuTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")
         menuTableView.dataSource = self
@@ -190,29 +191,32 @@ class InboxViewController: UIViewController {
 //MARK: - Extension for Tableview protocols -
 extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+            return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-        if indexPath.row == 0 {
-            cell.textLabel?.text = "Contacts"
-        } else {
-            cell.textLabel?.text = "Refresh"
-        }
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = .byWordWrapping
-        
-        return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
+            if indexPath.row == 0 {
+                cell.textLabel?.text = "Contacts"
+            } else {
+                cell.textLabel?.text = "Refresh"
+            }
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.lineBreakMode = .byWordWrapping
+            
+            return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            let contactPicker = CNContactPickerViewController()
-            contactPicker.delegate = self
-            present(contactPicker, animated: true)
-        } else if indexPath.row == 1 {
-            print("Refresh")
+        if tableView == menuView.subviews.first as? UITableView {
+            if indexPath.row == 0 {
+                print("0 index tapped")
+                let contactPicker = CNContactPickerViewController()
+                contactPicker.delegate = self
+                present(contactPicker, animated: false)
+            } else if indexPath.row == 1 {
+                print("Refresh")
+            }
         }
     }
 }
