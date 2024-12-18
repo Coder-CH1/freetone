@@ -85,7 +85,7 @@ class DialerViewController: UIViewController {
                 btn.widthAnchor.constraint(equalToConstant: buttonSize),
                 btn.heightAnchor.constraint(equalToConstant: buttonSize),
                 btn.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 50 + CGFloat(row) * (buttonSize + 10)),
-                btn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: CGFloat(column) * (buttonSize + 35) + 35)
+                btn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: CGFloat(column) * (buttonSize + 45) + 45)
             ])
         }
     }
