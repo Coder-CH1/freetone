@@ -120,9 +120,21 @@ class CallsViewController: UIViewController {
     
     @objc func dialbuttontapped() {
         let vc = DialerViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        let backItem = UIBarButtonItem(
+            image: UIImage(systemName: "xmark"),
+            style: .plain,
+            target: self,
+            action: #selector(backButtonTapped)
+        )
+        backItem.title = "Dial a number"
+        navigationItem.leftBarButtonItem = backItem
         
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        navigationController?.navigationBar.tintColor = .gray
+    }
+    
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     //MARK: - The tap button event that selects either the login view/signup view -

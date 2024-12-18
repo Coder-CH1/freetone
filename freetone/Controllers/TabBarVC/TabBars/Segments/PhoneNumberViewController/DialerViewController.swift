@@ -19,6 +19,16 @@ class DialerViewController: UIViewController {
     var lastPressTime: Date?
     let doublePressTime: TimeInterval = 0.3
     
+    //MARK: - Create a custom view for the navigation bar -
+    fileprivate lazy var customView: UIView = {
+        let customView = UIView()
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        customView.backgroundColor = .darkGray
+        navigationItem.titleView = customView
+        view.addSubview(customView)
+        return customView
+    }()
+    
     // MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +50,11 @@ class DialerViewController: UIViewController {
         view.addSubview(phoneNumberLabel)
         
         NSLayoutConstraint.activate([
-            phoneNumberLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            customView.topAnchor.constraint(equalTo: view.topAnchor),
+            customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            phoneNumberLabel.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 50),
             phoneNumberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             phoneNumberLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             phoneNumberLabel.heightAnchor.constraint(equalToConstant: 50)
