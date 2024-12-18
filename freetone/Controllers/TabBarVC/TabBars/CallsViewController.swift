@@ -218,6 +218,11 @@ class CallsViewController: UIViewController {
 //MARK: - Extension for protocol delegates for opening the device contact -
 extension CallsViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        if let phoneNumber = contact.phoneNumbers.first?.value.stringValue {
+            let dialVC = DialerViewController()
+            dialVC.selectedPhoneNumber = phoneNumber
+            navigationController?.pushViewController(dialVC, animated: true)
+        }
         print("")
     }
     

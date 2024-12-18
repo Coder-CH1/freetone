@@ -13,6 +13,7 @@ import Contacts
 class DialerViewController: UIViewController {
     
     // MARK: - Objects -
+    var selectedPhoneNumber: String!
     var phoneNumberLabel: UILabel!
     var digitButtons: [UIButton] = []
     let digits = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "*","0", "#"]
@@ -60,6 +61,9 @@ class DialerViewController: UIViewController {
             phoneNumberLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             phoneNumberLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
+        if let phoneNumber = selectedPhoneNumber {
+            phoneNumberLabel.text = phoneNumber
+        }
     }
     
     // MARK: - Customizing the buttons and setting the constraint -
