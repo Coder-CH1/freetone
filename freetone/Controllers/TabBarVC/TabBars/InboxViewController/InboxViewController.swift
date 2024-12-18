@@ -93,7 +93,7 @@ class InboxViewController: UIViewController {
             stack.leadingAnchor.constraint(equalTo: label.safeAreaLayoutGuide.trailingAnchor, constant: 130),
             stack.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
         ])
-        infoBtn.addTarget(self, action: #selector(backgroundTapped), for: .touchUpInside)
+        infoBtn.addTarget(self, action: #selector(toggleMenuView), for: .touchUpInside)
         setupMenuView()
         setSubviewsAndLayout()
     }
@@ -161,7 +161,7 @@ class InboxViewController: UIViewController {
             menuTableView.trailingAnchor.constraint(equalTo: menuView.trailingAnchor),
             menuTableView.bottomAnchor.constraint(equalTo: menuView.bottomAnchor),
         ])
-        menuView.transform = CGAffineTransform(translationX: 250, y: -80)
+        menuView.transform = CGAffineTransform(translationX: 250, y: 0)
     }
     
     //MARK: - Show menu -
@@ -169,17 +169,11 @@ class InboxViewController: UIViewController {
        isMenuViewVisible = !isMenuViewVisible
            UIView.animate(withDuration: 0.3) {
                if self.isMenuViewVisible {
-                   self.menuView.transform = .identity
+                   self.menuView.transform = CGAffineTransform(translationX: 30, y: -20)
                } else {
-                   self.menuView.transform = CGAffineTransform(translationX: 200, y: -80)
+                   self.menuView.transform = CGAffineTransform(translationX: 250, y: 0)
                }
            }
-    }
-    
-    @objc func backgroundTapped() {
-        if isMenuViewVisible {
-            toggleMenuView()
-        }
     }
     
     //MARK: - Using the method for fetching array of CNContact objects -
