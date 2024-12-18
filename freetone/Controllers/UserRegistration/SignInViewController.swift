@@ -7,7 +7,7 @@
 
 import UIKit
 //MARK: - UI -
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Objects -
     ////BUTTON
@@ -102,6 +102,15 @@ class SignInViewController: UIViewController {
             loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         } else {
             loginButton.backgroundColor = .darkGray
+        }
+    }
+    
+    //MARK: - Method to change the border color of the textfield when the editing begins -
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailTextField.textField {
+            emailTextField.layer.borderColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0).cgColor
+        } else if textField == passwordTextField.textField {
+            passwordTextField.layer.borderColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0).cgColor
         }
     }
     

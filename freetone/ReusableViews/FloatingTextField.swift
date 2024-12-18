@@ -99,16 +99,23 @@ class FloatingTextField: UIView {
             isFloatingLabelVisible = false
         }
     }
+    
+    //MARK: - Custom method to change the border color -
+    func setBorderColor(_ color: UIColor) {
+        textField.layer.borderColor = color.cgColor
+    }
 }
 
 // MARK: - UITextFieldDelegate Implementation -
 extension FloatingTextField: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         updateFloatingLabel()
+        setBorderColor(UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0))
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateFloatingLabel()
+        setBorderColor(.gray)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
