@@ -128,7 +128,7 @@ class CallsViewController: UIViewController {
             action: #selector(backButtonTapped)
         )
         backItem.title = "Dial a number"
-        navigationItem.leftBarButtonItem = backItem
+        vc.navigationItem.leftBarButtonItem = backItem
         
         navigationController?.navigationBar.tintColor = .gray
     }
