@@ -87,7 +87,6 @@ class CallsViewController: UIViewController {
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         customView.addSubview(stackView)
-//        customView.addSubview(segmentedControl)
         let subviews = [customView, allView, missedView, voicemailView, dialButton]
         for subview in subviews {
             view.addSubview(subview)
@@ -96,6 +95,7 @@ class CallsViewController: UIViewController {
             customView.topAnchor.constraint(equalTo: view.topAnchor),
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            customView.heightAnchor.constraint(equalToConstant: 150),
             
             stackView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 0),
             stackView.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
@@ -231,8 +231,7 @@ class CallsViewController: UIViewController {
         customView.addSubview(segmentedControlIndicatorView)
         
         NSLayoutConstraint.activate([
-            segmentedControlIndicatorView.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor, multiplier: 1.2 / CGFloat(segmentedControl.numberOfSegments)),
-            segmentedControlIndicatorView.bottomAnchor.constraint(equalTo: segmentedControl.bottomAnchor)
+            segmentedControlIndicatorView.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor, multiplier: 1.2 / CGFloat(segmentedControl.numberOfSegments))
         ])
     }
     
