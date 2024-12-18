@@ -98,8 +98,8 @@ class CallsViewController: UIViewController {
             customView.heightAnchor.constraint(equalToConstant: 150),
             
             stackView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 0),
-            stackView.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
+            stackView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10),
             
             allView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
@@ -173,46 +173,12 @@ class CallsViewController: UIViewController {
     
     //MARK: - Using the method for fetching array of CNContact objects -
     func callGetContacts() {
-        let contacts = self.getContactFromCNContact()
+        let contacts = ContactManager.shared.getContactFromCNContact()
             for contact in contacts {
                 print(contact.middleName)
                 print(contact.familyName)
                 print(contact.givenName)
             }
-    }
-    
-    //MARK: Method that fetches the array of CNContact objects -
-    func getContactFromCNContact() -> [CNContact] {
-        let contactStore = CNContactStore()
-        let keysToFetch = [
-            CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-            CNContactGivenNameKey,
-            CNContactMiddleNameKey,
-            CNContactFamilyNameKey,
-            CNContactEmailAddressesKey,
-        ] as [Any]
-        //Get all the containers
-        var allContainers: [CNContainer] = []
-        do {
-            allContainers = try contactStore.containers(matching: nil)
-        } catch {
-            print("Error fetching containers")
-        }
-        var results: [CNContact] = []
-        // Iterate all containers and append their contacts to our results array
-        for container in allContainers {
-            
-            let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
-            
-            do {
-                let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch as! [CNKeyDescriptor])
-                results.append(contentsOf: containerResults)
-                
-            } catch {
-                print("Error fetching results for container")
-            }
-        }
-        return results
     }
     
     //MARK: - The tap button event that selects either the login view/signup view -

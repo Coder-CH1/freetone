@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042F167D2D131D6700BA3C5E /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F167C2D131D6700BA3C5E /* ContactManager.swift */; };
 		046701332CEDDE310018029C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701322CEDDE310018029C /* AppDelegate.swift */; };
 		046701352CEDDE310018029C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701342CEDDE310018029C /* SceneDelegate.swift */; };
 		046701372CEDDE310018029C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701362CEDDE310018029C /* ViewController.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042F167C2D131D6700BA3C5E /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		0467012F2CEDDE310018029C /* freetone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = freetone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046701322CEDDE310018029C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		046701342CEDDE310018029C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			children = (
 				04B5E0292D10612B0029934A /* Extensions.swift */,
 				04B5E02B2D1064940029934A /* AlertManager.swift */,
+				042F167C2D131D6700BA3C5E /* ContactManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				04A263462CF22ABB006CF114 /* InboxTableViewCell.swift in Sources */,
 				047132992CEF9581004BC266 /* TabBarViewController.swift in Sources */,
 				046701332CEDDE310018029C /* AppDelegate.swift in Sources */,
+				042F167D2D131D6700BA3C5E /* ContactManager.swift in Sources */,
 				04B5E02C2D1064940029934A /* AlertManager.swift in Sources */,
 				046701352CEDDE310018029C /* SceneDelegate.swift in Sources */,
 				04A263432CF22A7C006CF114 /* InboxTableView.swift in Sources */,

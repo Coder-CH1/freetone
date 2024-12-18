@@ -11,6 +11,7 @@ import ContactsUI
 class InboxViewController: UIViewController {
     
     ////TABLEVIEW
+    var isMenuViewVisible = false
     let menuView = UIView()
     let customView = UIView()
     private let tableView = InboxTableView(frame: .zero)
@@ -92,7 +93,7 @@ class InboxViewController: UIViewController {
             stack.leadingAnchor.constraint(equalTo: label.safeAreaLayoutGuide.trailingAnchor, constant: 130),
             stack.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
         ])
-        infoBtn.addTarget(self, action: #selector(showMenuTapped), for: .touchUpInside)
+        infoBtn.addTarget(self, action: #selector(backgroundTapped), for: .touchUpInside)
         setupMenuView()
         setSubviewsAndLayout()
     }
@@ -114,6 +115,7 @@ class InboxViewController: UIViewController {
             buttonWidthConstraint!,
             buttonHeightConstraint!,
         ])
+        callGetContacts()
     }
     
     //MARK: -
@@ -131,10 +133,11 @@ class InboxViewController: UIViewController {
         
     }
     
+    //MARK: - Setup menu view -
     func setupMenuView() {
         menuView.backgroundColor = .white
         menuView.layer.shadowOpacity = 0.3
-        menuView.layer.shadowOffset = CGSize(width: -3, height: 3)
+        menuView.layer.shadowOffset = CGSize(width: 3, height: 3)
         menuView.translatesAutoresizingMaskIntoConstraints = false
         
         customView.addSubview(menuView)
@@ -148,8 +151,8 @@ class InboxViewController: UIViewController {
         menuView.addSubview(menuTableView)
         
         NSLayoutConstraint.activate([
-            menuView.topAnchor.constraint(equalTo: customView.topAnchor, constant: -300),
-            menuView.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: 200),
+            menuView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 50),
+            menuView.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -10),
             menuView.widthAnchor.constraint(equalToConstant: 200),
             menuView.heightAnchor.constraint(equalToConstant: 120),
             
@@ -158,20 +161,39 @@ class InboxViewController: UIViewController {
             menuTableView.trailingAnchor.constraint(equalTo: menuView.trailingAnchor),
             menuTableView.bottomAnchor.constraint(equalTo: menuView.bottomAnchor),
         ])
+        menuView.transform = CGAffineTransform(translationX: 250, y: -80)
     }
-    @objc func showMenuTapped() {
-        UIView.animate(withDuration: 0.3) {
-            self.menuView.transform = CGAffineTransform(translationX: -180, y: 200)
+    
+    //MARK: - Show menu -
+    @objc func toggleMenuView() {
+       isMenuViewVisible = !isMenuViewVisible
+           UIView.animate(withDuration: 0.3) {
+               if self.isMenuViewVisible {
+                   self.menuView.transform = .identity
+               } else {
+                   self.menuView.transform = CGAffineTransform(translationX: 200, y: -80)
+               }
+           }
+    }
+    
+    @objc func backgroundTapped() {
+        if isMenuViewVisible {
+            toggleMenuView()
         }
     }
     
-    func hideMenu() {
-        UIView.animate(withDuration: 0.3) {
-            self.menuView.transform = .identity
-        }
+    //MARK: - Using the method for fetching array of CNContact objects -
+    func callGetContacts() {
+        let contacts = ContactManager.shared.getContactFromCNContact()
+            for contact in contacts {
+                print(contact.middleName)
+                print(contact.familyName)
+                print(contact.givenName)
+            }
     }
 }
 
+//MARK: - Extension for Tableview protocols -
 extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -184,11 +206,14 @@ extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.textLabel?.text = "Refresh"
         }
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        hideMenu()
+        
         if indexPath.row == 0 {
             let contactPicker = CNContactPickerViewController()
             contactPicker.delegate = self
@@ -199,6 +224,7 @@ extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK: - Extension for contact picker protocols
 extension InboxViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         print("")

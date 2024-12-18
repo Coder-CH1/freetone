@@ -13,13 +13,16 @@ class MenuTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        if let textLabel = textLabel {
+            textLabel.frame = CGRect(x: textLabel.frame.origin.x + 15, y: textLabel.frame.origin.y, width: textLabel.frame.size.width - 30, height: textLabel.frame.size.height)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if let textLabel = textLabel {
+            textLabel.frame = CGRect(x: textLabel.frame.origin.x + 15, y: textLabel.frame.origin.y, width: textLabel.frame.size.width - 30, height: textLabel.frame.size.height)
+        }
     }
 
 }
