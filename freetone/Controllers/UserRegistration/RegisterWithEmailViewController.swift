@@ -88,15 +88,6 @@ class RegisterWithEmailViewController: UIViewController {
         }
     }
     
-    //MARK: - Method to change the border color of the textfield when the editing begins -
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == emailTextField.textField {
-            emailTextField.layer.borderColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0).cgColor
-        } else if textField == passwordTextField.textField {
-            passwordTextField.layer.borderColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0).cgColor
-        }
-    }
-    
     // MARK: - Method that registers users, implementing singleton pattern design -
     @objc func registerUser() {
         let email = emailTextField.textField.text ?? ""

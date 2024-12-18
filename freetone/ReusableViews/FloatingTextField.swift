@@ -115,7 +115,11 @@ extension FloatingTextField: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateFloatingLabel()
-        setBorderColor(.gray)
+        if let text = textField.text, text.isEmpty {
+            setBorderColor(.gray)
+        } else {
+            setBorderColor(UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0))
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
