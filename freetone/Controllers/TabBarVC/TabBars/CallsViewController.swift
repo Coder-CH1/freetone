@@ -122,7 +122,7 @@ class CallsViewController: UIViewController {
     
     @objc func dialbuttontapped() {
         let vc = DialerViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: false)
         let backButton = UIButton(type: .system)
         backButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         backButton.setTitle("Dial a number", for: .normal)
