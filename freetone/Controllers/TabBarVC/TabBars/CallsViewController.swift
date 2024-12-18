@@ -124,7 +124,7 @@ class CallsViewController: UIViewController {
         let backButton = UIButton(type: .system)
         backButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         backButton.setTitle("Dial a number", for: .normal)
-        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
         
         backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -25, bottom: 0, right: 0)
@@ -133,12 +133,23 @@ class CallsViewController: UIViewController {
         
         let backItem = UIBarButtonItem(customView: backButton)
         vc.navigationItem.leftBarButtonItem = backItem
-        
-        navigationController?.navigationBar.tintColor = .gray
+    
+        let contactButton = UIBarButtonItem(
+        image: UIImage(systemName: "person.crop.square"),
+        style: .plain,
+        target: self,
+        action: #selector(contactButtonTapped)
+        )
+        vc.navigationItem.rightBarButtonItem = contactButton
+        navigationController?.navigationBar.tintColor = .white
     }
     
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func contactButtonTapped() {
+        
     }
     
     //MARK: - The tap button event that selects either the login view/signup view -
