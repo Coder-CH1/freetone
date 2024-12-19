@@ -7,7 +7,6 @@
 
 import UIKit
 import ContactsUI
-import Contacts
 
 // MARK: - UI -
 class DialerViewController: BaseViewController {

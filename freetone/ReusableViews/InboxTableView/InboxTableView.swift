@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import MessageUI
 
 //MARK: - Reusable object -
 class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
