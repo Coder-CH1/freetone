@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - Parent class -
 class BaseViewController: UIViewController {
     
     //MARK: - Method to show alert -
@@ -16,12 +17,14 @@ class BaseViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    //MARK: - Method to show alert -
     func showAlert(on viewController: UIViewController, title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         viewController.present(alert, animated: true)
     }
     
+    //MARK: - 
     func navigateToDialVC() {
         let vc = DialerViewController()
               navigationController?.pushViewController(vc, animated: false)
