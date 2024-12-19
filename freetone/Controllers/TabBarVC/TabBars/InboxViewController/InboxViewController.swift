@@ -94,6 +94,7 @@ class InboxViewController: BaseViewController {
             stack.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             stack.leadingAnchor.constraint(equalTo: label.safeAreaLayoutGuide.trailingAnchor, constant: 130),
             stack.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
+            stack.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10),
         ])
         infoBtn.addTarget(self, action: #selector(toggleMenuView), for: .touchUpInside)
         setupMenuView()
