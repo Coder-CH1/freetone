@@ -7,8 +7,11 @@
 
 import UIKit
 import MessageUI
+import ContactsUI
 
 class MessageComposeViewController: BaseViewController {
+    
+    let contactButton = Button(image: UIImage(systemName: "person.crop.square"), text: "", btnTitleColor: .clear, backgroundColor: .clear, radius: 0, imageColor: .gray, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     public lazy var phoneNumberTextField: UITextField = {
         let textField = UITextField()
@@ -37,11 +40,15 @@ class MessageComposeViewController: BaseViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        view.addSubview(phoneNumberTextField)
-        view.addSubview(messageView)
-        view.addSubview(sendButton)
+        let subViews = [contactButton, phoneNumberTextField, messageView, sendButton]
+        for subView in subViews {
+            view.addSubview(subView)
+        }
         NSLayoutConstraint.activate([
-            phoneNumberTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            contactButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            contactButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            phoneNumberTextField.topAnchor.constraint(equalTo: contactButton.bottomAnchor, constant: 20),
             phoneNumberTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             phoneNumberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
@@ -53,7 +60,15 @@ class MessageComposeViewController: BaseViewController {
             sendButton.topAnchor.constraint(equalTo: messageView.bottomAnchor, constant: 20),
             sendButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        contactButton.addTarget(self, action: #selector(contactButtonTapped), for: .touchUpInside)
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+    }
+    
+    //MARK: - Method that opens the contact picker viewcontroller -
+    @objc override func contactButtonTapped() {
+        let contactPicker = CNContactPickerViewController()
+        contactPicker.delegate = self
+        present(contactPicker, animated: true)
     }
     
     @objc func sendMessage() {
@@ -88,5 +103,17 @@ extension MessageComposeViewController: MFMessageComposeViewControllerDelegate {
         default:
             break
         }
+    }
+}
+
+extension MessageComposeViewController: CNContactPickerDelegate {
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        if let phoneNumber = contact.phoneNumbers.first?.value.stringValue {
+            phoneNumberTextField.text = phoneNumber
+        }
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        print("")
     }
 }
