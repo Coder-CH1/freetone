@@ -43,6 +43,7 @@ class NewConversationViewController: BaseViewController {
             textField.heightAnchor.constraint(equalToConstant: 50),
             textField.widthAnchor.constraint(equalToConstant: 250)
         ])
+        textField.delegate = self
         textField.addTarget(self, action: #selector(phoneNumberDidChange), for: .editingChanged)
         contactBtn.addTarget(self, action: #selector(contactButtonTapped), for: .touchUpInside)
     }
@@ -55,9 +56,6 @@ class NewConversationViewController: BaseViewController {
     }
     
     @objc func phoneNumberDidChange() {
-        if let phoneNumber = textField.text, !phoneNumber.isEmpty {
-            presentToMessageComposeVC(withPhoneNumber: phoneNumber)
-        }
     }
     
     func presentToMessageComposeVC(withPhoneNumber phoneNumber: String) {
@@ -86,6 +84,9 @@ extension NewConversationViewController: CNContactPickerDelegate {
 extension NewConversationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if let phoneNumber = textField.text, !phoneNumber.isEmpty {
+            presentToMessageComposeVC(withPhoneNumber: phoneNumber)
+        }
         return true
     }
 }
