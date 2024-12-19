@@ -135,27 +135,27 @@ class DialerViewController: UIViewController {
            currentTime.timeIntervalSince(lastTime) < doublePressTime {
             switch digit {
             case "2":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "A"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             case "3":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "B"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             case "4":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "C"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             case "5":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "D"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             case "6":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "E"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             case "7":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "F"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             case "8":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "G"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             case "9":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "H"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             case "0":
                 phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "+"
             case "*":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "I"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             case "#":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "J"
+                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             default:
                 phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
             }
@@ -165,9 +165,34 @@ class DialerViewController: UIViewController {
         lastPressTime = currentTime
     }
     
-    // MARK: -
+    // MARK: - 
     @objc func callButtonTapped() {
-        print("")
+        guard let phoneNumber = phoneNumberLabel.text, !phoneNumber.isEmpty else {
+            showAlert(title: "Invalid number", message: "Please enter a valid phone number.")
+            return
+        }
+        
+        let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9+]", with: "", options: .regularExpression)
+        
+        guard cleanedPhoneNumber.hasPrefix("+") || cleanedPhoneNumber.allSatisfy({$0.isNumber}) else {
+            showAlert(title: "Invalid number", message: "Please enter a valid phone number")
+            return
+        }
+        
+        if let url = URL(string: "tel://" + cleanedPhoneNumber) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                showAlert(title: "Call not supported", message: "Your device cannot make calls")
+            }
+        }
+    }
+    
+    //MARK: - Method to show alert -
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alert, animated: true)
     }
     
     // MARK: - Method that deletes the button text from the label -
