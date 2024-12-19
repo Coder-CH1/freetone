@@ -128,44 +128,22 @@ class DialerViewController: UIViewController {
     // MARK: - Method that shows the button text on the label when tapped -
     @objc func digitButtonTapped(_ sender: UIButton) {
         guard let digit = sender.title(for: .normal) else {return}
-        phoneNumberLabel.text = (phoneNumberLabel?.text ?? "") + digit
+        
         let currentTime = Date()
         
-        if let lastTime = lastPressTime,
-           currentTime.timeIntervalSince(lastTime) < doublePressTime {
-            switch digit {
-            case "2":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            case "3":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            case "4":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            case "5":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            case "6":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            case "7":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            case "8":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            case "9":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            case "0":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + "+"
-            case "*":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            case "#":
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
-            default:
-                phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
+        if let lastTime = lastPressTime, currentTime.timeIntervalSince(lastTime) < doublePressTime {
+            if digit == "0" {
+                if let currentText = phoneNumberLabel.text, !currentText.hasSuffix("+") {
+                    phoneNumberLabel.text = String(currentText.dropLast()) + "+"
+                }
             }
         } else {
-            phoneNumberLabel.text = (phoneNumberLabel.text ?? "")
+            phoneNumberLabel.text = (phoneNumberLabel.text ?? "") + digit
         }
         lastPressTime = currentTime
     }
     
-    // MARK: - 
+    // MARK: -
     @objc func callButtonTapped() {
         guard let phoneNumber = phoneNumberLabel.text, !phoneNumber.isEmpty else {
             showAlert(title: "Invalid number", message: "Please enter a valid phone number.")
