@@ -10,7 +10,6 @@
 - AppWrite(Authentication,Database and Storage)
 - ContactUI(Contact Access Features)
 - MessageUI(Text Messages Features)
-- CallKit(Call Service Features)
 ##
 
 
