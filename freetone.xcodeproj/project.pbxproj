@@ -50,7 +50,6 @@
 		04B495482CF109BD00A7E3BA /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B495472CF109BD00A7E3BA /* VoicemailView.swift */; };
 		04B4CC1E2D11D84F00D8267B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4CC1D2D11D84F00D8267B /* MenuTableViewCell.swift */; };
 		04B5E02A2D10612B0029934A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5E0292D10612B0029934A /* Extensions.swift */; };
-		04B5E02C2D1064940029934A /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5E02B2D1064940029934A /* AlertManager.swift */; };
 		04CD02C62CF3A9F3004E854C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD02C52CF3A9F3004E854C /* TextField.swift */; };
 		04CD02C92CF3AA8D004E854C /* DialerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD02C82CF3AA8D004E854C /* DialerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -119,7 +118,6 @@
 		04B495472CF109BD00A7E3BA /* VoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailView.swift; sourceTree = "<group>"; };
 		04B4CC1D2D11D84F00D8267B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		04B5E0292D10612B0029934A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		04B5E02B2D1064940029934A /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		04CD02C52CF3A9F3004E854C /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		04CD02C82CF3AA8D004E854C /* DialerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,7 +179,7 @@
 		046701312CEDDE310018029C /* freetone */ = {
 			isa = PBXGroup;
 			children = (
-				04B5E0282D1061040029934A /* Extensions */,
+				04B5E0282D1061040029934A /* Extensions+Helper */,
 				046701362CEDDE310018029C /* ViewController.swift */,
 				04B397362D0C8F3300952057 /* Appwrite */,
 				0467016A2CEE0D240018029C /* Delegates */,
@@ -385,15 +383,14 @@
 			path = MenuTableViewCell;
 			sourceTree = "<group>";
 		};
-		04B5E0282D1061040029934A /* Extensions */ = {
+		04B5E0282D1061040029934A /* Extensions+Helper */ = {
 			isa = PBXGroup;
 			children = (
 				04B5E0292D10612B0029934A /* Extensions.swift */,
-				04B5E02B2D1064940029934A /* AlertManager.swift */,
 				042F167C2D131D6700BA3C5E /* ContactManager.swift */,
 				042F16812D143A9200BA3C5E /* BaseViewController.swift */,
 			);
-			path = Extensions;
+			path = "Extensions+Helper";
 			sourceTree = "<group>";
 		};
 		04CD02C72CF3AA4C004E854C /* PhoneNumberViewController */ = {
@@ -552,7 +549,6 @@
 				042F16802D142FDE00BA3C5E /* MessageComposeViewController.swift in Sources */,
 				046701332CEDDE310018029C /* AppDelegate.swift in Sources */,
 				042F167D2D131D6700BA3C5E /* ContactManager.swift in Sources */,
-				04B5E02C2D1064940029934A /* AlertManager.swift in Sources */,
 				046701352CEDDE310018029C /* SceneDelegate.swift in Sources */,
 				04A263432CF22A7C006CF114 /* InboxTableView.swift in Sources */,
 				047132A52CEF962A004BC266 /* ProfileViewController.swift in Sources */,
