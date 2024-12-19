@@ -97,6 +97,7 @@ class InboxViewController: UIViewController {
         infoBtn.addTarget(self, action: #selector(toggleMenuView), for: .touchUpInside)
         setupMenuView()
         setSubviewsAndLayout()
+        callBtn.addTarget(self, action: #selector(btn2tapped), for: .touchUpInside)
     }
     
     // MARK: - Subviews and Layout -
@@ -126,7 +127,7 @@ class InboxViewController: UIViewController {
     
     //MARK: -
     @objc func btn2tapped() {
-        
+    
     }
     
     //MARK: -
