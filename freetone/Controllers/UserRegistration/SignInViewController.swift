@@ -7,7 +7,7 @@
 
 import UIKit
 //MARK: - UI -
-class SignInViewController: UIViewController, UITextFieldDelegate {
+class SignInViewController: BaseViewController, UITextFieldDelegate {
     
     //MARK: - Objects -
     ////BUTTON
@@ -123,7 +123,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         if !errorMessage.isEmpty {
             let combinedMessage = errorMessage.joined(separator: "\n")
-            AlertManager.shared.showAlert(on: self, title: "Error", message: combinedMessage)
+            showAlert(on: self, title: "Error", message: combinedMessage)
         }
         
         ////SET THE EMAIL AND PASSWORD
@@ -144,7 +144,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     self.navigationController?.viewControllers.removeAll()
                 }
             } else {
-                AlertManager.shared.showAlert(on: self, title: "Error", message: AuthManager.shared.errorMessage)
+                showAlert(on: self, title: "Error", message: AuthManager.shared.errorMessage)
             }
         }
     }

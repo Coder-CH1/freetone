@@ -10,7 +10,7 @@ import ContactsUI
 import Contacts
 
 // MARK: - UI -
-class DialerViewController: UIViewController {
+class DialerViewController: BaseViewController {
     
     // MARK: - Objects -
     var selectedPhoneNumber: String!
@@ -164,13 +164,6 @@ class DialerViewController: UIViewController {
                 showAlert(title: "Call not supported", message: "Your device cannot make calls")
             }
         }
-    }
-    
-    //MARK: - Method to show alert -
-    func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        present(alert, animated: true)
     }
     
     // MARK: - Method that deletes the button text from the label -

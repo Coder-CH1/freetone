@@ -7,7 +7,7 @@
 
 import UIKit
 //MARK: - UI -
-class RegisterWithEmailViewController: UIViewController {
+class RegisterWithEmailViewController: BaseViewController {
     
     //MARK: - Objects -
     ////TEXTFIELD
@@ -106,7 +106,7 @@ class RegisterWithEmailViewController: UIViewController {
         
         if !errorMessage.isEmpty {
             let combinedMessage = errorMessage.joined(separator: "\n")
-            AlertManager.shared.showAlert(on: self, title: "Error", message: combinedMessage)
+            showAlert(on: self, title: "Error", message: combinedMessage)
         }
         
         ////SET THE EMAIL AND PASSWORD
@@ -119,7 +119,7 @@ class RegisterWithEmailViewController: UIViewController {
                 let vc = TabBarViewController()
                 present(vc, animated: false)
             } else {
-                AlertManager.shared.showAlert(on: self, title: "Error", message: AuthManager.shared.errorMessage)
+                showAlert(on: self, title: "Error", message: AuthManager.shared.errorMessage)
             }
         }
     }
