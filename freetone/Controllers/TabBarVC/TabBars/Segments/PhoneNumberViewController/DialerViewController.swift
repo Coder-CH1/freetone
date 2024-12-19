@@ -165,6 +165,11 @@ class DialerViewController: BaseViewController {
         }
     }
     
+    //MARK: - Method for navigating to the present viewcontroller -
+    @objc override func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - Method that deletes the button text from the label -
     @objc func deleteButtonTapped() {
         phoneNumberLabel.text = String(phoneNumberLabel.text?.dropLast() ?? "")

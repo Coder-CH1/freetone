@@ -9,7 +9,7 @@ import UIKit
 import ContactsUI
 
 //MARK: - UI -
-class CallsViewController: UIViewController {
+class CallsViewController: BaseViewController {
     //MARK: - Objects -
     let contactStore = CNContactStore()
     let allView = AllView()
@@ -128,44 +128,16 @@ class CallsViewController: UIViewController {
         
         setupSegmentedControlIndicator()
         setupSegmentsTappedAction()
-        
-        dialButton.addTarget(self, action: #selector(dialbuttontapped), for: .touchUpInside)
+        dialButton.addTarget(self, action: #selector(dialButtonTapped), for: .touchUpInside)
     }
     
     //MARK: - Method for navigating, customizes navigation bar of the DialViewcontroller -
-    @objc func dialbuttontapped() {
-        let vc = DialerViewController()
-        navigationController?.pushViewController(vc, animated: false)
-        let backButton = UIButton(type: .system)
-        backButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        backButton.setTitle("Dial a number", for: .normal)
-        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        
-        backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
-        backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -25, bottom: 0, right: 0)
-        
-        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        
-        let backItem = UIBarButtonItem(customView: backButton)
-        vc.navigationItem.leftBarButtonItem = backItem
-        
-        let contactButton = UIBarButtonItem(
-            image: UIImage(systemName: "person.crop.square"),
-            style: .plain,
-            target: self,
-            action: #selector(contactButtonTapped)
-        )
-        vc.navigationItem.rightBarButtonItem = contactButton
-        navigationController?.navigationBar.tintColor = .white
-    }
-    
-    //MARK: - Method for navigating to the present viewcontroller -
-    @objc func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
+    @objc func dialButtonTapped() {
+        navigateToDialVC()
     }
     
     //MARK: - Method that opens the contact picker viewcontroller -
-    @objc func contactButtonTapped() {
+    @objc override func contactButtonTapped() {
         let contactPicker = CNContactPickerViewController()
         contactPicker.delegate = self
         present(contactPicker, animated: true)
