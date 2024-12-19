@@ -39,7 +39,7 @@ class AuthManager {
             .setProject(projectID)
         return client
     }()
-
+    
     //MARK: - Lazy initialization of account -
     lazy var account: Account = {
         let account = Account(client)
@@ -144,7 +144,7 @@ class AuthManager {
             }
         } catch {
             await MainActor.run {
-                 print(error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
     }

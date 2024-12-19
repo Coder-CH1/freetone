@@ -99,7 +99,7 @@ class RegisterWithEmailViewController: BaseViewController {
         if !email.isValidEmail {
             errorMessage.append("Please enter a valid email address")
         }
-
+        
         if !password.isValidPassword {
             errorMessage.append("Password must contain at least lowercase letter, one uppercase letter, one digit, and be at least 6 characters long")
         }

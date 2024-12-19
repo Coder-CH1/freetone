@@ -31,7 +31,7 @@ class CallsViewController: UIViewController {
         let label = UILabel()
         label.text = "Calls"
         label.textColor = .white
-        label.textAlignment = .left
+        //label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -43,7 +43,7 @@ class CallsViewController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.spacing = 5
-        stack.alignment = .center
+        stack.alignment = .leading
         return stack
     }()
     

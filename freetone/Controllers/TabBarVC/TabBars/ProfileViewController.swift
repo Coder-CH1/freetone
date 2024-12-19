@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController, ProfileTableViewDelegate {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
+    
     func didLogout() {
         let vc = SignInViewController()
         vc.modalPresentationStyle = .fullScreen

@@ -23,7 +23,7 @@ class DatabaseManager {
             .setProject(AuthManager.shared.projectID)
         return client
     }()
-
+    
     //MARK: - Lazy initialization of account -
     lazy var database: Databases = {
         let database = Databases(client)
@@ -36,13 +36,13 @@ class DatabaseManager {
         let databaseId = "default"
         
         do {
-        let document = try await database.createDocument(
+            let document = try await database.createDocument(
                 databaseId: databaseId,
                 collectionId: collectionId,
                 documentId: ID.unique(),
                 data: user.toDictionary(),
                 permissions: ["read('any')"]
-        )
+            )
             print("Document created with ID: \(document.id)")
         } catch {
             print("Error creating document \(error.localizedDescription)")
@@ -109,7 +109,7 @@ class DatabaseManager {
         let databaseId = "default"
         
         do {
-           _ = try await database.deleteDocument(
+            _ = try await database.deleteDocument(
                 databaseId: databaseId,
                 collectionId: collectionId,
                 documentId: documentId)

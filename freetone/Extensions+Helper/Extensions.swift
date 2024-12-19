@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     var isValidEmail: Bool {
@@ -18,5 +19,16 @@ extension String {
         let passwordRegEx = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~`']{6,}$"
         let passwordPred = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordPred.evaluate(with: self)
+    }
+}
+
+//MARK: - Extension to get the parent viewcontroller -
+extension UIView {
+    var viewController: UIViewController? {
+        var nextResponder = self.next
+        while !(nextResponder is UIViewController) {
+            nextResponder = nextResponder?.next
+        }
+        return nextResponder as? UIViewController
     }
 }

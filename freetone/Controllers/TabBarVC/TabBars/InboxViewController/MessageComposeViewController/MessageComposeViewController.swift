@@ -10,7 +10,7 @@ import MessageUI
 
 class MessageComposeViewController: BaseViewController {
     
-    fileprivate lazy var phoneNumberTextField: UITextField = {
+    public lazy var phoneNumberTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Enter phone number"

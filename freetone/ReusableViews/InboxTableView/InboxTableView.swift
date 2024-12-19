@@ -54,8 +54,14 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - DelegateFlowLayout -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let selectedPhoneNumber = data[indexPath.row]
-        //        didSelectRowAt?(selectedPhoneNumber)
+        let selectedPhoneNumber = data[indexPath.row]
+        didSelectRowAt?(selectedPhoneNumber)
+        
+        let vc = MessageComposeViewController()
+        vc.phoneNumberTextField.text = selectedPhoneNumber
+        if let navVC = self.viewController?.navigationController {
+            navVC.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,15 +69,3 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-
-
-// MARK: - Extension to get the parent view controller
-extension UIView {
-    var viewController: UIViewController? {
-        var nextResponder = self.next
-        while !(nextResponder is UIViewController) {
-            nextResponder = nextResponder?.next
-        }
-        return nextResponder as? UIViewController
-    }
-}

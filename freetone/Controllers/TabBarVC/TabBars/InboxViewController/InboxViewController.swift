@@ -128,7 +128,7 @@ class InboxViewController: UIViewController {
     
     //MARK: -
     @objc func btn2tapped() {
-    
+        
     }
     
     //MARK: -
@@ -193,20 +193,20 @@ class InboxViewController: UIViewController {
 //MARK: - Extension for Tableview protocols -
 extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 2
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-            if indexPath.row == 0 {
-                cell.textLabel?.text = "Contacts"
-            } else {
-                cell.textLabel?.text = "Refresh"
-            }
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.lineBreakMode = .byWordWrapping
-            
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
+        if indexPath.row == 0 {
+            cell.textLabel?.text = "Contacts"
+        } else {
+            cell.textLabel?.text = "Refresh"
+        }
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
