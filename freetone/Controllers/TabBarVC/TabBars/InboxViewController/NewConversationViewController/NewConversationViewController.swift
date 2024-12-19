@@ -8,8 +8,9 @@
 import UIKit
 import ContactsUI
 
+//MARK: - UI -
 class NewConversationViewController: BaseViewController {
-    
+    //MARK: - Objects -
     let label = Label(label: "To:", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .bold))
     
     let textField = TextField(placeholder: "Name, Phone or Username", isSecureTextEntry: false, radius: 0, background: .clear)
@@ -26,6 +27,7 @@ class NewConversationViewController: BaseViewController {
         return stack
     }()
 
+    //MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         setSubviewsAndLayout()
@@ -55,9 +57,11 @@ class NewConversationViewController: BaseViewController {
         present(contactPicker, animated: true)
     }
     
+    //MARK: - No transition needed, transition is handled in textFieldShouldReturn protocol delegate -
     @objc func phoneNumberDidChange() {
     }
     
+    //MARK: -
     func presentToMessageComposeVC(withPhoneNumber phoneNumber: String) {
         let vc = MessageComposeViewController()
         vc.phoneNumberTextField.text = phoneNumber
@@ -69,6 +73,7 @@ class NewConversationViewController: BaseViewController {
     }
 }
 
+//MARK: -
 extension NewConversationViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         if let phoneNumber = contact.phoneNumbers.first?.value.stringValue {
@@ -81,6 +86,7 @@ extension NewConversationViewController: CNContactPickerDelegate {
     }
 }
 
+//MARK: - Protocol delegates that handles when the user presses the returns key on the keyboard -
 extension NewConversationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

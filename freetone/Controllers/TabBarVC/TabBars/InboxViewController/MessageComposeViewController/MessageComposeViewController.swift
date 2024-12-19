@@ -9,8 +9,10 @@ import UIKit
 import MessageUI
 import ContactsUI
 
+//MARK: - UI -
 class MessageComposeViewController: BaseViewController {
     
+    //MARK: - Objects -
     let contactButton = Button(image: UIImage(systemName: "person.crop.square"), text: "", btnTitleColor: .clear, backgroundColor: .clear, radius: 0, imageColor: .gray, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     public lazy var phoneNumberTextField: UITextField = {
@@ -42,6 +44,7 @@ class MessageComposeViewController: BaseViewController {
     
     let sendButton = Button(image: UIImage(systemName: ""), text: "Send message", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
+    //MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         setSubviewsAndLayout()
@@ -77,7 +80,6 @@ class MessageComposeViewController: BaseViewController {
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         
         messageView.delegate = self
-        //phoneNumberLabel.isHidden = true
     }
     
     //MARK: - Method that opens the contact picker viewcontroller -
@@ -87,6 +89,7 @@ class MessageComposeViewController: BaseViewController {
         present(contactPicker, animated: true)
     }
     
+    //MARK: -
     @objc func sendMessage() {
         guard let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty,
               let messageBody = messageView.text, !messageBody.isEmpty else {
@@ -106,6 +109,7 @@ class MessageComposeViewController: BaseViewController {
     }
 }
 
+//MARK: -
 extension MessageComposeViewController: MFMessageComposeViewControllerDelegate {
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         controller.dismiss(animated: true)
@@ -122,6 +126,7 @@ extension MessageComposeViewController: MFMessageComposeViewControllerDelegate {
     }
 }
 
+//MARK: -
 extension MessageComposeViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         if let phoneNumber = contact.phoneNumbers.first?.value.stringValue {
@@ -134,6 +139,7 @@ extension MessageComposeViewController: CNContactPickerDelegate {
     }
 }
 
+//MARK: -
 extension MessageComposeViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if !phoneNumberTextField.isHidden {
