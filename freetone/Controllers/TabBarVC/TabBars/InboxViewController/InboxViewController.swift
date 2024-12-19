@@ -9,7 +9,7 @@ import UIKit
 import ContactsUI
 
 //MARK: - UI -
-class InboxViewController: UIViewController {
+class InboxViewController: BaseViewController {
     
     ////TABLEVIEW
     var menuTableView: UITableView!
@@ -126,9 +126,9 @@ class InboxViewController: UIViewController {
         
     }
     
-    //MARK: -
+    //MARK: - Method for navigating, customizes navigation bar of the DialViewcontroller -
     @objc func btn2tapped() {
-        
+            navigateToDialVC()
     }
     
     //MARK: -
