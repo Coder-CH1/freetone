@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import MessageUI
 
 //MARK: - Reusable object -
 class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Object initialization -
-    private var data: [String] = []
-    var didSelectRowAt: ((IndexPath) -> Void)?
+    var data: [String] = []
+    var didSelectRowAt: ((String) -> Void)?
     
     init(frame: CGRect){
         super.init(frame: frame, style: .plain)
@@ -34,20 +35,27 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         self.register(InboxTableViewCell.self, forCellReuseIdentifier: "InboxTableViewCell")
     }
     
+    func updateData(newData: [String]) {
+        self.data = newData
+        self.reloadData()
+    }
+    
     // MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxTableViewCell", for: indexPath) as! InboxTableViewCell
         cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
+        cell.textLabel?.text = data[indexPath.row]
         return cell
     }
     
     // MARK: - DelegateFlowLayout -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectRowAt?(indexPath)
+        let selectedPhoneNumber = data[indexPath.row]
+        didSelectRowAt?(selectedPhoneNumber)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
