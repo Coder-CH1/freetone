@@ -52,6 +52,7 @@
 		04B5E02A2D10612B0029934A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5E0292D10612B0029934A /* Extensions.swift */; };
 		04CD02C62CF3A9F3004E854C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD02C52CF3A9F3004E854C /* TextField.swift */; };
 		04CD02C92CF3AA8D004E854C /* DialerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CD02C82CF3AA8D004E854C /* DialerViewController.swift */; };
+		04EBCF9B2D147036009971FC /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EBCF9A2D147036009971FC /* NewConversationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		04B5E0292D10612B0029934A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		04CD02C52CF3A9F3004E854C /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		04CD02C82CF3AA8D004E854C /* DialerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialerViewController.swift; sourceTree = "<group>"; };
+		04EBCF9A2D147036009971FC /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				047132A02CEF9609004BC266 /* InboxViewController.swift */,
+				04EBCF992D146FFF009971FC /* NewConversationViewController */,
 				042F167E2D142FA700BA3C5E /* MessageComposeViewController */,
 				04B4CC1C2D11D82800D8267B /* MenuTableViewCell */,
 			);
@@ -432,6 +435,14 @@
 				0486071C2CF7036D000B5A46 /* CallViewController */,
 			);
 			path = PhoneNumberViewController;
+			sourceTree = "<group>";
+		};
+		04EBCF992D146FFF009971FC /* NewConversationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04EBCF9A2D147036009971FC /* NewConversationViewController.swift */,
+			);
+			path = NewConversationViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,6 +599,7 @@
 				046701672CEE0CE20018029C /* Label.swift in Sources */,
 				049BBF042CF2089C0042941B /* ProfileTableView.swift in Sources */,
 				0486071E2CF70385000B5A46 /* CallViewController.swift in Sources */,
+				04EBCF9B2D147036009971FC /* NewConversationViewController.swift in Sources */,
 				04B397382D0D899A00952057 /* Protocols.swift in Sources */,
 				047132A12CEF9609004BC266 /* InboxViewController.swift in Sources */,
 				047132942CEF94E4004BC266 /* SignInViewController.swift in Sources */,

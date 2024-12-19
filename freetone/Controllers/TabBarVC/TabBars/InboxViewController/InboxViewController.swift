@@ -19,7 +19,7 @@ class InboxViewController: BaseViewController {
     private let tableView = InboxTableView(frame: .zero)
     
     ////BUTTON
-    let phoneButton = Button(image: UIImage(systemName: "plus"), text: "", btnTitleColor: .lightGray, backgroundColor: .systemPink, radius: 25, imageColor: .white, borderWidth: 0, borderColor: UIColor.clear.cgColor)
+    let plusButton = Button(image: UIImage(systemName: "plus"), text: "", btnTitleColor: .lightGray, backgroundColor: .systemPink, radius: 25, imageColor: .white, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     var buttonWidthConstraint: NSLayoutConstraint?
     var buttonHeightConstraint: NSLayoutConstraint?
@@ -63,16 +63,15 @@ class InboxViewController: BaseViewController {
         searchBtn.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchBtn.addTarget(self, action: #selector(btntapped), for: .touchUpInside)
         
-        let callBtn = UIButton(type: .system)
-        callBtn.setImage(UIImage(systemName: "circle.hexagongrid.fill"), for: .normal)
-        callBtn.addTarget(self, action: #selector(btn2tapped), for: .touchUpInside)
+        let contactBtn = UIButton(type: .system)
+        contactBtn.setImage(UIImage(systemName: "circle.hexagongrid.fill"), for: .normal)
+        contactBtn.addTarget(self, action: #selector(btn2tapped), for: .touchUpInside)
         
         let infoBtn = UIButton(type: .system)
         infoBtn.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        infoBtn.addTarget(self, action: #selector(btn3tapped), for: .touchUpInside)
         
         //MARK: - Create stackview for the three buttons items at the right side -
-        let stack = UIStackView(arrangedSubviews: [searchBtn, callBtn, infoBtn])
+        let stack = UIStackView(arrangedSubviews: [searchBtn, contactBtn, infoBtn])
         stack.axis = .horizontal
         stack.spacing = 30
         stack.alignment = .center
@@ -99,27 +98,28 @@ class InboxViewController: BaseViewController {
         infoBtn.addTarget(self, action: #selector(toggleMenuView), for: .touchUpInside)
         setupMenuView()
         setSubviewsAndLayout()
-        callBtn.addTarget(self, action: #selector(btn2tapped), for: .touchUpInside)
+        contactBtn.addTarget(self, action: #selector(btn2tapped), for: .touchUpInside)
     }
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(tableView)
-        view.addSubview(phoneButton)
-        buttonWidthConstraint = phoneButton.widthAnchor.constraint(equalToConstant: 50)
-        buttonHeightConstraint = phoneButton.heightAnchor.constraint(equalToConstant: 50)
+        view.addSubview(plusButton)
+        buttonWidthConstraint = plusButton.widthAnchor.constraint(equalToConstant: 50)
+        buttonHeightConstraint = plusButton.heightAnchor.constraint(equalToConstant: 50)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            phoneButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            phoneButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            plusButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            plusButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             buttonWidthConstraint!,
             buttonHeightConstraint!,
         ])
         callGetContacts()
+        plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
     
     //MARK: -
@@ -133,8 +133,11 @@ class InboxViewController: BaseViewController {
     }
     
     //MARK: -
-    @objc func btn3tapped() {
-        
+    @objc func plusButtonTapped() {
+        let vc = NewConversationViewController()
+        navigationItem.backButtonTitle = ""
+        vc.navigationItem.title = "New Conversation"
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     //MARK: - Setup menu view -
