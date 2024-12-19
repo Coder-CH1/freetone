@@ -22,6 +22,15 @@ class MessageComposeViewController: BaseViewController {
         return textField
     }()
     
+    fileprivate lazy var phoneNumberLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .lightGray
+        label.isHidden = true
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        return label
+    }()
+    
     fileprivate lazy var messageView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +49,7 @@ class MessageComposeViewController: BaseViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        let subViews = [contactButton, phoneNumberTextField, messageView, sendButton]
+        let subViews = [contactButton, phoneNumberTextField, messageView, sendButton,  phoneNumberLabel]
         for subView in subViews {
             view.addSubview(subView)
         }
@@ -52,6 +61,10 @@ class MessageComposeViewController: BaseViewController {
             phoneNumberTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             phoneNumberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+            phoneNumberLabel.topAnchor.constraint(equalTo: contactButton.bottomAnchor, constant: 20),
+            phoneNumberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            phoneNumberLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
             messageView.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 100),
             messageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             messageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -62,6 +75,9 @@ class MessageComposeViewController: BaseViewController {
         ])
         contactButton.addTarget(self, action: #selector(contactButtonTapped), for: .touchUpInside)
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        
+        messageView.delegate = self
+        //phoneNumberLabel.isHidden = true
     }
     
     //MARK: - Method that opens the contact picker viewcontroller -
@@ -115,5 +131,25 @@ extension MessageComposeViewController: CNContactPickerDelegate {
     
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         print("")
+    }
+}
+
+extension MessageComposeViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if !phoneNumberTextField.isHidden {
+            phoneNumberTextField.isHidden = true
+            
+            if let phoneNumber = phoneNumberTextField.text, !phoneNumber.isEmpty {
+                phoneNumberLabel.text = "To:  \(phoneNumber)"
+                phoneNumberLabel.isHidden = false
+            }
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            phoneNumberLabel.isHidden = true
+            phoneNumberTextField.isHidden = false
+        }
     }
 }
