@@ -21,7 +21,7 @@ class NewConversationViewController: BaseViewController {
         let stack = UIStackView(arrangedSubviews: [label, textField, contactBtn])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
-        stack.spacing = 5
+        stack.spacing = 15
         stack.alignment = .center
         return stack
     }()
