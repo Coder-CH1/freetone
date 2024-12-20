@@ -196,7 +196,7 @@ class InboxViewController: BaseViewController {
     
     func fetchMesages() async {
         let collectionId = "messages"
-        let databaseId = "default"
+        let databaseId = "database"
         
         do {
             let documents = try await DatabaseManager.shared.database.listDocuments(

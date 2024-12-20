@@ -33,7 +33,7 @@ class DatabaseManager {
     //MARK: - Create document in a Collection -
     func createCollection(user: User) async {
         let collectionId = "users"
-        let databaseId = "default"
+        let databaseId = "database"
         
         do {
             let document = try await database.createDocument(
@@ -54,7 +54,7 @@ class DatabaseManager {
     //MARK: - Fetch All documents in a Collection -
     func fetchAllDocuments() async {
         let collectionId = "users"
-        let databaseId = "default"
+        let databaseId = "database"
         
         do {
             let documents = try await database.listDocuments(
@@ -73,7 +73,7 @@ class DatabaseManager {
     //MARK: - Fetch document by ID -
     func fetchDocumentById(documentId: String) async {
         let collectionId = "users"
-        let databaseId = "default"
+        let databaseId = "database"
         
         do {
             let document = try await database.getDocument(
@@ -89,7 +89,7 @@ class DatabaseManager {
     //MARK: - Update document by ID -
     func updateDocument(documentId: String, user: User) async {
         let collectionId = "users"
-        let databaseId = "default"
+        let databaseId = "database"
         
         do {
             let updatedDocument = try await database.updateDocument(
@@ -110,7 +110,7 @@ class DatabaseManager {
     //MARK: - Delete document by ID -
     func deleteDocument(documentId: String) async {
         let collectionId = "users"
-        let databaseId = "default"
+        let databaseId = "database"
         
         do {
             _ = try await database.deleteDocument(
@@ -126,7 +126,7 @@ class DatabaseManager {
     //MARK: - Save a message document in the 'messages' Collection -
     func saveMessage(message: Message) async {
         let collectionId = "messages"
-        let databaseId = "default"
+        let databaseId = "database"
         
         do {
             let document = try await database.createDocument(
