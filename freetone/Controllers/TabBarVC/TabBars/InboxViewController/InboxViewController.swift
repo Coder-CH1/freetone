@@ -130,6 +130,7 @@ class InboxViewController: BaseViewController {
             buttonWidthConstraint!,
             buttonHeightConstraint!,
         ])
+        inboxTableView.inboxDelegate = self
         callGetContacts()
         plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
@@ -276,5 +277,23 @@ extension InboxViewController: CNContactPickerDelegate {
     
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         print("")
+    }
+}
+
+extension InboxViewController: InboxTableViewDelegate {
+    func didSelectMessage(_ message: Message) {
+        let vc = ConversationViewController()
+        vc.senderPhoneNumber = message.senderPhoneNumber
+        vc.messageLabel.text = message.messageBody
+        
+        let backItem = UIBarButtonItem(
+            title: message.senderPhoneNumber,
+            style: .plain,
+        target: nil,
+        action: nil
+        )
+        vc.navigationItem.backBarButtonItem = backItem
+        
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 }
