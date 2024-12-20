@@ -29,6 +29,9 @@ class InboxViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        Task {
+            await fetchMesages()
+        }
     }
     
     //MARK: - Setting up navigation items -

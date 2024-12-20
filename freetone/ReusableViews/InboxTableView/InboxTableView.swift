@@ -34,11 +34,6 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         self.register(InboxTableViewCell.self, forCellReuseIdentifier: "InboxTableViewCell")
     }
     
-    func updateData(newData: [Message]) {
-        self.data = newData
-        self.reloadData()
-    }
-    
     // MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
