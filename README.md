@@ -11,6 +11,7 @@
 - ContactUI(Contact Access Features)
 - MessageUI(Text Messages Features)
 - Subclassing(Inheritance) Design Pattern
+- Singleton Design Pattern 
 #
 
 
