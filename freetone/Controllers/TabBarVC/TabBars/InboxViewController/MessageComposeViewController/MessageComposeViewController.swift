@@ -96,6 +96,10 @@ class MessageComposeViewController: BaseViewController {
             showAlert(title: "Error", message: "Please enter both phone number and message")
             return
         }
+        #if targetEnvironment(simulator)
+        showAlert(title: "Message sent", message: "This is a simulation. Message sent to \(phoneNumber)")
+        print("")
+        #else
         
         if MFMessageComposeViewController.canSendText() {
             let messageController = MFMessageComposeViewController()
@@ -106,6 +110,7 @@ class MessageComposeViewController: BaseViewController {
         } else {
             showAlert(title: "Error", message: "SMS is not available on this device")
         }
+        #endif
     }
 }
 

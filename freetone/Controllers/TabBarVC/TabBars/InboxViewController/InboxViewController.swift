@@ -227,7 +227,7 @@ extension InboxViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-//MARK: - Extension for contact picker protocols
+//MARK: - Extension for contact picker protocols -
 extension InboxViewController: CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         print("")
