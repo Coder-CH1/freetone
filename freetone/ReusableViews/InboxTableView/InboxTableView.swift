@@ -55,7 +55,7 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         let vc = MessageComposeViewController()
         vc.phoneNumberTextField.text = selectedMessage.senderPhoneNumber
         if let navVC = self.viewController?.navigationController {
-            navVC.pushViewController(vc, animated: true)
+            navVC.pushViewController(vc, animated: false)
         }
     }
     

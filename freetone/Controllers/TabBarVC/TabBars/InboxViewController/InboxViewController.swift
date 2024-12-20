@@ -34,6 +34,14 @@ class InboxViewController: BaseViewController {
         }
     }
     
+    //MARK: - Life Cycle -
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Task {
+            await fetchMesages()
+        }
+    }
+    
     //MARK: - Setting up navigation items -
     private func setupNavigationBar() {
         if let navigationBar = navigationController?.navigationBar {
