@@ -17,7 +17,7 @@ class InboxViewController: BaseViewController {
     var isMenuViewVisible = false
     let menuView = UIView()
     let customView = UIView()
-    private let inboxTableView = InboxTableView(frame: .zero)
+    private var inboxTableView = InboxTableView(frame: .zero)
     
     ////BUTTON
     let plusButton = Button(image: UIImage(systemName: "plus"), text: "", btnTitleColor: .lightGray, backgroundColor: .systemPink, radius: 25, imageColor: .white, borderWidth: 0, borderColor: UIColor.clear.cgColor)

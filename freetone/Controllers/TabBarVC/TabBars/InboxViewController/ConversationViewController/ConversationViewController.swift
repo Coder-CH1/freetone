@@ -40,6 +40,14 @@ class ConversationViewController: UIViewController {
         }
     }
     
+    //MARK: - Lifecycle -
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let senderPhoneNumber = senderPhoneNumber {
+            self.title = senderPhoneNumber
+        }
+    }
+    
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(messageLabel)

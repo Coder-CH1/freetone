@@ -12,7 +12,6 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Object initialization -
     var data: [Message] = []
-    var didSelectRowAt: ((Message) -> Void)?
     
     init(frame: CGRect){
         super.init(frame: frame, style: .plain)
@@ -52,16 +51,12 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         let selectedMessage = data[indexPath.row]
         
         let vc = ConversationViewController()
-        
         vc.senderPhoneNumber = selectedMessage.senderPhoneNumber
         vc.messageLabel.text = selectedMessage.messageBody
         
         let backItem = UIBarButtonItem()
         backItem.title = selectedMessage.senderPhoneNumber
-        
-        if let parentVC = self.viewController?.navigationController {
-            parentVC.navigationItem.backBarButtonItem = backItem
-        }
+        self.viewController?.navigationController?.navigationItem.backBarButtonItem = backItem
         
         if let navVC = self.viewController?.navigationController {
             navVC.pushViewController(vc, animated: false)
