@@ -33,6 +33,12 @@ class NewConversationViewController: BaseViewController {
         setSubviewsAndLayout()
     }
     
+    //MARK: - Lifecycle -
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textField.text = ""
+    }
+    
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(stackView)
