@@ -7,6 +7,7 @@
 
 import UIKit
 import ContactsUI
+import Appwrite
 
 //MARK: - UI -
 class InboxViewController: BaseViewController {
@@ -16,7 +17,7 @@ class InboxViewController: BaseViewController {
     var isMenuViewVisible = false
     let menuView = UIView()
     let customView = UIView()
-    private let tableView = InboxTableView(frame: .zero)
+    private let inboxTableView = InboxTableView(frame: .zero)
     
     ////BUTTON
     let plusButton = Button(image: UIImage(systemName: "plus"), text: "", btnTitleColor: .lightGray, backgroundColor: .systemPink, radius: 25, imageColor: .white, borderWidth: 0, borderColor: UIColor.clear.cgColor)
@@ -103,15 +104,15 @@ class InboxViewController: BaseViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        view.addSubview(tableView)
+        view.addSubview(inboxTableView)
         view.addSubview(plusButton)
         buttonWidthConstraint = plusButton.widthAnchor.constraint(equalToConstant: 50)
         buttonHeightConstraint = plusButton.heightAnchor.constraint(equalToConstant: 50)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            inboxTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+            inboxTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            inboxTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            inboxTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             plusButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             plusButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
@@ -190,6 +191,32 @@ class InboxViewController: BaseViewController {
             print(contact.middleName)
             print(contact.familyName)
             print(contact.givenName)
+        }
+    }
+    
+    func fetchMesages() async {
+        let collectionId = "messages"
+        let databaseId = "default"
+        
+        do {
+            let documents = try await DatabaseManager.shared.database.listDocuments(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                queries: []
+            )
+            var messages: [String] = []
+            for document in documents.documents {
+                if let senderPhoneNumber = document.data["senderPhoneNumber"]?.value as? String,
+                   let messageBody = document.data["messageBody"]?.value as? String{
+                    messages.append("\(senderPhoneNumber): \(messageBody)")
+                }
+                print("Document in collection fetched successfully: \(document)")
+            }
+            DispatchQueue.main.async {
+                self.inboxTableView.reloadData()
+            }
+        } catch {
+            print("Error fetching messages: \(error.localizedDescription)")
         }
     }
 }

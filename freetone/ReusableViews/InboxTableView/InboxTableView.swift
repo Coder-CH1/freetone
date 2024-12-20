@@ -11,8 +11,8 @@ import UIKit
 class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Object initialization -
-    var data: [String] = []
-    var didSelectRowAt: ((String) -> Void)?
+    var data: [Message] = []
+    var didSelectRowAt: ((Message) -> Void)?
     
     init(frame: CGRect){
         super.init(frame: frame, style: .plain)
@@ -34,7 +34,7 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         self.register(InboxTableViewCell.self, forCellReuseIdentifier: "InboxTableViewCell")
     }
     
-    func updateData(newData: [String]) {
+    func updateData(newData: [Message]) {
         self.data = newData
         self.reloadData()
     }
@@ -46,18 +46,19 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxTableViewCell", for: indexPath) as! InboxTableViewCell
+        let message = data[indexPath.row]
         cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
-        cell.textLabel?.text = data[indexPath.row]
+        cell.textLabel?.text = "\(message.senderPhoneNumber): \(message.messageBody)"
         return cell
     }
     
     // MARK: - DelegateFlowLayout -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedPhoneNumber = data[indexPath.row]
-        didSelectRowAt?(selectedPhoneNumber)
+        let selectedMessage = data[indexPath.row]
+        didSelectRowAt?(selectedMessage)
         
         let vc = MessageComposeViewController()
-        vc.phoneNumberTextField.text = selectedPhoneNumber
+        vc.phoneNumberTextField.text = selectedMessage.senderPhoneNumber
         if let navVC = self.viewController?.navigationController {
             navVC.pushViewController(vc, animated: true)
         }

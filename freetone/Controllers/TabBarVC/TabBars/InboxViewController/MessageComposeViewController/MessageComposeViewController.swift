@@ -96,6 +96,13 @@ class MessageComposeViewController: BaseViewController {
             showAlert(title: "Error", message: "Please enter both phone number and message")
             return
         }
+        let currentTime = String(Date().timeIntervalSince1970)
+        let message = Message(senderPhoneNumber: "", recipientPhoneNumber: phoneNumber, messageBody: messageBody, time: currentTime)
+        
+        Task {
+            await DatabaseManager.shared.saveMessage(message: message)
+        }
+        
         #if targetEnvironment(simulator)
         showAlert(title: "Message sent", message: "This is a simulation. Message sent to \(phoneNumber)")
         print("")

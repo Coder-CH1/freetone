@@ -94,8 +94,8 @@ class DatabaseManager {
                 databaseId: databaseId,
                 collectionId: collectionId,
                 documentId: documentId,
-                data: user.toDictionary(),
-                permissions: ["read('any')"]
+                data: user.toDictionary()
+                //permissions: ["read('any')"]
             )
             print("Document upddated successfully: \(updatedDocument)")
         } catch {
@@ -116,6 +116,25 @@ class DatabaseManager {
             print("Document deleted successfully with ID: \(documentId)")
         } catch {
             print("Error deleting document: \(error.localizedDescription)")
+        }
+    }
+    
+    //MARK: - Save a message document in the 'messages' Collection -
+    func saveMessage(message: Message) async {
+        let collectionId = "messages"
+        let databaseId = "default"
+        
+        do {
+            let document = try await database.createDocument(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                documentId: ID.unique(),
+                data: message.toDictionary(),
+                permissions: ["read('any')"]
+            )
+            print("Message saved with ID: \(document.id)")
+        } catch {
+            print("Error saving message \(error.localizedDescription)")
         }
     }
 }
