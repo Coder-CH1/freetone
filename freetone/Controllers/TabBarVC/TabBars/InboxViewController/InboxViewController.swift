@@ -133,7 +133,7 @@ class InboxViewController: BaseViewController {
     
     //MARK: - Method for navigating, customizes navigation bar of the DialViewcontroller -
     @objc func btn2tapped() {
-            navigateToDialVC()
+        navigateToDialVC()
     }
     
     //MARK: -
@@ -207,15 +207,18 @@ class InboxViewController: BaseViewController {
                 collectionId: collectionId,
                 queries: []
             )
-            var messages: [String] = []
+            var messages: [Message] = []
+            let currentTime = String(Date().timeIntervalSince1970)
             for document in documents.documents {
                 if let senderPhoneNumber = document.data["senderPhoneNumber"]?.value as? String,
                    let messageBody = document.data["messageBody"]?.value as? String{
-                    messages.append("\(senderPhoneNumber): \(messageBody)")
+                    let message = Message(senderPhoneNumber: "", recipientPhoneNumber: senderPhoneNumber, messageBody: messageBody, time: currentTime)
+                    messages.append(message)
                 }
                 print("Document in collection fetched successfully: \(document)")
             }
             DispatchQueue.main.async {
+                self.inboxTableView.data = messages
                 self.inboxTableView.reloadData()
             }
         } catch {
