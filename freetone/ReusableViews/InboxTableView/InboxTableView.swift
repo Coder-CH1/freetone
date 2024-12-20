@@ -50,10 +50,19 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     // MARK: - DelegateFlowLayout -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedMessage = data[indexPath.row]
-        didSelectRowAt?(selectedMessage)
         
-        let vc = MessageComposeViewController()
-        vc.phoneNumberTextField.text = selectedMessage.senderPhoneNumber
+        let vc = ConversationViewController()
+        
+        vc.senderPhoneNumber = selectedMessage.senderPhoneNumber
+        vc.messageLabel.text = selectedMessage.messageBody
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = selectedMessage.senderPhoneNumber
+        
+        if let parentVC = self.viewController?.navigationController {
+            parentVC.navigationItem.backBarButtonItem = backItem
+        }
+        
         if let navVC = self.viewController?.navigationController {
             navVC.pushViewController(vc, animated: false)
         }

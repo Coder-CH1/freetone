@@ -15,7 +15,7 @@ class TextField: UITextField {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         font = UIFont(name: "", size: 18)
-        textColor = .lightGray
+        textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         backgroundColor = background
         layer.cornerRadius = radius
         autocapitalizationType = .none

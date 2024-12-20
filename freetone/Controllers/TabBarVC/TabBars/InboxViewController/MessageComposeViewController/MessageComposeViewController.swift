@@ -27,7 +27,7 @@ class MessageComposeViewController: BaseViewController {
     fileprivate lazy var phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .lightGray
+        label.textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         label.isHidden = true
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label

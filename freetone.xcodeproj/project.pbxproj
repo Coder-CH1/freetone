@@ -10,6 +10,7 @@
 		042F167D2D131D6700BA3C5E /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F167C2D131D6700BA3C5E /* ContactManager.swift */; };
 		042F16802D142FDE00BA3C5E /* MessageComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F167F2D142FDE00BA3C5E /* MessageComposeViewController.swift */; };
 		042F16822D143A9200BA3C5E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F16812D143A9200BA3C5E /* BaseViewController.swift */; };
+		04308BFA2D15B9D80053CC35 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04308BF92D15B9D80053CC35 /* ConversationViewController.swift */; };
 		046701332CEDDE310018029C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701322CEDDE310018029C /* AppDelegate.swift */; };
 		046701352CEDDE310018029C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701342CEDDE310018029C /* SceneDelegate.swift */; };
 		046701372CEDDE310018029C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046701362CEDDE310018029C /* ViewController.swift */; };
@@ -76,6 +77,7 @@
 		042F167C2D131D6700BA3C5E /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		042F167F2D142FDE00BA3C5E /* MessageComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComposeViewController.swift; sourceTree = "<group>"; };
 		042F16812D143A9200BA3C5E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		04308BF92D15B9D80053CC35 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		0467012F2CEDDE310018029C /* freetone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = freetone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		046701322CEDDE310018029C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		046701342CEDDE310018029C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,14 @@
 				0471329E2CEF95F4004BC266 /* CallsViewController.swift */,
 			);
 			path = CallsViewController;
+			sourceTree = "<group>";
+		};
+		04308BFB2D15B9EC0053CC35 /* ConversationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04308BF92D15B9D80053CC35 /* ConversationViewController.swift */,
+			);
+			path = ConversationViewController;
 			sourceTree = "<group>";
 		};
 		046701262CEDDE310018029C = {
@@ -403,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				047132A02CEF9609004BC266 /* InboxViewController.swift */,
+				04308BFB2D15B9EC0053CC35 /* ConversationViewController */,
 				04EBCF992D146FFF009971FC /* NewConversationViewController */,
 				042F167E2D142FA700BA3C5E /* MessageComposeViewController */,
 				04B4CC1C2D11D82800D8267B /* MenuTableViewCell */,
@@ -603,6 +614,7 @@
 				04B397382D0D899A00952057 /* Protocols.swift in Sources */,
 				047132A12CEF9609004BC266 /* InboxViewController.swift in Sources */,
 				047132942CEF94E4004BC266 /* SignInViewController.swift in Sources */,
+				04308BFA2D15B9D80053CC35 /* ConversationViewController.swift in Sources */,
 				04B495442CF1095C00A7E3BA /* AllView.swift in Sources */,
 				046701652CEDE5F90018029C /* OnboardingViewController.swift in Sources */,
 				04B5E02A2D10612B0029934A /* Extensions.swift in Sources */,

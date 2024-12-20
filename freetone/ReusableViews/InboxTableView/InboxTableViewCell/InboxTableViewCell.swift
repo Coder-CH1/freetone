@@ -11,7 +11,7 @@ class InboxTableViewCell: UITableViewCell {
     //MARK: - Object -
     let phoneLabel = Label(label: "", textColor: .blue, font: UIFont.systemFont(ofSize: 16, weight: .regular))
     
-    let messageLabel = Label(label: "", textColor: .blue, font: UIFont.systemFont(ofSize: 16, weight: .regular))
+    let messageLabel = Label(label: "", textColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), font: UIFont.systemFont(ofSize: 16, weight: .regular))
     
     override func awakeFromNib() {
         super.awakeFromNib()

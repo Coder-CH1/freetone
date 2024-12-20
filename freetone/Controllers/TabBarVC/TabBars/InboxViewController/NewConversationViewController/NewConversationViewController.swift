@@ -11,7 +11,7 @@ import ContactsUI
 //MARK: - UI -
 class NewConversationViewController: BaseViewController {
     //MARK: - Objects -
-    let label = Label(label: "To:", textColor: .lightGray, font: UIFont.systemFont(ofSize: 12, weight: .bold))
+    let label = Label(label: "To:", textColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), font: UIFont.systemFont(ofSize: 12, weight: .bold))
     
     let textField = TextField(placeholder: "Name, Phone or Username", isSecureTextEntry: false, radius: 0, background: .clear)
     
