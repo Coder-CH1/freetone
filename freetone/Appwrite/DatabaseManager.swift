@@ -41,7 +41,9 @@ class DatabaseManager {
                 collectionId: collectionId,
                 documentId: ID.unique(),
                 data: user.toDictionary(),
-                permissions: ["read('any')"]
+                permissions: [
+                    Permission.read(Role.any())
+                ]
             )
             print("Document created with ID: \(document.id)")
         } catch {
@@ -94,8 +96,10 @@ class DatabaseManager {
                 databaseId: databaseId,
                 collectionId: collectionId,
                 documentId: documentId,
-                data: user.toDictionary()
-                //permissions: ["read('any')"]
+                data: user.toDictionary(),
+                permissions: [
+                    Permission.update(Role.any())
+                ]
             )
             print("Document upddated successfully: \(updatedDocument)")
         } catch {
@@ -130,7 +134,9 @@ class DatabaseManager {
                 collectionId: collectionId,
                 documentId: ID.unique(),
                 data: message.toDictionary(),
-                permissions: ["read('any')"]
+                permissions: [
+                    Permission.read(Role.any())
+                ]
             )
             print("Message saved with ID: \(document.id)")
         } catch {
