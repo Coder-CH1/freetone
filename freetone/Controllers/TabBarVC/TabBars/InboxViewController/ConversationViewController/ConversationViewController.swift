@@ -35,18 +35,16 @@ class ConversationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setSubviewsAndLayout()
-        if let message = message {
-            self.title = message.recipientPhoneNumber
-            self.messageLabel.text = message.messageBody
+        if let recipientNumber = message?.recipientPhoneNumber {
+            self.title = recipientNumber
         }
     }
     
     //MARK: - Lifecycle -
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let message = message {
-            self.title = message.recipientPhoneNumber
-            self.messageLabel.text = message.messageBody
+        if let recipientNumber = message?.recipientPhoneNumber {
+            self.title = recipientNumber
         }
     }
     
