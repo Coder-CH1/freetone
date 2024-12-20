@@ -41,7 +41,7 @@ class InboxTableViewCell: UITableViewCell {
     }
     
     func configure(with message: Message) {
-        phoneLabel.text = message.senderPhoneNumber
+        phoneLabel.text = message.recipientPhoneNumber
         messageLabel.text = message.messageBody
     }
 }

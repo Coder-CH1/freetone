@@ -29,22 +29,24 @@ class ConversationViewController: UIViewController {
         return textView
     }()
     
-    var senderPhoneNumber: String?
+    var message: Message?
 
     //MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         setSubviewsAndLayout()
-        if let senderPhoneNumber = senderPhoneNumber {
-            self.title = senderPhoneNumber
+        if let message = message {
+            self.title = message.recipientPhoneNumber
+            self.messageLabel.text = message.messageBody
         }
     }
     
     //MARK: - Lifecycle -
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let senderPhoneNumber = senderPhoneNumber {
-            self.title = senderPhoneNumber
+        if let message = message {
+            self.title = message.recipientPhoneNumber
+            self.messageLabel.text = message.messageBody
         }
     }
     

@@ -283,16 +283,17 @@ extension InboxViewController: CNContactPickerDelegate {
 extension InboxViewController: InboxTableViewDelegate {
     func didSelectMessage(_ message: Message) {
         let vc = ConversationViewController()
-        vc.senderPhoneNumber = message.senderPhoneNumber
+        vc.message?.recipientPhoneNumber = message.recipientPhoneNumber
         vc.messageLabel.text = message.messageBody
         
         let backItem = UIBarButtonItem(
-            title: message.senderPhoneNumber,
+            title: message.recipientPhoneNumber,
             style: .plain,
         target: nil,
         action: nil
         )
-        vc.navigationItem.backBarButtonItem = backItem
+        self.navigationItem.backBarButtonItem = backItem
+        backItem.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         
         self.navigationController?.pushViewController(vc, animated: false)
     }
