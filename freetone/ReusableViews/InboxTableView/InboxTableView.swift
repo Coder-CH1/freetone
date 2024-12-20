@@ -43,7 +43,7 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxTableViewCell", for: indexPath) as! InboxTableViewCell
         let message = data[indexPath.row]
         cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
-        cell.textLabel?.text = "\(message.senderPhoneNumber): \(message.messageBody)"
+        cell.configure(with: message)
         return cell
     }
     
