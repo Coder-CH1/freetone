@@ -105,7 +105,7 @@ class MessageComposeViewController: BaseViewController {
         
         #if targetEnvironment(simulator)
         showAlert(title: "Message sent", message: "This is a simulation. Message sent to \(phoneNumber)")
-        print("")
+        resetMessageFields()
         #else
         
         if MFMessageComposeViewController.canSendText() {
@@ -114,10 +114,19 @@ class MessageComposeViewController: BaseViewController {
             messageController.recipients = [phoneNumber]
             messageController.messageComposeDelegate = self
             present(messageController, animated: true)
+            
         } else {
             showAlert(title: "Error", message: "SMS is not available on this device")
         }
         #endif
+    }
+    
+    //MARK: -
+    func resetMessageFields() {
+        phoneNumberTextField.text = ""
+        messageView.text = ""
+        phoneNumberTextField.isHidden = false
+        phoneNumberLabel.isHidden = true
     }
 }
 
