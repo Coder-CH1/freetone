@@ -140,7 +140,7 @@ class DatabaseManager {
             _ = try await database.deleteDocument(
                 databaseId: databaseId,
                 collectionId: collectionId,
-                documentId: ID.unique())
+                documentId: message.id)
             print("Document deleted successfully with ID: \(message)")
         } catch {
             print("Error deleting document: \(error.localizedDescription)")

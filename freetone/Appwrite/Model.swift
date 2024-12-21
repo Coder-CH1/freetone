@@ -39,13 +39,15 @@ struct Message {
     var recipientPhoneNumber: String
     var messageBody: String
     var time: String
+    var id: String
     
     //MARK: - Initialize -
-    init(senderPhoneNumber: String, recipientPhoneNumber: String, messageBody: String, time: String) {
+    init(senderPhoneNumber: String, recipientPhoneNumber: String, messageBody: String, time: String, id: String) {
         self.senderPhoneNumber = senderPhoneNumber
         self.recipientPhoneNumber = recipientPhoneNumber
         self.messageBody = messageBody
         self.time = time
+        self.id = id
     }
     
     //MARK: - Convert user object to a dictionary -
@@ -54,7 +56,8 @@ struct Message {
             "senderPhoneNumber": self.senderPhoneNumber,
             "recipientPhoneNumber": self.recipientPhoneNumber,
             "messageBody": self.messageBody,
-            "time": self.time
+            "time": self.time,
+            "id": self.id
         ]
     }
 }
