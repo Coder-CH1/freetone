@@ -133,7 +133,7 @@ class DatabaseManager {
     
     //MARK: - Delete document by ID -
     func deleteDocument(documentId: String) async {
-        let collectionId = usersID
+        let collectionId = messagesID
         let databaseId = databaseID
         
         do {

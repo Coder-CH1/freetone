@@ -35,17 +35,6 @@ class ConversationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setSubviewsAndLayout()
-        if let recipientNumber = message?.recipientPhoneNumber {
-            self.title = recipientNumber
-        }
-    }
-    
-    //MARK: - Lifecycle -
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let recipientNumber = message?.recipientPhoneNumber {
-            self.title = recipientNumber
-        }
     }
     
     // MARK: - Subviews and Layout -

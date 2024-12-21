@@ -221,7 +221,7 @@ class InboxViewController: BaseViewController {
             for document in documents.documents {
                 if let senderPhoneNumber = document.data["senderPhoneNumber"]?.value as? String,
                    let messageBody = document.data["messageBody"]?.value as? String{
-                    let message = Message(senderPhoneNumber: "", recipientPhoneNumber: senderPhoneNumber, messageBody: messageBody, time: currentTime)
+                    let message = Message(id: "", senderPhoneNumber: "", recipientPhoneNumber: senderPhoneNumber, messageBody: messageBody, time: currentTime)
                     messages.append(message)
                 }
                 print("Document in collection fetched successfully: \(document)")

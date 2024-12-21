@@ -35,13 +35,15 @@ struct User {
 
 //MARK: - Data Model -
 struct Message {
+    var id: String
     var senderPhoneNumber: String
     var recipientPhoneNumber: String
     var messageBody: String
     var time: String
     
     //MARK: - Initialize -
-    init(senderPhoneNumber: String, recipientPhoneNumber: String, messageBody: String, time: String) {
+    init(id: String, senderPhoneNumber: String, recipientPhoneNumber: String, messageBody: String, time: String) {
+        self.id = id
         self.senderPhoneNumber = senderPhoneNumber
         self.recipientPhoneNumber = recipientPhoneNumber
         self.messageBody = messageBody
@@ -51,6 +53,7 @@ struct Message {
     //MARK: - Convert user object to a dictionary -
     func toDictionary() -> [String: Any] {
         return [
+            "id": self.id,
             "senderPhoneNumber": self.senderPhoneNumber,
             "recipientPhoneNumber": self.recipientPhoneNumber,
             "messageBody": self.messageBody,
