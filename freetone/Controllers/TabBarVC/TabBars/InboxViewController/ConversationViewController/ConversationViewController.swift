@@ -47,7 +47,16 @@ class ConversationViewController: UIViewController {
     //MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateTime()
         setSubviewsAndLayout()
+    }
+    
+    //MARK: - Update time -
+    func updateTime() {
+        if let message = message {
+            messageLabel.text = message.messageBody
+            timeLabel.text = message.time.formatTime(from: message.time)
+        }
     }
     
     // MARK: - Subviews and Layout -

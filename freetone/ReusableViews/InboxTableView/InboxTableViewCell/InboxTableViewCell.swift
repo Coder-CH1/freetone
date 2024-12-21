@@ -34,7 +34,6 @@ class InboxTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             phoneLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             phoneLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            //phoneLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             
             messageLabel.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 5),
             messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
