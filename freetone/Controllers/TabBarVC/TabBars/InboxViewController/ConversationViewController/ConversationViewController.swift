@@ -24,6 +24,7 @@ class ConversationViewController: UIViewController {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.layer.borderColor = UIColor.lightGray.cgColor
+        textView.backgroundColor = .gray
         textView.layer.borderWidth = 1
         textView.layer.cornerRadius = 8
         return textView
@@ -50,6 +51,7 @@ class ConversationViewController: UIViewController {
             messageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             messageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             messageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            messageView.heightAnchor.constraint(equalToConstant: 200),
         ])
     }
 

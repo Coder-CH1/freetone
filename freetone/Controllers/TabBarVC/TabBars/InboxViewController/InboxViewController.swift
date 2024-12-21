@@ -287,8 +287,6 @@ extension InboxViewController: InboxTableViewDelegate {
         vc.message = message
         vc.messageLabel.text = message.messageBody
         
-        vc.title = message.recipientPhoneNumber
-        
         let backItem = UIBarButtonItem(
             title: message.recipientPhoneNumber,
             style: .plain,

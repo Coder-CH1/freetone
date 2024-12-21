@@ -43,6 +43,7 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxTableViewCell", for: indexPath) as! InboxTableViewCell
         let message = data[indexPath.row]
         cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
+        cell.textLabel?.tintColor = .gray
         cell.configure(with: message)
         return cell
     }
@@ -62,17 +63,12 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
             Task {
-                //do {
                 await DatabaseManager.shared.deleteDocument(message: messageToDelete)
                     self.data.remove(at: indexPath.row)
                     DispatchQueue.main.async {
                         tableView.deleteRows(at: [indexPath], with: .automatic)
                     }
                     completion(true)
-                //} catch {
-//                    print("failed to delete document: \(error.localizedDescription)")
-//                    completion(false)
-                //}
             }
         }
         deleteAction.backgroundColor = .red
