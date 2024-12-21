@@ -95,8 +95,8 @@ class DatabaseManager {
     }
     
     //MARK: - Fetch document by ID -
-    func fetchDocumentById(documentId: String) async -> Bool {
-        let collectionId = messagesID
+    func fetchDocumentById(documentId: String) async {
+        let collectionId = usersID
         let databaseId = databaseID
         
         do {
@@ -104,10 +104,9 @@ class DatabaseManager {
                 databaseId: databaseId,
                 collectionId: collectionId,
                 documentId: documentId)
-            return true
+            print("Document fetched successfully: \(document)")
         } catch {
             print("Error fetching document: \(error.localizedDescription)")
-            return false
         }
     }
     
@@ -134,19 +133,15 @@ class DatabaseManager {
     
     //MARK: - Delete document by ID -
     func deleteDocument(message: Message) async {
-        
-        //let documentId = message.id
         let collectionId = messagesID
         let databaseId = databaseID
-        
-        print("Attempting to delete document with ID: ")
         
         do {
             _ = try await database.deleteDocument(
                 databaseId: databaseId,
                 collectionId: collectionId,
                 documentId: ID.unique())
-            print("Document deleted successfully with ID: ")
+            print("Document deleted successfully with ID: \(message)")
         } catch {
             print("Error deleting document: \(error.localizedDescription)")
         }
