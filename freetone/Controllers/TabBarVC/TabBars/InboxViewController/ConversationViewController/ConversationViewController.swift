@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import MessageUI
 
 //MARK: - UI -
-class ConversationViewController: UIViewController {
+class ConversationViewController: BaseViewController {
     
     //MARK: - Objects -
     var message: Message?
@@ -86,4 +87,48 @@ class ConversationViewController: UIViewController {
         ])
     }
     
+    //MARK: -
+    @objc func sendMessage() {
+        let messageBody = messageView.text ?? ""
+        let currentTime = String(Date().timeIntervalSince1970)
+        let message = Message(senderPhoneNumber: "", recipientPhoneNumber: "", messageBody: messageBody, time: currentTime, id: "")
+        
+        Task {
+            await DatabaseManager.shared.saveMessage(message: message)
+        }
+        
+        #if targetEnvironment(simulator)
+        showAlert(title: "Message sent", message: "This is a simulation. Message sent to")
+        //resetMessageFields()
+        #else
+        
+        if MFMessageComposeViewController.canSendText() {
+            let messageController = MFMessageComposeViewController()
+            messageController.body = messageBody
+            messageController.recipients = [phoneNumber]
+            messageController.messageComposeDelegate = self
+            present(messageController, animated: true)
+            
+        } else {
+            showAlert(title: "Error", message: "SMS is not available on this device")
+        }
+        #endif
+    }
 }
+
+extension ConversationViewController: MFMessageComposeViewControllerDelegate {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true)
+        switch result {
+        case .sent:
+            print("message sent successfully")
+        case .failed:
+            print("message sending failed")
+        case .cancelled:
+            print("message sending cancelled")
+        default:
+            break
+        }
+    }
+}
+
