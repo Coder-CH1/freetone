@@ -97,7 +97,7 @@ class MessageComposeViewController: BaseViewController {
             return
         }
         let currentTime = String(Date().timeIntervalSince1970)
-        let message = Message(id: "", senderPhoneNumber: "", recipientPhoneNumber: phoneNumber, messageBody: messageBody, time: currentTime)
+        let message = Message(senderPhoneNumber: "", recipientPhoneNumber: phoneNumber, messageBody: messageBody, time: currentTime)
         
         Task {
             await DatabaseManager.shared.saveMessage(message: message)

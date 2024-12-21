@@ -61,18 +61,23 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         let messageToDelete = data[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
-            let documentId = messageToDelete.id
             Task {
-                await DatabaseManager.shared.deleteDocument(documentId: documentId)
+                //do {
+                await DatabaseManager.shared.deleteDocument(message: messageToDelete)
+                    self.data.remove(at: indexPath.row)
+                    DispatchQueue.main.async {
+                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                    }
+                    completion(true)
+                //} catch {
+//                    print("failed to delete document: \(error.localizedDescription)")
+//                    completion(false)
+                //}
             }
-            self.data.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            completion(true)
         }
         deleteAction.backgroundColor = .red
-        
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
         return swipeActions
     }
+    
 }
-
