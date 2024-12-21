@@ -26,7 +26,7 @@ class NewConversationViewController: BaseViewController {
         stack.alignment = .center
         return stack
     }()
-
+    
     //MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()

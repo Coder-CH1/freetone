@@ -28,8 +28,7 @@ class ConversationViewController: UIViewController {
         label.textColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        let formattedTime = message?.time.formatTime(from: message?.time ?? "")
-        label.text = formattedTime
+        label.text = ""
         return label
     }()
     
@@ -73,7 +72,7 @@ class ConversationViewController: UIViewController {
             sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             timeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 

@@ -220,7 +220,7 @@ class InboxViewController: BaseViewController {
             for document in documents.documents {
                 if let senderPhoneNumber = document.data["senderPhoneNumber"]?.value as? String,
                    let messageBody = document.data["messageBody"]?.value as? String,
-                    let recipientPhoneNumber = document.data["recipientPhoneNumber"]?.value as? String,
+                   let recipientPhoneNumber = document.data["recipientPhoneNumber"]?.value as? String,
                    let time = document.data["time"]?.value as? String {
                     let message = Message(senderPhoneNumber: senderPhoneNumber, recipientPhoneNumber: recipientPhoneNumber, messageBody: messageBody, time: time)
                     messages.append(message)
@@ -291,8 +291,8 @@ extension InboxViewController: InboxTableViewDelegate {
         let backItem = UIBarButtonItem(
             title: message.recipientPhoneNumber,
             style: .plain,
-        target: nil,
-        action: nil
+            target: nil,
+            action: nil
         )
         self.navigationItem.backBarButtonItem = backItem
         backItem.tintColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
