@@ -92,14 +92,13 @@ class ConversationViewController: BaseViewController {
     func updateConversation(with newMessage: Message) {
         conversationMessages.append(newMessage)
         
-        let formattedTime = newMessage.time.formatTime(from: newMessage.time)
-        let messageText = "\(newMessage.messageBody) - \(formattedTime)"
+        let formattedMessage = "\(newMessage.messageBody) \(newMessage.time.formatTime(from: newMessage.time))"
         
-        let updatedText = conversationMessages.map { msg in
-            return "\(msg.messageBody) - \(msg.time.formatTime(from: msg.time))"
-        }.joined(separator: "\n\n")
-        
-        messageLabel.text = updatedText
+        if let existingMessage = messageLabel.text {
+            messageLabel.text = existingMessage + "\n\n" + formattedMessage
+        } else {
+            messageLabel.text = formattedMessage
+        }
     }
     
     //MARK: -
