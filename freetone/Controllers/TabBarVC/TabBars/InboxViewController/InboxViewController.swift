@@ -217,11 +217,12 @@ class InboxViewController: BaseViewController {
                 queries: []
             )
             var messages: [Message] = []
-            let currentTime = String(Date().timeIntervalSince1970)
             for document in documents.documents {
                 if let senderPhoneNumber = document.data["senderPhoneNumber"]?.value as? String,
-                   let messageBody = document.data["messageBody"]?.value as? String{
-                    let message = Message(senderPhoneNumber: "", recipientPhoneNumber: senderPhoneNumber, messageBody: messageBody, time: currentTime)
+                   let messageBody = document.data["messageBody"]?.value as? String,
+                    let recipientPhoneNumber = document.data["recipientPhoneNumber"]?.value as? String,
+                   let time = document.data["time"]?.value as? String {
+                    let message = Message(senderPhoneNumber: senderPhoneNumber, recipientPhoneNumber: recipientPhoneNumber, messageBody: messageBody, time: time)
                     messages.append(message)
                 }
                 print("Document in collection fetched successfully: \(document)")
