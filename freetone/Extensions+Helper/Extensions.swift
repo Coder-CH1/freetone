@@ -27,14 +27,15 @@ extension String {
     
    //MARK: -
     func formatTime(from timeString: String) -> String {
-        guard let timeInterval = Double(self) else {
-            return ""
+        guard let timeInterval = Double(timeString) else {
+            return "invalid time"
         }
         let date = Date(timeIntervalSince1970: timeInterval)
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm a"
+        formatter.dateFormat = "MMM dd, yyyy, h:mm a"
         return formatter.string(from: date)
     }
+
 }
 
 //MARK: - Extension to get the parent viewcontroller -

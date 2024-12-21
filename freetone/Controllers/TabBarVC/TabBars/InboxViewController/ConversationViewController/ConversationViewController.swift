@@ -43,19 +43,20 @@ class ConversationViewController: UIViewController {
     }()
     
     let sendButton = Button(image: UIImage(systemName: ""), text: "Send", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0).cgColor)
-
+    
     //MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateTime()
+        updateUI()
         setSubviewsAndLayout()
     }
     
     //MARK: - Update time -
-    func updateTime() {
+    func updateUI() {
         if let message = message {
             messageLabel.text = message.messageBody
-            timeLabel.text = message.time.formatTime(from: message.time)
+            let formattedTime = message.time.formatTime(from: message.time)
+            timeLabel.text = formattedTime
         }
     }
     
@@ -84,5 +85,5 @@ class ConversationViewController: UIViewController {
             timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
-
+    
 }
