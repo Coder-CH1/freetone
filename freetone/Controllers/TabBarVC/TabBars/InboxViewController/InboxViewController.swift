@@ -206,34 +206,15 @@ class InboxViewController: BaseViewController {
         }
     }
     
+    //MARK: -
     func fetchMesages() async {
-        let collectionId = DatabaseManager.shared.messagesID
-        let databaseId = DatabaseManager.shared.databaseID
-        
-        do {
-            let documents = try await DatabaseManager.shared.database.listDocuments(
-                databaseId: databaseId,
-                collectionId: collectionId,
-                queries: []
-            )
-            var messages: [Message] = []
-            for document in documents.documents {
-                if let senderPhoneNumber = document.data["senderPhoneNumber"]?.value as? String,
-                   let messageBody = document.data["messageBody"]?.value as? String,
-                   let recipientPhoneNumber = document.data["recipientPhoneNumber"]?.value as? String,
-                   let time = document.data["time"]?.value as? String,
-                   let id = document.data["id"]?.value as? String {
-                    let message = Message(senderPhoneNumber: senderPhoneNumber, recipientPhoneNumber: recipientPhoneNumber, messageBody: messageBody, time: time, id: id)
-                    messages.append(message)
+            if let messages = await DatabaseManager.shared.fetchMessages() {
+                DispatchQueue.main.async {
+                    self.inboxTableView.data = messages
+                    self.inboxTableView.reloadData()
                 }
-                print("Document in collection fetched successfully: \(document)")
-            }
-            DispatchQueue.main.async {
-                self.inboxTableView.data = messages
-                self.inboxTableView.reloadData()
-            }
-        } catch {
-            print("Error fetching messages: \(error.localizedDescription)")
+            } else {
+            print("Error fetching messages")
         }
     }
 }

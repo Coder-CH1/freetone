@@ -171,4 +171,32 @@ class DatabaseManager {
             return nil
         }
     }
+    
+    func fetchMessages() async -> [Message]? {
+        let collectionId = messagesID
+        let databaseId = databaseID
+        
+        do {
+            let documents = try await database.listDocuments(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                queries: []
+            )
+            var messages: [Message] = []
+            for document in documents.documents {
+                if let senderPhoneNumber = document.data["senderPhoneNumber"]?.value as? String,
+                   let messageBody = document.data["messageBody"]?.value as? String,
+                   let recipientPhoneNumber = document.data["recipientPhoneNumber"]?.value as? String,
+                   let time = document.data["time"]?.value as? String,
+                   let id = document.data["id"]?.value as? String {
+                   let message = Message(senderPhoneNumber: senderPhoneNumber, recipientPhoneNumber: recipientPhoneNumber, messageBody: messageBody, time: time, id: id)
+                    messages.append(message)
+                }
+            }
+            return messages
+        } catch {
+            print("error fetching messages \(error.localizedDescription)")
+            return nil
+        }
+    }
 }

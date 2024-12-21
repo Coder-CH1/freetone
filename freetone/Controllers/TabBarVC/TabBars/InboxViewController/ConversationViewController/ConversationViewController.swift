@@ -15,7 +15,7 @@ class ConversationViewController: BaseViewController {
     var message: Message?
     
     var conversationMessages: [Message] = []
-   
+    
     public lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -50,8 +50,19 @@ class ConversationViewController: BaseViewController {
     //MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        Task {
+            await fetchMesages()
+        }
         updateUI()
         setSubviewsAndLayout()
+    }
+    
+    //MARK: - Lifecycle -
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Task {
+           await fetchMesages()
+        }
     }
     
     //MARK: - Update time -
@@ -120,10 +131,10 @@ class ConversationViewController: BaseViewController {
             }
         }
         
-        #if targetEnvironment(simulator)
+#if targetEnvironment(simulator)
         showAlert(title: "Message sent", message: "This is a simulation. Message sent to")
         //resetMessageFields()
-        #else
+#else
         
         if MFMessageComposeViewController.canSendText() {
             let messageController = MFMessageComposeViewController()
@@ -135,7 +146,38 @@ class ConversationViewController: BaseViewController {
         } else {
             showAlert(title: "Error", message: "SMS is not available on this device")
         }
-        #endif
+#endif
+    }
+    
+//    //MARK: -
+    func fetchMesages() async {
+        guard let recipientPhoneNumber = message?.recipientPhoneNumber else {
+            return
+        }
+            if let messages = await DatabaseManager.shared.fetchMessages() {
+                let  conversationMessages = messages.filter {
+                    $0.recipientPhoneNumber == recipientPhoneNumber }
+                DispatchQueue.main.async {
+                    self.conversationMessages = conversationMessages
+                    self.updateConversationUI()
+                }
+            } else {
+                print("Error fetching messages")
+            }
+    }
+    
+    func updateConversationUI() {
+        messageLabel.text = ""
+        
+        for message in conversationMessages {
+            let formattedMessage = "\(message.time.formatTime(from: message.time))\n\n \(message.messageBody)"
+            
+            if let existingMessage = messageLabel.text {
+                messageLabel.text = existingMessage + "\n\n" + formattedMessage
+            } else {
+                messageLabel.text = formattedMessage
+            }
+        }
     }
 }
 
