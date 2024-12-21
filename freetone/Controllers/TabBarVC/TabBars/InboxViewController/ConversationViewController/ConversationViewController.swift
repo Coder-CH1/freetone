@@ -30,6 +30,8 @@ class ConversationViewController: UIViewController {
         return textView
     }()
     
+    let sendButton = Button(image: UIImage(systemName: ""), text: "Send", btnTitleColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), backgroundColor: .clear, radius: 0, imageColor: .clear, borderWidth: 0, borderColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0).cgColor)
+    
     var message: Message?
 
     //MARK: - Lifecycle -
@@ -42,6 +44,7 @@ class ConversationViewController: UIViewController {
     func setSubviewsAndLayout() {
         view.addSubview(messageLabel)
         view.addSubview(messageView)
+        view.addSubview(sendButton)
         
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -52,6 +55,10 @@ class ConversationViewController: UIViewController {
             messageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             messageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             messageView.heightAnchor.constraint(equalToConstant: 200),
+            
+            sendButton.topAnchor.constraint(equalTo: messageView.bottomAnchor, constant: 20),
+            sendButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 
