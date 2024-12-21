@@ -92,7 +92,7 @@ class ConversationViewController: BaseViewController {
     func updateConversation(with newMessage: Message) {
         conversationMessages.append(newMessage)
         
-        let formattedMessage = "\(newMessage.messageBody) \(newMessage.time.formatTime(from: newMessage.time))"
+        let formattedMessage = "\(newMessage.time.formatTime(from: newMessage.time))\n\n \(newMessage.messageBody)"
         
         if let existingMessage = messageLabel.text {
             messageLabel.text = existingMessage + "\n\n" + formattedMessage
@@ -113,6 +113,7 @@ class ConversationViewController: BaseViewController {
             if let savedMessages = await DatabaseManager.shared.saveMessage(message: message) {
                 DispatchQueue.main.async {
                     self.updateConversation(with: savedMessages)
+                    self.messageView.text = ""
                 }
             } else {
                 print("failed to save message")
