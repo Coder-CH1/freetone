@@ -14,6 +14,8 @@ class ConversationViewController: BaseViewController {
     //MARK: - Objects -
     var message: Message?
     
+    var conversationMessages: [Message] = []
+   
     public lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,10 +66,9 @@ class ConversationViewController: BaseViewController {
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
         view.addSubview(messageLabel)
+        view.addSubview(timeLabel)
         view.addSubview(messageView)
         view.addSubview(sendButton)
-        view.addSubview(timeLabel)
-        
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 20),
             messageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -85,16 +86,38 @@ class ConversationViewController: BaseViewController {
             timeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             timeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
+        sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+    }
+    
+    func updateConversation(with newMessage: Message) {
+        conversationMessages.append(newMessage)
+        
+        let formattedTime = newMessage.time.formatTime(from: newMessage.time)
+        let messageText = "\(newMessage.messageBody) - \(formattedTime)"
+        
+        let updatedText = conversationMessages.map { msg in
+            return "\(msg.messageBody) - \(msg.time.formatTime(from: msg.time))"
+        }.joined(separator: "\n\n")
+        
+        messageLabel.text = updatedText
     }
     
     //MARK: -
     @objc func sendMessage() {
         let messageBody = messageView.text ?? ""
         let currentTime = String(Date().timeIntervalSince1970)
-        let message = Message(senderPhoneNumber: "", recipientPhoneNumber: "", messageBody: messageBody, time: currentTime, id: "")
+        
+        guard let recipientPhoneNumber = message?.recipientPhoneNumber else {return}
+        let message = Message(senderPhoneNumber: "user", recipientPhoneNumber: recipientPhoneNumber, messageBody: messageBody, time: currentTime, id: "")
         
         Task {
-            await DatabaseManager.shared.saveMessage(message: message)
+            if let savedMessages = await DatabaseManager.shared.saveMessage(message: message) {
+                DispatchQueue.main.async {
+                    self.updateConversation(with: savedMessages)
+                }
+            } else {
+                print("failed to save message")
+            }
         }
         
         #if targetEnvironment(simulator)

@@ -148,7 +148,7 @@ class DatabaseManager {
     }
     
     //MARK: - Save a message document in the 'messages' Collection -
-    func saveMessage(message: Message) async {
+    func saveMessage(message: Message) async -> Message? {
         let collectionId = messagesID
         let databaseId = databaseID
         
@@ -163,8 +163,12 @@ class DatabaseManager {
                 ]
             )
             print("Message saved with ID: \(document.id)")
+            var savedMessage = message
+            savedMessage.id = document.id
+            return savedMessage
         } catch {
             print("Error saving message \(error.localizedDescription)")
+            return nil
         }
     }
 }
