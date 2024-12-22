@@ -156,7 +156,7 @@ class DatabaseManager {
             let document = try await database.createDocument(
                 databaseId: databaseId,
                 collectionId: collectionId,
-                documentId: ID.unique(),
+                documentId: message.id,
                 data: message.toDictionary(),
                 permissions: [
                     Permission.read(Role.any())
@@ -172,6 +172,7 @@ class DatabaseManager {
         }
     }
     
+    //MARK: - Fetch a message document in the 'messages' Collection -
     func fetchMessages() async -> [Message]? {
         let collectionId = messagesID
         let databaseId = databaseID
@@ -193,11 +194,10 @@ class DatabaseManager {
                     messages.append(message)
                 }
             }
-            //return messages
+            return messages
         } catch {
             print("error fetching messages \(error.localizedDescription)")
-            //return nil
+            return nil
         }
-        return nil
     }
 }

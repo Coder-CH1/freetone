@@ -13,6 +13,7 @@ import ContactsUI
 class MessageComposeViewController: BaseViewController {
     
     //MARK: - Objects -
+    
     let contactButton = Button(image: UIImage(systemName: "person.crop.square"), text: "", btnTitleColor: .clear, backgroundColor: .clear, radius: 0, imageColor: .gray, borderWidth: 0, borderColor: UIColor.clear.cgColor)
     
     public lazy var phoneNumberTextField: UITextField = {
@@ -100,9 +101,8 @@ class MessageComposeViewController: BaseViewController {
         let message = Message(senderPhoneNumber: "", recipientPhoneNumber: phoneNumber, messageBody: messageBody, time: currentTime, id: "")
         
         Task {
-            await DatabaseManager.shared.saveMessage(message: message)
+          await DatabaseManager.shared.saveMessage(message: message)
         }
-        
         #if targetEnvironment(simulator)
         showAlert(title: "Message sent", message: "This is a simulation. Message sent to \(phoneNumber)")
         resetMessageFields()
