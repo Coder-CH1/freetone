@@ -50,16 +50,18 @@ class ConversationViewController: BaseViewController {
     //MARK: - Lifecycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
+        setSubviewsAndLayout()
         Task {
             await fetchMesages()
         }
-        updateUI()
-        setSubviewsAndLayout()
     }
     
     //MARK: - Lifecycle -
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateUI()
+        setSubviewsAndLayout()
         Task {
            await fetchMesages()
         }

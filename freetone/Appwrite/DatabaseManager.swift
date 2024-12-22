@@ -193,10 +193,11 @@ class DatabaseManager {
                     messages.append(message)
                 }
             }
-            return messages
+            //return messages
         } catch {
             print("error fetching messages \(error.localizedDescription)")
-            return nil
+            //return nil
         }
+        return nil
     }
 }

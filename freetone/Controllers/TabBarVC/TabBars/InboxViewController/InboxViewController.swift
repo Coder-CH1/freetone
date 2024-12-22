@@ -37,6 +37,7 @@ class InboxViewController: BaseViewController {
     //MARK: - Life Cycle -
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupNavigationBar()
         Task {
             await fetchMesages()
         }
