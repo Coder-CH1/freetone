@@ -43,14 +43,16 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxTableViewCell", for: indexPath) as! InboxTableViewCell
         let message = data[indexPath.row]
         print("configuring cell for message: \(message)")
-        cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
-        cell.textLabel?.tintColor = .gray
         cell.configure(with: message)
         return cell
     }
     
     // MARK: - DelegateFlowLayout -
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < data.count else {
+            return
+        }
+        
         let selectedMessage = data[indexPath.row]
         inboxDelegate?.didSelectMessage(selectedMessage)
     }
@@ -60,21 +62,38 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard indexPath.row < data.count else {
+            return nil
+        }
         let messageToDelete = data[indexPath.row]
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
             Task {
-                await DatabaseManager.shared.deleteDocument(message: messageToDelete)
-                    self.data.remove(at: indexPath.row)
-                    DispatchQueue.main.async {
-                        tableView.deleteRows(at: [indexPath], with: .automatic)
+                do {
+                    await DatabaseManager.shared.deleteDocument(message: messageToDelete)
+                    guard indexPath.row < self.data.count else {
+                        completion(false)
+                        return
                     }
-                    completion(true)
+                    
+                    self.data.remove(at: indexPath.row)
+                    
+                    DispatchQueue.main.async {
+                        if indexPath.row < self.data.count {
+                            tableView.deleteRows(at: [indexPath], with: .automatic)
+                        } else {
+                            print("index out of bounds after removing from data")
+                        }
+                        completion(true)
+                    }
+                } catch {
+                    print("error deleting message")
+                    completion(false)
+                }
             }
         }
         deleteAction.backgroundColor = .red
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
         return swipeActions
     }
-    
 }

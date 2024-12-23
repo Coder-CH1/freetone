@@ -28,19 +28,19 @@ class InboxViewController: BaseViewController {
     //MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
         Task {
-            await fetchMesages()
+            await    fetchMesages()
         }
+        setupNavigationBar()
     }
     
     //MARK: - Life Cycle -
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupNavigationBar()
         Task {
-            await fetchMesages()
+            await    fetchMesages()
         }
+        setupNavigationBar()
     }
     
     //MARK: - Setting up navigation items -
@@ -237,15 +237,6 @@ class InboxViewController: BaseViewController {
         } catch {
             print("Error fetching messages: \(error.localizedDescription)")
         }
-        //            if let messages = await DatabaseManager.shared.fetchMessages() {
-        //                DispatchQueue.main.async {
-        //                    print("fetched messages: \(messages)")
-        //                    self.inboxTableView.data = messages
-        //                    self.inboxTableView.reloadData()
-        //                }
-        //            } else {
-        //            print("Error fetching messages")
-        //        }
     }
 }
 
