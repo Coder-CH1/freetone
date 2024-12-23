@@ -43,6 +43,7 @@ class CallsViewController: BaseViewController {
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.backgroundColor = .red
         segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), ], for: .selected)
         segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
         segmentedControl.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
@@ -99,15 +100,21 @@ class CallsViewController: BaseViewController {
             
             allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
             allView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
-            allView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
+            allView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            allView.heightAnchor.constraint(equalToConstant: view.bounds.height),
+            allView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             missedView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
-            missedView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
-            missedView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
+            missedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            missedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            missedView.heightAnchor.constraint(equalToConstant: view.bounds.height),
+            missedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             voicemailView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
-            voicemailView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
-            voicemailView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
+            voicemailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            voicemailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            voicemailView.heightAnchor.constraint(equalToConstant: view.bounds.height),
+            voicemailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             dialButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             dialButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
