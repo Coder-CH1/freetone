@@ -156,7 +156,7 @@ class DatabaseManager {
             let document = try await database.createDocument(
                 databaseId: databaseId,
                 collectionId: collectionId,
-                documentId: message.id,
+                documentId: ID.unique(),
                 data: message.toDictionary(),
                 permissions: [
                     Permission.read(Role.any())

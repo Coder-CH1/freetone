@@ -46,8 +46,8 @@ class InboxTableViewCell: UITableViewCell {
     }
     
     func configure(with message: Message) {
-        phoneLabel.text = message.recipientPhoneNumber
-        messageLabel.text = message.messageBody
+        phoneLabel.text = message.recipientPhoneNumber.isEmpty ? "unknown" : message.recipientPhoneNumber
+        messageLabel.text = message.messageBody.isEmpty ? "no message" : message.messageBody
         
         let formattedTime = message.time.formatTime(from: message.time)
         timeLabel.text = formattedTime

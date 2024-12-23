@@ -42,6 +42,7 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxTableViewCell", for: indexPath) as! InboxTableViewCell
         let message = data[indexPath.row]
+        print("configuring cell for message: \(message)")
         cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
         cell.textLabel?.tintColor = .gray
         cell.configure(with: message)
