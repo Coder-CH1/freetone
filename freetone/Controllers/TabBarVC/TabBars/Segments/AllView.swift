@@ -45,6 +45,7 @@ class AllView: UIView {
             buttonWidthConstraint!,
             buttonHeightConstraint!,
         ])
+        tableView.backgroundColor = .blue
         phoneButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
@@ -59,15 +60,18 @@ class AllView: UIView {
         Task {
             if let fetchedCalls = await DatabaseManager.shared.fetchCalls() {
                 self.calls = fetchedCalls
+                print("fetched calls: \(fetchedCalls)")
                 DispatchQueue.main.async {
                     self.tableView.calls = self.calls
                     self.tableView.reloadData()
-                    }
                 }
+            } else {
+                print("failed to fetch calls")
             }
         }
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }    
+    }
 }
