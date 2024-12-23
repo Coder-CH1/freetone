@@ -61,3 +61,29 @@ struct Message {
         ]
     }
 }
+
+//MARK: - Data Model -
+struct Call {
+    var senderPhoneNumber: String
+    var recipientPhoneNumber: String
+    var time: String
+    var id: String
+    
+    //MARK: - Initialize -
+    init(senderPhoneNumber: String, recipientPhoneNumber: String, time: String, id: String) {
+        self.senderPhoneNumber = senderPhoneNumber
+        self.recipientPhoneNumber = recipientPhoneNumber
+        self.time = time
+        self.id = id
+    }
+    
+    //MARK: - Convert user object to a dictionary -
+    func toDictionary() -> [String: Any] {
+        return [
+            "senderPhoneNumber": self.senderPhoneNumber,
+            "recipientPhoneNumber": self.recipientPhoneNumber,
+            "time": self.time,
+            "id": self.id
+        ]
+    }
+}

@@ -62,13 +62,40 @@ class InboxTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let messageToDelete = data[indexPath.row]
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completion in
-            Task {
-                await DatabaseManager.shared.deleteDocument(message: messageToDelete)
-                completion(true)
-            }
-        }
-        return UISwipeActionsConfiguration(actions: [deleteAction])
+        guard indexPath.row < data.count else {
+                    return nil
+                }
+                let messageToDelete = data[indexPath.row]
+                
+                let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+                    Task {
+                        do {
+                            await DatabaseManager.shared.deleteDocument(message: messageToDelete)
+                            guard indexPath.row < self.data.count else {
+                                completion(false)
+                                return
+                            }
+                            
+                            self.data.remove(at: indexPath.row)
+                            
+                            DispatchQueue.main.async {
+                                if indexPath.row < self.data.count {
+                                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                                    completion(true)
+                                } else {
+                                    print("index out of bounds after removing from data")
+                                    completion(false)
+                                }
+                                completion(true)
+                            }
+                        } catch {
+                            print("error deleting message")
+                            completion(false)
+                        }
+                    }
+                }
+                deleteAction.backgroundColor = .red
+                let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction])
+                return swipeActions
     }
 }
