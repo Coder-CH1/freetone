@@ -31,20 +31,10 @@ class CallsViewController: BaseViewController {
         let label = UILabel()
         label.text = "Calls"
         label.textColor = .white
-        //label.textAlignment = .left
+        label.textAlignment = .left
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-    
-    ////STACKVIEW
-    fileprivate lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [label, segmentedControl])
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.spacing = 5
-        stack.alignment = .leading
-        return stack
     }()
     
     ////SEGMENTED CONTROL
@@ -86,7 +76,8 @@ class CallsViewController: BaseViewController {
     
     // MARK: - Subviews and Layout -
     func setSubviewsAndLayout() {
-        customView.addSubview(stackView)
+        customView.addSubview(segmentedControl)
+        customView.addSubview(label)
         let subviews = [customView, allView, missedView, voicemailView, dialButton]
         for subview in subviews {
             view.addSubview(subview)
@@ -95,22 +86,26 @@ class CallsViewController: BaseViewController {
             customView.topAnchor.constraint(equalTo: view.topAnchor),
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            customView.heightAnchor.constraint(equalToConstant: 150),
+            customView.heightAnchor.constraint(equalToConstant: 210),
             
-            stackView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 0),
-            stackView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10),
+            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
+            label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
             
-            allView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
+            segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
+            segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
+            segmentedControl.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -5),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 30),
+            
+            allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
             allView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             allView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             
-            missedView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
+            missedView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
             missedView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             missedView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             
-            voicemailView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
+            voicemailView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
             voicemailView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             voicemailView.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             

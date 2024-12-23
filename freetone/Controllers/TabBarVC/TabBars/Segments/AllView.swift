@@ -13,6 +13,7 @@ class AllView: UIView {
     //MARK: - Objects -
     ////TABLEVIEW
     private let tableView = SegmentedTableView(frame: .zero)
+    var calls: [Call] = []
     
     ////BUTTON
     let phoneButton = Button(image: UIImage(systemName: "circle.hexagongrid.fill"), text: "", btnTitleColor: .lightGray, backgroundColor: .systemPink, radius: 25, imageColor: .white, borderWidth: 0, borderColor: UIColor.clear.cgColor)
@@ -22,7 +23,7 @@ class AllView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
+        fetchCallsData()
         setSubviewsAndLayout()
     }
     
@@ -46,10 +47,24 @@ class AllView: UIView {
         phoneButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
+    // MARK: -
     @objc func buttonTapped() {
         let vc = DialerViewController()
         vc.modalPresentationStyle = .fullScreen
     }
+    
+    // MARK: - Method to fetch the calls data to the ui -
+    func fetchCallsData() {
+        Task {
+            if let fetchedCalls = await DatabaseManager.shared.fetchCalls() {
+                self.calls = fetchedCalls
+                DispatchQueue.main.async {
+                    self.tableView.calls = self.calls
+                    self.tableView.reloadData()
+                    }
+                }
+            }
+        }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

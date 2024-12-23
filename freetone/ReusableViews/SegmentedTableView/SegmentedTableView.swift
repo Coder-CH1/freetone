@@ -11,7 +11,7 @@ import UIKit
 class SegmentedTableView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Object initialization -
-    private var data: [String] = []
+    var calls: [Call] = []
     var didSelectRowAt: ((IndexPath) -> Void)?
     
     init(frame: CGRect){
@@ -37,12 +37,14 @@ class SegmentedTableView: UITableView, UITableViewDataSource, UITableViewDelegat
     
     // MARK: - UITableViewDataSource -
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return calls.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SegmentedTableViewCell", for: indexPath) as! SegmentedTableViewCell
+        let call = calls[indexPath.row]
         cell.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
+        cell.configure(call: call)
         return cell
     }
     
