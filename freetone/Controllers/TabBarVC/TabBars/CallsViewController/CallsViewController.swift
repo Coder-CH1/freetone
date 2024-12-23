@@ -99,7 +99,7 @@ class CallsViewController: BaseViewController {
             segmentedControl.heightAnchor.constraint(equalToConstant: 30),
             
             allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
-            allView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
+            allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             allView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             allView.heightAnchor.constraint(equalToConstant: view.bounds.height),
             allView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
