@@ -145,17 +145,19 @@ class DialerViewController: BaseViewController {
     // MARK: -
     @objc func callButtonTapped() {
         guard let phoneNumber = phoneNumberLabel.text, !phoneNumber.isEmpty else {
-            showAlert(title: "Invalid number", message: "Please enter a valid phone number.")
+            showAlert(title: "Invalid number", message: "Please enter a valid phone number")
             return
         }
-        
         let cleanedPhoneNumber = phoneNumber.replacingOccurrences(of: "[^0-9+]", with: "", options: .regularExpression)
         
         guard cleanedPhoneNumber.hasPrefix("+") || cleanedPhoneNumber.allSatisfy({$0.isNumber}) else {
             showAlert(title: "Invalid number", message: "Please enter a valid phone number")
             return
         }
-        
+#if targetEnvironment(simulator)
+        print("Simulated call to: \(cleanedPhoneNumber)")
+        showAlert(title: "Simulated Call", message: "Calling \(cleanedPhoneNumber)...")
+#else
         if let url = URL(string: "tel://" + cleanedPhoneNumber) {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -163,6 +165,7 @@ class DialerViewController: BaseViewController {
                 showAlert(title: "Call not supported", message: "Your device cannot make calls")
             }
         }
+#endif
     }
     
     //MARK: - Method for navigating to the present viewcontroller -

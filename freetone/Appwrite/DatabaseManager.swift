@@ -54,6 +54,14 @@ class DatabaseManager {
         return messagesId
     }
     
+    //MARK: - Retrieve collection id values from info.plist -
+    var callsID: String {
+        guard let callsId = Bundle.main.object(forInfoDictionaryKey: "AppwriteCallsID") as? String else {
+            fatalError("")
+        }
+        return callsId
+    }
+    
     //MARK: - Create document in a Collection -
     func createCollection(user: User) async {
         let collectionId = usersID
@@ -191,6 +199,59 @@ class DatabaseManager {
                    let time = document.data["time"]?.value as? String,
                    let id = document.data["id"]?.value as? String {
                    let message = Message(senderPhoneNumber: senderPhoneNumber, recipientPhoneNumber: recipientPhoneNumber, messageBody: messageBody, time: time, id: id)
+                    messages.append(message)
+                }
+            }
+            return messages
+        } catch {
+            print("error fetching messages \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    //MARK: - Save a call document in the 'calls' Collection -
+    func saveCall(call: Call) async -> Call? {
+        let collectionId = callsID
+        let databaseId = databaseID
+        
+        do {
+            let document = try await database.createDocument(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                documentId: ID.unique(),
+                data: call.toDictionary(),
+                permissions: [
+                    Permission.read(Role.any())
+                ]
+            )
+            print("Message saved with ID: \(document.id)")
+            var savedMessage = call
+            savedMessage.id = document.id
+            return savedMessage
+        } catch {
+            print("Error saving message \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    //MARK: - Fetch a call document in the 'calls' Collection -
+    func fetchCalls() async -> [Call]? {
+        let collectionId = callsID
+        let databaseId = databaseID
+        
+        do {
+            let documents = try await database.listDocuments(
+                databaseId: databaseId,
+                collectionId: collectionId,
+                queries: []
+            )
+            var messages: [Call] = []
+            for document in documents.documents {
+                if let senderPhoneNumber = document.data["senderPhoneNumber"]?.value as? String,
+                   let recipientPhoneNumber = document.data["recipientPhoneNumber"]?.value as? String,
+                   let time = document.data["time"]?.value as? String,
+                   let id = document.data["id"]?.value as? String {
+                   let message = Call(senderPhoneNumber: senderPhoneNumber, recipientPhoneNumber: recipientPhoneNumber, time: time, id: id)
                     messages.append(message)
                 }
             }
