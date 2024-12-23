@@ -43,7 +43,6 @@ class CallsViewController: BaseViewController {
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.backgroundColor = .red
         segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0), ], for: .selected)
         segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.lightGray], for: .normal)
         segmentedControl.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
