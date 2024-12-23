@@ -1,6 +1,6 @@
 # freetone
 
-- Your Free Calling and Messaging App.
+* Your Free Calling and Messaging App.
 
 
 # Technologies: 
@@ -19,7 +19,9 @@
 
 - Singleton Design Pattern. 
 
-##
+
+
+#
 
 
 
