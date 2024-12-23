@@ -28,7 +28,7 @@ class SegmentedTableView: UITableView, UITableViewDataSource, UITableViewDelegat
         self.delegate = self
         self.dataSource = self
         self.separatorStyle = .singleLine
-        self.separatorColor = .lightGray
+        self.separatorColor = .green
         self.showsVerticalScrollIndicator = false
         self.translatesAutoresizingMaskIntoConstraints = false
         self.register(SegmentedTableViewCell.self, forCellReuseIdentifier: "SegmentedTableViewCell")

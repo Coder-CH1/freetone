@@ -38,7 +38,7 @@ class CallsViewController: BaseViewController {
     }()
     
     ////SEGMENTED CONTROL
-    fileprivate lazy var segmentedControl: UISegmentedControl = {
+    public lazy var segmentedControl: UISegmentedControl = {
         let items = ["ALL", "MISSED", "VOICEMAIL"]
         let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +58,15 @@ class CallsViewController: BaseViewController {
         super.viewDidLoad()
         callGetContacts()
         setupNavigationBar()
+    }
+    
+    //MARK: - Life Cycle -
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        callGetContacts()
+        setupNavigationBar()
+        
+        segmentedControlChanged(segmentedControl)
     }
     
     //MARK: - Setting up navigation items -
@@ -86,10 +95,10 @@ class CallsViewController: BaseViewController {
             customView.topAnchor.constraint(equalTo: view.topAnchor),
             customView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             customView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            customView.heightAnchor.constraint(equalToConstant: 210),
             
-            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10),
+            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -20),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
             
             segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
             segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
