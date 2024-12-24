@@ -49,6 +49,8 @@ class CallsViewController: BaseViewController {
         segmentedControl.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
         segmentedControl.setBackgroundImage(UIImage(), for: .selected, barMetrics: .default)
         segmentedControl.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+        
+        
         return segmentedControl
     }()
     
@@ -67,11 +69,6 @@ class CallsViewController: BaseViewController {
         callGetContacts()
         setupNavigationBar()
         
-        segmentedControlChanged(segmentedControl)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         segmentedControlChanged(segmentedControl)
     }
     
@@ -112,20 +109,19 @@ class CallsViewController: BaseViewController {
             segmentedControl.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -5),
             segmentedControl.heightAnchor.constraint(equalToConstant: 30),
             
-            
-            allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
+            allView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             allView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             allView.heightAnchor.constraint(equalToConstant: view.bounds.height),
             allView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            missedView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
+            missedView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             missedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             missedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             missedView.heightAnchor.constraint(equalToConstant: view.bounds.height),
             missedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            voicemailView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
+            voicemailView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             voicemailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             voicemailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             voicemailView.heightAnchor.constraint(equalToConstant: view.bounds.height),
@@ -160,6 +156,16 @@ class CallsViewController: BaseViewController {
         present(contactPicker, animated: true)
     }
     
+    func adjustSegmentedControlSpacing() {
+        // Set a custom width for each segment, ensuring there's space between them
+        let width = segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments)
+        for index in 0..<segmentedControl.numberOfSegments {
+            let itemWidth = width - 20  // Adjust the 20 to the amount of space you want
+            segmentedControl.setWidth(itemWidth, forSegmentAt: index)
+        }
+    }
+
+    
     //MARK: - Using the method for fetching array of CNContact objects -
     func callGetContacts() {
         let contacts = ContactManager.shared.getContactFromCNContact()
@@ -184,10 +190,6 @@ class CallsViewController: BaseViewController {
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
         segmentedControlIndicatorView.frame = CGRect(x: -15, y: 42, width: segmentedWidth * 1.70, height: 2)
         customView.addSubview(segmentedControlIndicatorView)
-        
-        NSLayoutConstraint.activate([
-            segmentedControlIndicatorView.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor, multiplier: 1.2 / CGFloat(segmentedControl.numberOfSegments))
-        ])
     }
     
     //MARK: - The segmented control event functionality that selects either of the segments -
