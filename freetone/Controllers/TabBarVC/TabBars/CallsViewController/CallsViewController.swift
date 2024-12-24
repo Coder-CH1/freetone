@@ -15,6 +15,7 @@ class CallsViewController: BaseViewController {
     let allView = AllView()
     let missedView = MissedView()
     let voicemailView = VoicemailView()
+
     let segmentedControlIndicatorView = UIView()
     
     //MARK: - Create a custom view for the navigation bar -
@@ -69,6 +70,11 @@ class CallsViewController: BaseViewController {
         segmentedControlChanged(segmentedControl)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        segmentedControlChanged(segmentedControl)
+    }
+    
     //MARK: - Setting up navigation items -
     func setupNavigationBar() {
         if let navigationBar = navigationController?.navigationBar {
@@ -105,6 +111,7 @@ class CallsViewController: BaseViewController {
             segmentedControl.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             segmentedControl.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -5),
             segmentedControl.heightAnchor.constraint(equalToConstant: 30),
+            
             
             allView.topAnchor.constraint(equalTo: customView.bottomAnchor, constant: 5),
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

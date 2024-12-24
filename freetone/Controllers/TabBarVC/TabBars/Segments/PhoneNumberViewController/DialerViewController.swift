@@ -170,7 +170,11 @@ class DialerViewController: BaseViewController {
     
     //MARK: - Method for navigating to the present viewcontroller -
     @objc override func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
+        if let callsVC = navigationController?.viewControllers.first(where: { $0 is
+            CallsViewController
+        }) as? CallsViewController {
+            callsVC.segmentedControlChanged(callsVC.segmentedControl)
+        }
     }
     
     // MARK: - Method that deletes the button text from the label -
