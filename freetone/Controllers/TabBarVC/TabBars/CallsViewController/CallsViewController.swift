@@ -112,20 +112,17 @@ class CallsViewController: BaseViewController {
             allView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             allView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            allView.heightAnchor.constraint(equalToConstant: view.bounds.height),
-            allView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            allView.heightAnchor.constraint(equalToConstant: view.frame.height),
             
             missedView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             missedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             missedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            missedView.heightAnchor.constraint(equalToConstant: view.bounds.height),
-            missedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            missedView.heightAnchor.constraint(equalToConstant: view.frame.height),
             
             voicemailView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             voicemailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             voicemailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            voicemailView.heightAnchor.constraint(equalToConstant: view.bounds.height),
-            voicemailView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            voicemailView.heightAnchor.constraint(equalToConstant: view.frame.height),
             
             dialButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             dialButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
@@ -156,16 +153,6 @@ class CallsViewController: BaseViewController {
         present(contactPicker, animated: true)
     }
     
-    func adjustSegmentedControlSpacing() {
-        // Set a custom width for each segment, ensuring there's space between them
-        let width = segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments)
-        for index in 0..<segmentedControl.numberOfSegments {
-            let itemWidth = width - 20  // Adjust the 20 to the amount of space you want
-            segmentedControl.setWidth(itemWidth, forSegmentAt: index)
-        }
-    }
-
-    
     //MARK: - Using the method for fetching array of CNContact objects -
     func callGetContacts() {
         let contacts = ContactManager.shared.getContactFromCNContact()
@@ -188,7 +175,7 @@ class CallsViewController: BaseViewController {
     func setupSegmentedControlIndicator() {
         segmentedControlIndicatorView.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
-        segmentedControlIndicatorView.frame = CGRect(x: -15, y: 42, width: segmentedWidth * 1.70, height: 2)
+        segmentedControlIndicatorView.frame = CGRect(x: 0, y: 42, width: segmentedWidth * 1.70, height: 2)
         customView.addSubview(segmentedControlIndicatorView)
     }
     
