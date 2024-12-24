@@ -63,15 +63,6 @@ class CallsViewController: BaseViewController {
         setupNavigationBar()
     }
     
-    //MARK: - Life Cycle -
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        callGetContacts()
-        setupNavigationBar()
-        
-        segmentedControlChanged(segmentedControl)
-    }
-    
     //MARK: - Setting up navigation items -
     func setupNavigationBar() {
         if let navigationBar = navigationController?.navigationBar {
@@ -101,13 +92,13 @@ class CallsViewController: BaseViewController {
             
             label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -20),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
-            label.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
             
             segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
             segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             segmentedControl.trailingAnchor.constraint(equalTo: customView.trailingAnchor),
             segmentedControl.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -5),
             segmentedControl.heightAnchor.constraint(equalToConstant: 30),
+            segmentedControl.widthAnchor.constraint(equalToConstant: view.frame.width),
             
             allView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 5),
             allView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -175,7 +166,7 @@ class CallsViewController: BaseViewController {
     func setupSegmentedControlIndicator() {
         segmentedControlIndicatorView.backgroundColor = UIColor(red: 0/255, green: 255/255, blue: 230/255, alpha: 1.0)
         let segmentedWidth = segmentedControl.frame.width/CGFloat(segmentedControl.numberOfSegments)
-        segmentedControlIndicatorView.frame = CGRect(x: 0, y: 42, width: segmentedWidth * 1.70, height: 2)
+        segmentedControlIndicatorView.frame = CGRect(x: -15, y: 42, width: segmentedWidth * 1.70, height: 2)
         customView.addSubview(segmentedControlIndicatorView)
     }
     
