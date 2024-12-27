@@ -92,6 +92,7 @@ class CallsViewController: BaseViewController {
             
             label.topAnchor.constraint(equalTo: customView.topAnchor, constant: -20),
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20),
             
             segmentedControl.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10),
             segmentedControl.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
