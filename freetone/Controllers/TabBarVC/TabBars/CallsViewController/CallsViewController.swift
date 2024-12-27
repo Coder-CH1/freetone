@@ -50,7 +50,6 @@ class CallsViewController: BaseViewController {
         segmentedControl.setBackgroundImage(UIImage(), for: .selected, barMetrics: .default)
         segmentedControl.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
         
-        
         return segmentedControl
     }()
     
@@ -150,8 +149,6 @@ class CallsViewController: BaseViewController {
         let contacts = ContactManager.shared.getContactFromCNContact()
         for contact in contacts {
             print(contact.middleName)
-            print(contact.familyName)
-            print(contact.givenName)
         }
     }
     
